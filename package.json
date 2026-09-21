@@ -1,0 +1,53 @@
+{
+  "name": "kept",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b --pretty false && tsc -p convex --noEmit --pretty false",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "lint": "oxlint",
+    "eval:fixtures": "tsx scripts/run-evals.ts --mode fixtures",
+    "eval:live": "tsx scripts/run-evals.ts --mode live",
+    "verify:evidence": "tsx scripts/verify-evidence.ts",
+    "smoke:prod": "playwright test tests/e2e/production.spec.ts",
+    "deploy": "npx convex deploy -y && npx @convex-dev/static-hosting upload --build --prod"
+  },
+  "dependencies": {
+    "@agentmail/convex": "^0.1.0",
+    "@auth/core": "^0.41.3",
+    "@convex-dev/auth": "^0.0.95",
+    "@convex-dev/static-hosting": "^0.2.1",
+    "@firecrawl/firecrawl-convex": "^0.1.1",
+    "agentmail": "^0.5.27",
+    "convex": "^1.46.0",
+    "openai": "^7.20.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router": "^8.4.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@edge-runtime/vm": "^5.0.0",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "convex-test": "^0.0.59",
+    "oxlint": "^1.81.0",
+    "tsx": "^4.23.15",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "vitest": "^4.1.11"
+  },
+  "allowScripts": {
+    "esbuild@0.27.0": true,
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true
+  }
+}

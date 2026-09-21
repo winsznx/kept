@@ -1,0 +1,35 @@
+# Dependencies and build output
+node_modules
+dist
+dist-ssr
+coverage
+playwright-report
+test-results
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Secrets: never commit real env files. Only .env.example is tracked.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local-only evidence runs (may contain private identifiers before sanitization)
+evidence/.raw/
+eval/.runs/
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.sw?
+
+# Claude local state
+.claude/settings.local.json
+.quickstart-logs
+KEPT_COMPLETE_PRD_CLAUDE_V2.md
