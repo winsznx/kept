@@ -41,7 +41,7 @@ Kept records the deal you were promised at signup, checks every later bill again
 - **Auth:** Convex Auth
 - **AI models:** gpt-5.6-terra (classification and extraction), gpt-5.6-sol (case drafting), via the OpenAI Responses API with strict Structured Outputs (`convex/lib/openai.ts`)
 - **Started:** 2026-09-21T22:54:35Z
-- **Last updated:** 2026-09-22T15:40:00Z
+- **Last updated:** 2026-09-22T16:10:00Z
 
 ## Log
 
@@ -59,4 +59,7 @@ Deployed to production on Convex static hosting. The demo, Then vs Now, case, in
 
 ### 2026-09-22 - working tree
 Ran the full loop live on production and recorded it as an inspectable run at `/proof/run/live-loop-2026-09-22` (`evidence/live-roundtrip.md`). A synthetic signup email forwarded into a real per-user AgentMail inbox arrived through the signed webhook; OpenAI extracted the $18.75 x 24 credit, duration and required plan, and code bound each to the source text. Bills pasted in the app reconciled deterministically to a material difference on credit 22. A model-drafted case passed Kept's fact check, was approved in the UI and sent through AgentMail; the reply from a separate builder-controlled inbox landed in the same case thread, its claims were stored as claims, and the case waited to verify. Bill 23 first produced a source conflict, because the model labelled the back-credit as a recurring credit, so Kept abstained; a deterministic line-identity rule fixed it and the case page switched to verified fixed with no reload (`convex/lib/pipeline.ts`). Fixed two live-found bugs: forwarded mail bodies were taken from AgentMail's quote-stripped text and came through empty, and assigned mail was classified twice (`convex/inbound.ts`, `convex/internal/inboundProcessing.ts`). Signed webhooks are registered for dev and prod.
+
+### 2026-09-22 - ae7cc57
+Ran the evaluation campaigns and published the results (`evidence/campaign-report.md`). Extraction, page-change and ambiguity campaigns ran live on a small synthetic corpus with cached outputs; the month-22 and claimed-fix campaigns run deterministically. The first scoring flagged two benign page rewrites as material and missed one ambiguous credit; the causes were fixed in deterministic code with tests and both scorings are published. An independent verifier re-derives the invariants from the corpus, the cached outputs and the decision code and passes (`scripts/verify-evidence.ts`, `evidence/verification.md`). Also recorded a live Firecrawl T0/Tn capture of a public carrier deals page on production, where the model's offers were bound to the page text and ambiguous ones held for review (`/proof`). Added the threat model and rewrote the README around the evidence.
 
