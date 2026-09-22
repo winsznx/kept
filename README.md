@@ -137,3 +137,7 @@ Server secrets are set with `npx convex env set` (names in `.env.example`): `OPE
 - A material difference doesn't mean the provider made an error. There may be account facts Kept can't see.
 - Kept doesn't give legal advice or decide what anyone is owed.
 - All evaluation data is synthetic, and the providers are fictional. The live run used synthetic documents over real AgentMail inboxes the builder controls, and the "support" reply was written by the builder.
+
+## License
+
+Code is MIT licensed, see [LICENSE](LICENSE). The Kept name, logo and mark in `public/brand/` are brand assets: reuse the code freely, but not the identity.
