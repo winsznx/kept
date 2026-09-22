@@ -15,7 +15,7 @@ import { formatCents } from "./money";
 import type { LineMatch, ObservedStatement } from "./reconcile";
 import { addMonths, parseYearMonth, type YearMonth } from "./schedule";
 
-export const MECHANISM_VERSION = "kept-mech-1";
+export const MECHANISM_VERSION = "kept-mech-2";
 
 const CONF: Record<"high" | "medium" | "low", Confidence> = { high: "HIGH", medium: "MEDIUM", low: "LOW" };
 
@@ -270,16 +270,26 @@ export function toObservedStatement(
   statementKey: string,
   s: { statementMonth: string | null; itemized: boolean; lines: readonly BuiltLine[] },
   startMonth: YearMonth | null,
+  expectedAmountCents: number | null = null,
 ): ObservedStatement {
   const ym = parseYearMonth(s.statementMonth);
   const periodIndex = startMonth && ym ? ym.year * 12 + ym.month - (startMonth.year * 12 + startMonth.month) + 1 : null;
   const recurring = s.lines.filter((l) => effectiveCategory(l) === "PROMO_CREDIT");
   const oneTime = s.lines.filter((l) => effectiveCategory(l) === "ONE_TIME_CREDIT");
+  const creditLines = recurring.map((l) => ({ lineId: l.key, amountCents: l.amountCents ?? 0, currency: l.currency ?? "USD", matchesCommitment: l.matchesCommitment }));
+  // A credit for exactly the promised amount that isn't identified as the promotion is
+  // ambiguous: Kept asks for review instead of calling the credit missing.
+  if (expectedAmountCents !== null && !creditLines.some((l) => l.matchesCommitment === "YES")) {
+    for (const l of s.lines) {
+      if (recurring.includes(l) || l.matchesCommitment === "YES" || l.amountCents === null) continue;
+      if (l.amountCents === -Math.abs(expectedAmountCents)) creditLines.push({ lineId: l.key, amountCents: l.amountCents, currency: l.currency ?? "USD", matchesCommitment: "AMBIGUOUS" });
+    }
+  }
   return {
     statementKey,
     periodIndex,
     itemized: s.itemized,
-    creditLines: recurring.map((l) => ({ lineId: l.key, amountCents: l.amountCents ?? 0, currency: l.currency ?? "USD", matchesCommitment: l.matchesCommitment })),
+    creditLines,
     adjustmentLines: oneTime.map((l) => ({ lineId: l.key, amountCents: l.amountCents ?? 0, currency: l.currency ?? "USD", matchesCommitment: l.matchesCommitment })),
   };
 }

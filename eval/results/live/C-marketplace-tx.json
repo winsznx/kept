@@ -1,0 +1,97 @@
+{
+  "fixtureId": "C-marketplace-tx",
+  "recordedAt": "2026-09-22T15:41:34.188Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 62900,
+      "booleanValue": null,
+      "cadence": "ONE_TIME",
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Item price: $629.00",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_PRICE_FIXED",
+      "kind": "PROMO_PRICE_FIXED",
+      "label": "Item price",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "MONEY"
+    }
+  ],
+  "latencyMs": 4105,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "one_time",
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Item price: $629.00",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "PROMO_PRICE_FIXED",
+        "label": "Item price",
+        "periodCount": null,
+        "value": {
+          "amountCents": 62900,
+          "currency": "USD",
+          "type": "money"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Aurora X15 128GB, unlocked",
+    "providerName": "GadgetDepot Outlet",
+    "sourceClassification": "TRANSACTION_RECEIPT",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Sold by: GadgetDepot Outlet (third-party seller on Harbor Market)",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "THIRD_PARTY_MARKETPLACE_SELLER"
+    },
+    "transactionDateIso": "2026-03-03",
+    "transactionDateText": "March 3, 2026",
+    "unknowns": [
+      "No region is stated.",
+      "No product identifier is stated.",
+      "No promotional credits, plan requirements, deadlines, trade-in amounts, or promotional duration are stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1353,
+    "outputTokens": 278
+  }
+}

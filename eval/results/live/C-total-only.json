@@ -1,0 +1,37 @@
+{
+  "fixtureId": "C-total-only",
+  "recordedAt": "2026-09-22T15:41:10.477Z",
+  "built": {
+    "itemized": false,
+    "lines": [],
+    "planName": null,
+    "providerName": "BRIGHTLINE WIRELESS",
+    "servicePeriodEndIso": null,
+    "servicePeriodStartIso": null,
+    "statementDateIso": "2026-09-05",
+    "statementMonth": "2026-09",
+    "totalAmountCents": 11466
+  },
+  "latencyMs": 2054,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "isBillOrStatement": true,
+    "itemized": false,
+    "lineItems": [],
+    "planName": null,
+    "providerName": "BRIGHTLINE WIRELESS",
+    "servicePeriodEndIso": null,
+    "servicePeriodStartIso": null,
+    "statementDateIso": "2026-09-05",
+    "statementMonthIso": "2026-09",
+    "totalAmountCents": 11466,
+    "unknowns": [
+      "No individual charges, credits, taxes, fees, or add-ons are listed.",
+      "Service-period start and end dates are not provided."
+    ]
+  },
+  "usage": {
+    "inputTokens": 945,
+    "outputTokens": 114
+  }
+}

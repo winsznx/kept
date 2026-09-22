@@ -1,0 +1,157 @@
+{
+  "fixtureId": "A-price-1",
+  "recordedAt": "2026-09-22T15:39:41.632Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 5500,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "with autopay"
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Solace Fiber Gigabit Home: $55.00/month for your first 12 months with autopay.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_PRICE_FIXED",
+      "kind": "PROMO_PRICE_FIXED",
+      "label": "Promotional monthly price",
+      "periodCount": 12,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "with autopay"
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Solace Fiber Gigabit Home: $55.00/month for your first 12 months with autopay.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 12,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Promotional period",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    }
+  ],
+  "latencyMs": 5004,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "with autopay"
+        ],
+        "confidence": "high",
+        "effectiveEndText": "your first 12 months",
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Solace Fiber Gigabit Home: $55.00/month for your first 12 months with autopay.",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "PROMO_PRICE_FIXED",
+        "label": "Promotional monthly price",
+        "periodCount": 12,
+        "value": {
+          "amountCents": 5500,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "with autopay"
+        ],
+        "confidence": "high",
+        "effectiveEndText": "your first 12 months",
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Solace Fiber Gigabit Home: $55.00/month for your first 12 months with autopay.",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Promotional period",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 12
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [
+        {
+          "excerpt": "# Gigabit Home home internet",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productScope": "Gigabit Home home internet",
+      "region": null
+    },
+    "productOrPlanName": "Gigabit Home",
+    "providerName": "Solace Fiber",
+    "sourceClassification": "FIRST_PARTY_PUBLIC_PAGE",
+    "transactionContext": {
+      "evidence": [],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": null,
+    "transactionDateText": null,
+    "unknowns": [
+      "Regular rate after the promotional period is not stated.",
+      "Taxes and fees are excluded from the stated promotional price."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1347,
+    "outputTokens": 369
+  }
+}

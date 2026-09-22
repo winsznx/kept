@@ -1,0 +1,1326 @@
+{
+  "generatedAt": "2026-09-22T15:41:54.748Z",
+  "mechanismVersion": "kept-mech-1",
+  "modelExtract": "gpt-5.6-terra",
+  "corpus": "eval/corpus.ts (synthetic, fictional providers)",
+  "liveUsage": {
+    "calls": 52,
+    "inputTokens": 70085,
+    "outputTokens": 22348,
+    "note": "Token counts summed from cached live results used in this report."
+  },
+  "extraction": {
+    "fixtures": 22,
+    "run": 22,
+    "autoDecisionEvidenceBindingRate": {
+      "numerator": 68,
+      "denominator": 68,
+      "value": 1
+    },
+    "supportedFieldPrecision": {
+      "numerator": 47,
+      "denominator": 47,
+      "value": 1
+    },
+    "supportedFieldRecall": {
+      "numerator": 47,
+      "denominator": 47,
+      "value": 1
+    },
+    "unsupportedFactRate": {
+      "numerator": 0,
+      "denominator": 47,
+      "value": 0
+    },
+    "reviewOrRejectedRate": {
+      "numerator": 0,
+      "denominator": 68,
+      "value": 0
+    },
+    "rows": [
+      {
+        "id": "A-email-a-1",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1875,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "Your promotion: you'll get a $18.75 monthly bill credit for 24 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 24,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "Your promotion: you'll get a $18.75 monthly bill credit for 24 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Premium Plus",
+            "periodCount": null,
+            "excerpt": "Keep the Premium Plus plan active to keep receiving it.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-b-1",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1875,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "- Promo credit: $18.75/mo",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 24,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "- Credit duration: 24 months",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Premium Plus or higher",
+            "periodCount": null,
+            "excerpt": "- Eligible plan: Premium Plus or higher",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-receipt-1",
+        "format": "RECEIPT",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "TRADE_IN_AMOUNT",
+            "amountCents": 20000,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "Trade-in credit (approved): $200.00",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1875,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "Promotion: Device credit $18.75 x 24 monthly bill credits",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 24,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "Promotion: Device credit $18.75 x 24 monthly bill credits",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Premium Plus",
+            "periodCount": null,
+            "excerpt": "Required rate plan: Premium Plus",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 3,
+        "autoFields": 3,
+        "labelledFields": 3,
+        "nonAuto": 0,
+        "totalExtracted": 4,
+        "missed": []
+      },
+      {
+        "id": "A-noisy-1",
+        "format": "NOISY",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1875,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "24 monthly credits of $18.75 each, applied to your bill while you stay on Premium Plus.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 24,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "24 monthly credits of $18.75 each, applied to your bill while you stay on Premium Plus.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Premium Plus",
+            "periodCount": null,
+            "excerpt": "24 monthly credits of $18.75 each, applied to your bill while you stay on Premium Plus.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-a-2",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1000,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "you'll get a $10.00 monthly bill credit for 36 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 36,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "you'll get a $10.00 monthly bill credit for 36 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Unlimited Max",
+            "periodCount": null,
+            "excerpt": "Keep the Unlimited Max plan active to keep receiving it.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-b-2",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1000,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "- Promo credit: $10.00/mo",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 36,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "- Credit duration: 36 months",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Unlimited Max or higher",
+            "periodCount": null,
+            "excerpt": "- Eligible plan: Unlimited Max or higher",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-receipt-2",
+        "format": "RECEIPT",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "TRADE_IN_AMOUNT",
+            "amountCents": 25000,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "Trade-in credit (approved): $250.00",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1000,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "Promotion: Device credit $10.00 x 36 monthly bill credits",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 36,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "Promotion: Device credit $10.00 x 36 monthly bill credits",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Unlimited Max",
+            "periodCount": null,
+            "excerpt": "Required rate plan: Unlimited Max",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 3,
+        "autoFields": 3,
+        "labelledFields": 3,
+        "nonAuto": 0,
+        "totalExtracted": 4,
+        "missed": []
+      },
+      {
+        "id": "A-noisy-2",
+        "format": "NOISY",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1000,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "PROMO DETAILS: 36 monthly credits of $10.00 each, applied to your bill while you stay on Unlimited Max.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 36,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "PROMO DETAILS: 36 monthly credits of $10.00 each, applied to your bill while you stay on Unlimited Max.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Unlimited Max",
+            "periodCount": null,
+            "excerpt": "PROMO DETAILS: 36 monthly credits of $10.00 each, applied to your bill while you stay on Unlimited Max.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-a-3",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 2500,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "Your promotion: you'll get a $25.00 monthly bill credit for 24 months. Keep the Everyday 5G plan active to keep receiving it.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 24,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "Your promotion: you'll get a $25.00 monthly bill credit for 24 months. Keep the Everyday 5G plan active to keep receiving it.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Everyday 5G",
+            "periodCount": null,
+            "excerpt": "Keep the Everyday 5G plan active to keep receiving it.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-b-3",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 2500,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "- Promo credit: $25.00/mo",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 24,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "- Credit duration: 24 months",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Everyday 5G or higher",
+            "periodCount": null,
+            "excerpt": "- Eligible plan: Everyday 5G or higher",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-receipt-3",
+        "format": "RECEIPT",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "TRADE_IN_AMOUNT",
+            "amountCents": 30000,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "Trade-in credit (approved): $300.00",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 2500,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "Promotion: Device credit $25.00 x 24 monthly bill credits",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 24,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "Promotion: Device credit $25.00 x 24 monthly bill credits",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Everyday 5G",
+            "periodCount": null,
+            "excerpt": "Required rate plan: Everyday 5G",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 3,
+        "autoFields": 3,
+        "labelledFields": 3,
+        "nonAuto": 0,
+        "totalExtracted": 4,
+        "missed": []
+      },
+      {
+        "id": "A-noisy-3",
+        "format": "NOISY",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 2500,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "24 monthly credits of $25.00 each, applied to your bill while you stay on Everyday 5G.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Everyday 5G",
+            "periodCount": null,
+            "excerpt": "applied to your bill while you stay on Everyday 5G.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 2,
+        "missed": []
+      },
+      {
+        "id": "A-email-a-4",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 833,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "you'll get a $8.33 monthly bill credit for 36 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 36,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "you'll get a $8.33 monthly bill credit for 36 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Gigabit Home",
+            "periodCount": null,
+            "excerpt": "Keep the Gigabit Home plan active to keep receiving it.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-b-4",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 833,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "- Promo credit: $8.33/mo",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 36,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "- Credit duration: 36 months",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Gigabit Home or higher",
+            "periodCount": null,
+            "excerpt": "- Eligible plan: Gigabit Home or higher",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-receipt-4",
+        "format": "RECEIPT",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "TRADE_IN_AMOUNT",
+            "amountCents": 35000,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "Trade-in credit (approved): $350.00",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 833,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "Promotion: Device credit $8.33 x 36 monthly bill credits",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 36,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "Promotion: Device credit $8.33 x 36 monthly bill credits",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Gigabit Home",
+            "periodCount": null,
+            "excerpt": "Required rate plan: Gigabit Home",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 3,
+        "autoFields": 3,
+        "labelledFields": 3,
+        "nonAuto": 0,
+        "totalExtracted": 4,
+        "missed": []
+      },
+      {
+        "id": "A-noisy-4",
+        "format": "NOISY",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 833,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "36 monthly credits of $8.33 each, applied to your bill while you stay on Gigabit Home.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 36,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "36 monthly credits of $8.33 each, applied to your bill while you stay on Gigabit Home.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Gigabit Home",
+            "periodCount": null,
+            "excerpt": "while you stay on Gigabit Home.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-a-5",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1500,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 12,
+            "excerpt": "you'll get a $15.00 monthly bill credit for 12 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 12,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "you'll get a $15.00 monthly bill credit for 12 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Essentials Duo",
+            "periodCount": null,
+            "excerpt": "Keep the Essentials Duo plan active to keep receiving it.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-b-5",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1500,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 12,
+            "excerpt": "- Promo credit: $15.00/mo\n- Credit duration: 12 months",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 12,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "- Credit duration: 12 months",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Essentials Duo or higher",
+            "periodCount": null,
+            "excerpt": "- Eligible plan: Essentials Duo or higher",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-a-6",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 2083,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "you'll get a $20.83 monthly bill credit for 24 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 24,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "you'll get a $20.83 monthly bill credit for 24 months.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Go Beyond",
+            "periodCount": null,
+            "excerpt": "Keep the Go Beyond plan active to keep receiving it.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-email-b-6",
+        "format": "EMAIL",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 2083,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 24,
+            "excerpt": "- Promo credit: $20.83/mo",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 24,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "- Credit duration: 24 months",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Go Beyond or higher",
+            "periodCount": null,
+            "excerpt": "- Eligible plan: Go Beyond or higher",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-page-1",
+        "format": "PAGE",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_CREDIT_SCHEDULE",
+            "amountCents": 1000,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 36,
+            "excerpt": "$10.00 monthly bill credit for 36 months",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 36,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "$10.00 monthly bill credit for 36 months",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "REQUIRED_PLAN",
+            "amountCents": null,
+            "integerValue": null,
+            "textValue": "Unlimited Max",
+            "periodCount": null,
+            "excerpt": "Requires the Unlimited Max plan",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 2,
+        "autoFields": 2,
+        "labelledFields": 2,
+        "nonAuto": 0,
+        "totalExtracted": 3,
+        "missed": []
+      },
+      {
+        "id": "A-price-1",
+        "format": "PAGE",
+        "ran": true,
+        "auto": [
+          {
+            "kind": "PROMO_PRICE_FIXED",
+            "amountCents": 5500,
+            "integerValue": null,
+            "textValue": null,
+            "periodCount": 12,
+            "excerpt": "Solace Fiber Gigabit Home: $55.00/month for your first 12 months with autopay.",
+            "bindingRecheck": true
+          },
+          {
+            "kind": "DURATION_MONTHS",
+            "amountCents": null,
+            "integerValue": 12,
+            "textValue": null,
+            "periodCount": null,
+            "excerpt": "Solace Fiber Gigabit Home: $55.00/month for your first 12 months with autopay.",
+            "bindingRecheck": true
+          }
+        ],
+        "truePositive": 1,
+        "autoFields": 1,
+        "labelledFields": 1,
+        "nonAuto": 0,
+        "totalExtracted": 2,
+        "missed": []
+      }
+    ]
+  },
+  "changeDetection": {
+    "pairs": 16,
+    "run": 16,
+    "materialCases": 8,
+    "benignCases": 8,
+    "precision": {
+      "numerator": 8,
+      "denominator": 10,
+      "value": 0.8
+    },
+    "recall": {
+      "numerator": 8,
+      "denominator": 8,
+      "value": 1
+    },
+    "benignFalsePositiveRate": {
+      "numerator": 2,
+      "denominator": 8,
+      "value": 0.25
+    },
+    "benignUnknownRate": {
+      "numerator": 3,
+      "denominator": 8,
+      "value": 0.375
+    },
+    "rows": [
+      {
+        "id": "B-benign-1-1",
+        "kind": "BENIGN",
+        "ran": true,
+        "expectMaterial": false,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "REQUIRED_PLAN"
+        ],
+        "passed": false
+      },
+      {
+        "id": "B-benign-1-2",
+        "kind": "BENIGN",
+        "ran": true,
+        "expectMaterial": false,
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "predictedMaterial": false,
+        "changedTerms": [],
+        "passed": false
+      },
+      {
+        "id": "B-benign-1-3",
+        "kind": "BENIGN",
+        "ran": true,
+        "expectMaterial": false,
+        "outcome": "NO_MATERIAL_CHANGE",
+        "predictedMaterial": false,
+        "changedTerms": [],
+        "passed": true
+      },
+      {
+        "id": "B-benign-1-4",
+        "kind": "UNRELATED",
+        "ran": true,
+        "expectMaterial": false,
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "predictedMaterial": false,
+        "changedTerms": [],
+        "passed": false
+      },
+      {
+        "id": "B-material-1-credit",
+        "kind": "MATERIAL",
+        "ran": true,
+        "expectMaterial": true,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "PROMO_CREDIT_SCHEDULE"
+        ],
+        "passed": true
+      },
+      {
+        "id": "B-material-1-months",
+        "kind": "MATERIAL",
+        "ran": true,
+        "expectMaterial": true,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "PROMO_CREDIT_SCHEDULE",
+          "DURATION_MONTHS",
+          "REQUIRED_PLAN"
+        ],
+        "passed": true
+      },
+      {
+        "id": "B-material-1-plan",
+        "kind": "MATERIAL",
+        "ran": true,
+        "expectMaterial": true,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "REQUIRED_PLAN"
+        ],
+        "passed": true
+      },
+      {
+        "id": "B-material-1-both",
+        "kind": "MATERIAL",
+        "ran": true,
+        "expectMaterial": true,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "PROMO_CREDIT_SCHEDULE",
+          "DURATION_MONTHS",
+          "REQUIRED_PLAN"
+        ],
+        "passed": true
+      },
+      {
+        "id": "B-benign-2-1",
+        "kind": "BENIGN",
+        "ran": true,
+        "expectMaterial": false,
+        "outcome": "NO_MATERIAL_CHANGE",
+        "predictedMaterial": false,
+        "changedTerms": [],
+        "passed": true
+      },
+      {
+        "id": "B-benign-2-2",
+        "kind": "BENIGN",
+        "ran": true,
+        "expectMaterial": false,
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "predictedMaterial": false,
+        "changedTerms": [],
+        "passed": false
+      },
+      {
+        "id": "B-benign-2-3",
+        "kind": "BENIGN",
+        "ran": true,
+        "expectMaterial": false,
+        "outcome": "NO_MATERIAL_CHANGE",
+        "predictedMaterial": false,
+        "changedTerms": [],
+        "passed": true
+      },
+      {
+        "id": "B-benign-2-4",
+        "kind": "UNRELATED",
+        "ran": true,
+        "expectMaterial": false,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "REQUIRED_PLAN"
+        ],
+        "passed": false
+      },
+      {
+        "id": "B-material-2-credit",
+        "kind": "MATERIAL",
+        "ran": true,
+        "expectMaterial": true,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "PROMO_CREDIT_SCHEDULE"
+        ],
+        "passed": true
+      },
+      {
+        "id": "B-material-2-months",
+        "kind": "MATERIAL",
+        "ran": true,
+        "expectMaterial": true,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "PROMO_CREDIT_SCHEDULE",
+          "DURATION_MONTHS"
+        ],
+        "passed": true
+      },
+      {
+        "id": "B-material-2-plan",
+        "kind": "MATERIAL",
+        "ran": true,
+        "expectMaterial": true,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "REQUIRED_PLAN"
+        ],
+        "passed": true
+      },
+      {
+        "id": "B-material-2-both",
+        "kind": "MATERIAL",
+        "ran": true,
+        "expectMaterial": true,
+        "outcome": "MATERIAL_CHANGE",
+        "predictedMaterial": true,
+        "changedTerms": [
+          "PROMO_CREDIT_SCHEDULE",
+          "DURATION_MONTHS"
+        ],
+        "passed": true
+      }
+    ]
+  },
+  "ambiguity": {
+    "cases": 10,
+    "run": 10,
+    "correctAbstentionRate": {
+      "numerator": 9,
+      "denominator": 10,
+      "value": 0.9
+    },
+    "rows": [
+      {
+        "id": "C-injection",
+        "expect": "NO_INJECTED_VALUE",
+        "ran": true,
+        "observed": "auto=PROMO_CREDIT_SCHEDULE:1000,DURATION_MONTHS:12; injectedValueExtracted=false",
+        "passed": true,
+        "note": "prompt injection asks for $9999 x 99"
+      },
+      {
+        "id": "C-up-to",
+        "expect": "NO_AUTO_CREDIT",
+        "ran": true,
+        "observed": "auto=none; injectedValueExtracted=false",
+        "passed": true,
+        "note": "credit amount is a range, not a fixed value"
+      },
+      {
+        "id": "C-marketing",
+        "expect": "NO_AUTO_ANY",
+        "ran": true,
+        "observed": "auto=none; injectedValueExtracted=false",
+        "passed": true,
+        "note": "marketing copy only"
+      },
+      {
+        "id": "C-varies",
+        "expect": "NO_AUTO_CREDIT",
+        "ran": true,
+        "observed": "auto=DURATION_MONTHS:24; injectedValueExtracted=false",
+        "passed": true,
+        "note": "credit value not stated"
+      },
+      {
+        "id": "C-two-promos",
+        "expect": "NO_AUTO_CREDIT",
+        "ran": true,
+        "observed": "auto=none; injectedValueExtracted=false",
+        "passed": true,
+        "note": "two alternative promotions, which one applies is not stated"
+      },
+      {
+        "id": "C-total-only",
+        "expect": "NOT_COMPARABLE",
+        "ran": true,
+        "observed": "outcome=REVIEW_REQUIRED; itemized=false; month=2026-09; yesLines=0",
+        "passed": true,
+        "note": "tax-inclusive total only"
+      },
+      {
+        "id": "C-unlabeled-credit",
+        "expect": "NO_YES_LINE",
+        "ran": true,
+        "observed": "outcome=MATERIAL_DIFFERENCE; itemized=true; month=2026-09; yesLines=0",
+        "passed": false,
+        "note": "credit line not identified as the promotion"
+      },
+      {
+        "id": "C-no-period",
+        "expect": "UNMAPPED_PERIOD",
+        "ran": true,
+        "observed": "outcome=REVIEW_REQUIRED; itemized=true; month=null; yesLines=0",
+        "passed": true,
+        "note": "no statement month or date"
+      },
+      {
+        "id": "C-marketplace",
+        "expect": "NOT_ESTABLISHED",
+        "ran": true,
+        "observed": "NOT_ESTABLISHED: The policy covers items sold directly by the provider; this purchase was from a different seller, whose own policy isn't in the evidence.",
+        "passed": true,
+        "note": "marketplace seller vs retailer-direct return policy"
+      },
+      {
+        "id": "C-region",
+        "expect": "NOT_ESTABLISHED",
+        "ran": true,
+        "observed": "NOT_ESTABLISHED: The policy is for Canada; the purchase was in United States.",
+        "passed": true,
+        "note": "Canadian policy page vs US purchase"
+      }
+    ]
+  },
+  "recurringCredit": {
+    "source": "canonical synthetic fixture, deterministic fixture parser",
+    "expectedOutcome": "MATERIAL_DIFFERENCE",
+    "actualOutcome": "MATERIAL_DIFFERENCE",
+    "observedMissingCents": 1875,
+    "remainingScheduledCents": 5625,
+    "notYetDueCents": 3750,
+    "checks": {
+      "months1to21Match": true,
+      "month22Material": true,
+      "months23to24NotDue": true,
+      "observedMissingCents": true,
+      "remainingScheduledCents": true
+    },
+    "passed": true
+  },
+  "resolution": {
+    "cases": 5,
+    "rows": [
+      {
+        "id": "H1-genuine-repair",
+        "expected": "VERIFIED_FIXED",
+        "actual": "VERIFIED_FIXED",
+        "verifiedRestoredCents": 3750,
+        "passed": true
+      },
+      {
+        "id": "H1b-credit-resumes",
+        "expected": "VERIFIED_FIXED",
+        "actual": "VERIFIED_FIXED",
+        "verifiedRestoredCents": 1875,
+        "passed": true
+      },
+      {
+        "id": "H2-ineffective-repair",
+        "expected": "STILL_MISMATCHED",
+        "actual": "STILL_MISMATCHED",
+        "verifiedRestoredCents": 0,
+        "passed": true
+      },
+      {
+        "id": "H3-non-comparable",
+        "expected": "INSUFFICIENT_EVIDENCE",
+        "actual": "INSUFFICIENT_EVIDENCE",
+        "verifiedRestoredCents": 0,
+        "passed": true
+      },
+      {
+        "id": "H4-claim-only-no-bill",
+        "expected": "INSUFFICIENT_EVIDENCE",
+        "actual": "INSUFFICIENT_EVIDENCE",
+        "verifiedRestoredCents": 0,
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "falseResolutionCount": 0
+  },
+  "ablation": {
+    "NO_OPENAI": {
+      "method": "Kept's deterministic regex fixture parser (convex/fixtures/fixtureParser.ts) run over the same Campaign A corpus in place of OpenAI.",
+      "corpusFixturesNormalizedCorrectly": {
+        "numerator": 8,
+        "denominator": 22,
+        "value": 0.364
+      },
+      "canonicalDemoFixturesParsed": {
+        "numerator": 6,
+        "denominator": 6,
+        "value": 1
+      },
+      "conclusion": "The fixture parser only understands the handful of layouts it was written for. Heterogeneous emails, receipts and pages need the model; without it, those sources need a custom parser or manual fields."
+    }
+  },
+  "liveRoundTrip": {
+    "passed": true,
+    "reactiveUpdateObserved": true,
+    "proofRun": "https://gregarious-snail-975.convex.site/proof/run/live-loop-2026-09-22",
+    "payloadSha256": "ca73caa977689876d97f90956c6c3767afca56b6639106c3254bc8c6b2aff61f"
+  }
+}

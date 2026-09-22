@@ -1,0 +1,218 @@
+{
+  "fixtureId": "A-email-a-3",
+  "recordedAt": "2026-09-22T15:39:15.408Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 2500,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Keep the Everyday 5G plan active to keep receiving it."
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Your promotion: you'll get a $25.00 monthly bill credit for 24 months. Keep the Everyday 5G plan active to keep receiving it.",
+          "page": null,
+          "sectionHint": "Promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Keep the Everyday 5G plan active to keep receiving it."
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Your promotion: you'll get a $25.00 monthly bill credit for 24 months. Keep the Everyday 5G plan active to keep receiving it.",
+          "page": null,
+          "sectionHint": "Promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 24,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Promotional credit duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Keep the plan active to keep receiving the promotional monthly bill credit."
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Keep the Everyday 5G plan active to keep receiving it.",
+          "page": null,
+          "sectionHint": "Promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Everyday 5G",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5295,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Keep the Everyday 5G plan active to keep receiving it."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Your promotion: you'll get a $25.00 monthly bill credit for 24 months. Keep the Everyday 5G plan active to keep receiving it.",
+            "page": null,
+            "sectionHint": "Promotion"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 2500,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Keep the Everyday 5G plan active to keep receiving it."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Your promotion: you'll get a $25.00 monthly bill credit for 24 months. Keep the Everyday 5G plan active to keep receiving it.",
+            "page": null,
+            "sectionHint": "Promotion"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Promotional credit duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 24
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Keep the plan active to keep receiving the promotional monthly bill credit."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Keep the Everyday 5G plan active to keep receiving it.",
+            "page": null,
+            "sectionHint": "Promotion"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Everyday 5G"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Everyday 5G",
+    "providerName": "Solace Fiber",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Thanks for your order placed on June 30, 2025.",
+          "page": null,
+          "sectionHint": "Order confirmation"
+        },
+        {
+          "excerpt": "Device: Pixelwave 8\nPlan: Everyday 5G",
+          "page": null,
+          "sectionHint": "Order details"
+        }
+      ],
+      "productIdentifier": "Pixelwave 8",
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2025-06-30",
+    "transactionDateText": "June 30, 2025",
+    "unknowns": [
+      "Promotion start date is not stated.",
+      "Promotion end date is not stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1378,
+    "outputTokens": 540
+  }
+}

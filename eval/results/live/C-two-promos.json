@@ -1,0 +1,158 @@
+{
+  "fixtureId": "C-two-promos",
+  "recordedAt": "2026-09-22T15:41:06.276Z",
+  "built": [
+    {
+      "ambiguity": "The source states this is one of two offers and does not confirm which applies.",
+      "amountCents": 1500,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Offer applicability will be confirmed after activation."
+      ],
+      "confidence": "LOW",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "REVIEW_REQUIRED",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Switch Bonus ($15.00 monthly bill credit for 12 months)",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE:switch-bonus",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Switch Bonus",
+      "periodCount": 12,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": "The source states this is one of two offers and does not confirm which applies.",
+      "amountCents": 1000,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Offer applicability will be confirmed after activation."
+      ],
+      "confidence": "LOW",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "REVIEW_REQUIRED",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Loyalty Bonus ($10.00 monthly bill credit for 24 months)",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE:loyalty-bonus",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Loyalty Bonus",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    }
+  ],
+  "latencyMs": 5157,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": "The source states this is one of two offers and does not confirm which applies.",
+        "cadence": "monthly",
+        "conditions": [
+          "Offer applicability will be confirmed after activation."
+        ],
+        "confidence": "low",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Switch Bonus ($15.00 monthly bill credit for 12 months)",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Switch Bonus",
+        "periodCount": 12,
+        "value": {
+          "amountCents": 1500,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": "The source states this is one of two offers and does not confirm which applies.",
+        "cadence": "monthly",
+        "conditions": [
+          "Offer applicability will be confirmed after activation."
+        ],
+        "confidence": "low",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Loyalty Bonus ($10.00 monthly bill credit for 24 months)",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Loyalty Bonus",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 1000,
+          "currency": "USD",
+          "type": "money"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": null,
+    "providerName": "Solace Fiber",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Solace Fiber: thanks for your order on May 9, 2026.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2026-05-09",
+    "transactionDateText": "May 9, 2026",
+    "unknowns": [
+      "Which offer applies to the account is not confirmed in the source.",
+      "The product or plan associated with the order is not stated.",
+      "The promotion effective start and end dates are not stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1368,
+    "outputTokens": 422
+  }
+}

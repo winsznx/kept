@@ -1,0 +1,213 @@
+{
+  "fixtureId": "B-benign-2-1",
+  "recordedAt": "2026-09-22T15:40:17.674Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 1000,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Pick Unlimited Max",
+        "Only for purchases made directly from Northwind Mobile"
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Pick Unlimited Max and Northwind Mobile takes $10.00 off your bill every month. That monthly bill credit runs for 36 months.",
+          "page": null,
+          "sectionHint": "How the deal works"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 36,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Pick Unlimited Max",
+        "Only for purchases made directly from Northwind Mobile"
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "That monthly bill credit runs for 36 months.",
+          "page": null,
+          "sectionHint": "How the deal works"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 36,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Monthly bill credit duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Pick Unlimited Max and Northwind Mobile takes $10.00 off your bill every month.",
+          "page": null,
+          "sectionHint": "How the deal works"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Unlimited Max",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5474,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Pick Unlimited Max",
+          "Only for purchases made directly from Northwind Mobile"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Pick Unlimited Max and Northwind Mobile takes $10.00 off your bill every month. That monthly bill credit runs for 36 months.",
+            "page": null,
+            "sectionHint": "How the deal works"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 36,
+        "value": {
+          "amountCents": 1000,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Pick Unlimited Max",
+          "Only for purchases made directly from Northwind Mobile"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "That monthly bill credit runs for 36 months.",
+            "page": null,
+            "sectionHint": "How the deal works"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Monthly bill credit duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 36
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Pick Unlimited Max and Northwind Mobile takes $10.00 off your bill every month.",
+            "page": null,
+            "sectionHint": "How the deal works"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Unlimited Max"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "PROVIDER_DIRECT_ONLY",
+      "evidence": [
+        {
+          "excerpt": "Only for purchases made directly from Northwind Mobile.",
+          "page": null,
+          "sectionHint": "The small print"
+        }
+      ],
+      "productScope": "Nimbus 9 Pro",
+      "region": null
+    },
+    "productOrPlanName": "Nimbus 9 Pro",
+    "providerName": "Northwind Mobile",
+    "sourceClassification": "FIRST_PARTY_PUBLIC_PAGE",
+    "transactionContext": {
+      "evidence": [],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": null,
+    "transactionDateText": null,
+    "unknowns": [
+      "No promotion start date or end date is stated; the page only says \"Limited time.\"",
+      "No region is stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1373,
+    "outputTokens": 486
+  }
+}

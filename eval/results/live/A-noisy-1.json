@@ -1,0 +1,218 @@
+{
+  "fixtureId": "A-noisy-1",
+  "recordedAt": "2026-09-22T15:38:59.702Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 1875,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "while you stay on Premium Plus"
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "24 monthly credits of $18.75 each, applied to your bill while you stay on Premium Plus.",
+          "page": null,
+          "sectionHint": "Promo details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "while you stay on Premium Plus"
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "24 monthly credits of $18.75 each, applied to your bill while you stay on Premium Plus.",
+          "page": null,
+          "sectionHint": "Promo details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 24,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Promotional credit duration",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Promotional credits are applied while you stay on this plan."
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "24 monthly credits of $18.75 each, applied to your bill while you stay on Premium Plus.",
+          "page": null,
+          "sectionHint": "Promo details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Premium Plus",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 6644,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "while you stay on Premium Plus"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "24 monthly credits of $18.75 each, applied to your bill while you stay on Premium Plus.",
+            "page": null,
+            "sectionHint": "Promo details"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 1875,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "while you stay on Premium Plus"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "24 monthly credits of $18.75 each, applied to your bill while you stay on Premium Plus.",
+            "page": null,
+            "sectionHint": "Promo details"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Promotional credit duration",
+        "periodCount": 24,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 24
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Promotional credits are applied while you stay on this plan."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "24 monthly credits of $18.75 each, applied to your bill while you stay on Premium Plus.",
+            "page": null,
+            "sectionHint": "Promo details"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Premium Plus"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Aurora X15",
+    "providerName": "Brightline Wireless",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Brightline Wireless | My Account | Help | Stores",
+          "page": null,
+          "sectionHint": "Email header"
+        },
+        {
+          "excerpt": "Great news: your Aurora X15 is on the way!",
+          "page": null,
+          "sectionHint": "Order update"
+        }
+      ],
+      "productIdentifier": "Aurora X15",
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2026-03-04",
+    "transactionDateText": "March 4, 2026",
+    "unknowns": [
+      "The source does not state a promotion start date or end date.",
+      "The source does not state the total promotional credit amount as a single total."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1410,
+    "outputTokens": 524
+  }
+}

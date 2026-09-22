@@ -1,0 +1,214 @@
+{
+  "fixtureId": "A-email-a-5",
+  "recordedAt": "2026-09-22T15:39:31.184Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 1500,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Keep the Essentials Duo plan active to keep receiving it."
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "you'll get a $15.00 monthly bill credit for 12 months.",
+          "page": null,
+          "sectionHint": "Promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 12,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "you'll get a $15.00 monthly bill credit for 12 months.",
+          "page": null,
+          "sectionHint": "Promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 12,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Promotion duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Keep the Essentials Duo plan active to keep receiving it."
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Keep the Essentials Duo plan active to keep receiving it.",
+          "page": null,
+          "sectionHint": "Promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Essentials Duo",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5635,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Keep the Essentials Duo plan active to keep receiving it."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "you'll get a $15.00 monthly bill credit for 12 months.",
+            "page": null,
+            "sectionHint": "Promotion"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 12,
+        "value": {
+          "amountCents": 1500,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "you'll get a $15.00 monthly bill credit for 12 months.",
+            "page": null,
+            "sectionHint": "Promotion"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Promotion duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 12
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Keep the Essentials Duo plan active to keep receiving it."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Keep the Essentials Duo plan active to keep receiving it.",
+            "page": null,
+            "sectionHint": "Promotion"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Essentials Duo"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Aurora X15",
+    "providerName": "Harbor Connect",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Thanks for your order placed on February 2, 2026.",
+          "page": null,
+          "sectionHint": "Order confirmation"
+        },
+        {
+          "excerpt": "Device: Aurora X15\nPlan: Essentials Duo",
+          "page": null,
+          "sectionHint": "Order details"
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2026-02-02",
+    "transactionDateText": "February 2, 2026",
+    "unknowns": [
+      "The promotion start date and billing-cycle timing are not stated.",
+      "The source does not explicitly state a sales region."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1372,
+    "outputTokens": 488
+  }
+}

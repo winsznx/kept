@@ -1,0 +1,74 @@
+{
+  "verifiedAt": "2026-09-22T15:45:07.513Z",
+  "commit": "a0730bf",
+  "campaignReportSha256": "03d2e89453928dae7119a6550164f5610079ab2917b2002b26c4904a4a77c09b",
+  "passed": true,
+  "checks": [
+    {
+      "id": "INV-1",
+      "description": "Every auto-decidable commitment/line in cached live model output has a literal excerpt in its own source containing the decisive value",
+      "passed": true,
+      "detail": "125 checked, 0 unbound"
+    },
+    {
+      "id": "INV-2a",
+      "description": "Change-detection precision/recall/false-positive counts match per-pair rows",
+      "passed": true,
+      "detail": "tp=8 fp=0"
+    },
+    {
+      "id": "INV-2b",
+      "description": "Ambiguity abstention count matches per-fixture rows",
+      "passed": true,
+      "detail": "10/10"
+    },
+    {
+      "id": "INV-2c",
+      "description": "Extraction binding-rate denominator matches per-fixture auto rows",
+      "passed": true,
+      "detail": "68 auto rows"
+    },
+    {
+      "id": "INV-2d",
+      "description": "Report was generated from the same cached results present in the repo",
+      "passed": true,
+      "detail": "52 calls reported, 52 cached results"
+    },
+    {
+      "id": "INV-3",
+      "description": "Month-22 missing credit is a material difference; months 23-24 are not counted missing",
+      "passed": true,
+      "detail": "outcome=MATERIAL_DIFFERENCE missing=1875 remaining=5625"
+    },
+    {
+      "id": "INV-4",
+      "description": "A provider claim alone never verifies; a still-missing credit stays mismatched; a corrected later bill verifies with restored value only from observed periods",
+      "passed": true,
+      "detail": "INSUFFICIENT_EVIDENCE / STILL_MISMATCHED / VERIFIED_FIXED 3750"
+    },
+    {
+      "id": "INV-4b",
+      "description": "Published claimed-fix campaign has zero false resolutions",
+      "passed": true,
+      "detail": "falseResolutionCount=0"
+    },
+    {
+      "id": "INV-5a",
+      "description": "Live round-trip payload hash matches the published sha256",
+      "passed": true,
+      "detail": "ca73caa977689876"
+    },
+    {
+      "id": "INV-5b",
+      "description": "Live case was verified only after the provider claim and a later reconciliation, never on the claim itself",
+      "passed": true,
+      "detail": "CREATED>DRAFTED>APPROVED>SENT>REPLY_RECEIVED>PROVIDER_CLAIMS_FIXED>WAITING_TO_VERIFY>VERIFICATION_INSUFFICIENT>VERIFIED_FIXED>RESOLVED"
+    },
+    {
+      "id": "INV-6",
+      "description": "Public evidence, README and hackathon.md contain no email addresses or secret-shaped tokens",
+      "passed": true,
+      "detail": "clean"
+    }
+  ]
+}

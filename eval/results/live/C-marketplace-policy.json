@@ -1,0 +1,108 @@
+{
+  "fixtureId": "C-marketplace-policy",
+  "recordedAt": "2026-09-22T15:41:41.514Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Devices purchased directly from Brightline Wireless",
+        "Items sold by Brightline Wireless"
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": "purchase",
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Devices purchased directly from Brightline Wireless can be returned within 30 days of purchase for a full refund.",
+          "page": null,
+          "sectionHint": "Brightline Wireless Returns"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 30,
+      "key": "RETURN_DEADLINE",
+      "kind": "RETURN_DEADLINE",
+      "label": "Return period",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    }
+  ],
+  "latencyMs": 5144,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Devices purchased directly from Brightline Wireless",
+          "Items sold by Brightline Wireless"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": "purchase",
+        "evidence": [
+          {
+            "excerpt": "Devices purchased directly from Brightline Wireless can be returned within 30 days of purchase for a full refund.",
+            "page": null,
+            "sectionHint": "Brightline Wireless Returns"
+          }
+        ],
+        "kind": "RETURN_DEADLINE",
+        "label": "Return period",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "days",
+          "value": 30
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "PROVIDER_DIRECT_ONLY",
+      "evidence": [
+        {
+          "excerpt": "Devices purchased directly from Brightline Wireless can be returned within 30 days of purchase for a full refund.",
+          "page": null,
+          "sectionHint": "Brightline Wireless Returns"
+        },
+        {
+          "excerpt": "This policy applies only to items sold by Brightline Wireless.",
+          "page": null,
+          "sectionHint": "Brightline Wireless Returns"
+        }
+      ],
+      "productScope": "Devices purchased directly from Brightline Wireless",
+      "region": null
+    },
+    "productOrPlanName": null,
+    "providerName": "Brightline Wireless",
+    "sourceClassification": "FIRST_PARTY_PUBLIC_PAGE",
+    "transactionContext": {
+      "evidence": [],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": null,
+    "transactionDateText": null,
+    "unknowns": [
+      "No region is stated.",
+      "No transaction-specific purchase date or seller is provided.",
+      "The policy does not state a calendar-date return deadline."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1356,
+    "outputTokens": 315
+  }
+}

@@ -154,3 +154,18 @@ describe("applicability refusal", () => {
     expect(decideApplicability({ sellerType: "PROVIDER_DIRECT", region: null, productIdentifier: null, evidence: [] }, policy).outcome).toBe("APPLIES");
   });
 });
+
+describe("campaign-found fixes", () => {
+  it("plan names compare without generic words", async () => {
+    const { comparePageFacts } = await import("../../convex/lib/factCompare");
+    const fact = (text: string) => ({ kind: "REQUIRED_PLAN" as const, label: "Required plan", valueType: "TEXT" as const, amountCents: null, currency: null, integerValue: null, dateValue: null, textValue: text, booleanValue: null, periodCount: null, decisionEligibility: "AUTO_DETERMINISTIC" as const });
+    expect(comparePageFacts({ t0Hash: "a", tnHash: "b", t0Facts: [fact("Premium Plus plan")], tnFacts: [fact("the Premium Plus")] }).outcome).toBe("NO_MATERIAL_CHANGE");
+    expect(comparePageFacts({ t0Hash: "a", tnHash: "b", t0Facts: [fact("Premium Plus plan")], tnFacts: [fact("Premium Max")] }).outcome).toBe("MATERIAL_CHANGE");
+  });
+
+  it("an unattributed credit for the promised amount is ambiguous, not missing", () => {
+    const lines = [{ key: "x", label: "Account credit", category: "OTHER", amountCents: -1875, currency: "USD", installmentIndex: null, installmentCount: null, relatesToCommitmentKey: null, matchesCommitment: "NO" as const, confidence: "HIGH" as const, evidenceExcerpt: null, evidenceBinding: "VALID" as const, decisionEligibility: "AUTO_DETERMINISTIC" as const }];
+    const obs = toObservedStatement("s", { statementMonth: "2026-09", itemized: true, lines }, { year: 2024, month: 12 }, 1875);
+    expect(obs.creditLines).toEqual([{ lineId: "x", amountCents: -1875, currency: "USD", matchesCommitment: "AMBIGUOUS" }]);
+  });
+});

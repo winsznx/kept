@@ -1,0 +1,217 @@
+{
+  "fixtureId": "A-noisy-4",
+  "recordedAt": "2026-09-22T15:39:30.412Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 833,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "while you stay on Gigabit Home"
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "36 monthly credits of $8.33 each, applied to your bill while you stay on Gigabit Home.",
+          "page": null,
+          "sectionHint": "PROMO DETAILS"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 36,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "while you stay on Gigabit Home"
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "36 monthly credits of $8.33 each, applied to your bill while you stay on Gigabit Home.",
+          "page": null,
+          "sectionHint": "PROMO DETAILS"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 36,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Promotional credit duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Must stay on Gigabit Home while credits are applied."
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "while you stay on Gigabit Home.",
+          "page": null,
+          "sectionHint": "PROMO DETAILS"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Gigabit Home",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5135,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "while you stay on Gigabit Home"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "36 monthly credits of $8.33 each, applied to your bill while you stay on Gigabit Home.",
+            "page": null,
+            "sectionHint": "PROMO DETAILS"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 36,
+        "value": {
+          "amountCents": 833,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "while you stay on Gigabit Home"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "36 monthly credits of $8.33 each, applied to your bill while you stay on Gigabit Home.",
+            "page": null,
+            "sectionHint": "PROMO DETAILS"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Promotional credit duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 36
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Must stay on Gigabit Home while credits are applied."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "while you stay on Gigabit Home.",
+            "page": null,
+            "sectionHint": "PROMO DETAILS"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Gigabit Home"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Orbit Fold 3",
+    "providerName": "Kestrel Telecom",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Kestrel Telecom | My Account | Help | Stores",
+          "page": null,
+          "sectionHint": "header"
+        },
+        {
+          "excerpt": "your Orbit Fold 3 is on the way!",
+          "page": null,
+          "sectionHint": "order update"
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2026-08-12",
+    "transactionDateText": "August 12, 2026",
+    "unknowns": [
+      "The source does not state the promotion start date or end date."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1414,
+    "outputTokens": 498
+  }
+}

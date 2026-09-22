@@ -56,6 +56,14 @@ export function normalizeText(value: string): string {
     .trim();
 }
 
+/** Plan names compare without generic suffix words ("Premium Plus plan" == "Premium Plus"). */
+export function normalizePlanName(value: string): string {
+  return normalizeText(value)
+    .replace(/\b(the|plan|plans|rate|unlimited plan|or higher|or above|or any higher plan)\b/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function slug(label: string): string {
   return normalizeText(label).replace(/ /g, "-").slice(0, 60);
 }
@@ -79,7 +87,7 @@ export function renderFactValue(f: NormalizedFact): string {
     case "DATE":
       return f.dateValue === null ? "unknown date" : new Date(f.dateValue).toISOString().slice(0, 10);
     case "TEXT":
-      return normalizeText(f.textValue ?? "");
+      return f.kind === "REQUIRED_PLAN" ? normalizePlanName(f.textValue ?? "") : normalizeText(f.textValue ?? "");
     case "BOOLEAN":
       return String(f.booleanValue);
   }
@@ -104,8 +112,15 @@ export function comparePageFacts(input: {
   const after = new Map(assignFactKeys(input.tnFacts.filter(usable)).map((f) => [f.key, f]));
   const diffs: FactDiff[] = [];
 
+  // The same duration can be stated on its own or inside the credit schedule; a
+  // standalone duration missing on one side is satisfied by the other side's schedule.
+  const schedulePeriods = (m: Map<string, NormalizedFact>) => [...m.values()].filter((f) => f.kind === "PROMO_CREDIT_SCHEDULE").map((f) => f.periodCount);
   for (const [key, f] of before) {
     const g = after.get(key);
+    if (!g && f.kind === "DURATION_MONTHS" && schedulePeriods(after).includes(f.integerValue)) {
+      diffs.push({ key, kind: f.kind, label: f.label, change: "UNCHANGED", before: renderFactValue(f), after: `${f.integerValue} (in credit schedule)`, material: false });
+      continue;
+    }
     if (!g) {
       diffs.push({ key, kind: f.kind, label: f.label, change: "MISSING_IN_CURRENT", before: renderFactValue(f), after: null, material: false });
       continue;
@@ -115,6 +130,7 @@ export function comparePageFacts(input: {
     diffs.push({ key, kind: f.kind, label: f.label, change: a === b ? "UNCHANGED" : "CHANGED", before: a, after: b, material: a !== b });
   }
   for (const [key, g] of after) {
+    if (!before.has(key) && g.kind === "DURATION_MONTHS" && schedulePeriods(before).includes(g.integerValue)) continue;
     if (!before.has(key)) {
       diffs.push({ key, kind: g.kind, label: g.label, change: "NEW_IN_CURRENT", before: null, after: renderFactValue(g), material: false });
     }

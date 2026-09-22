@@ -1,0 +1,105 @@
+{
+  "fixtureId": "C-no-period",
+  "recordedAt": "2026-09-22T15:41:27.925Z",
+  "built": {
+    "itemized": true,
+    "lines": [
+      {
+        "amountCents": 8500,
+        "category": "BASE_PLAN",
+        "confidence": "HIGH",
+        "currency": "USD",
+        "decisionEligibility": "AUTO_DETERMINISTIC",
+        "evidenceBinding": "VALID",
+        "evidenceExcerpt": "Premium Plus unlimited plan (1 line)        $85.00",
+        "installmentCount": null,
+        "installmentIndex": null,
+        "key": "LINE:0",
+        "label": "Premium Plus unlimited plan (1 line)",
+        "matchesCommitment": "NO",
+        "relatesToCommitmentKey": null
+      },
+      {
+        "amountCents": 642,
+        "category": "TAX",
+        "confidence": "HIGH",
+        "currency": "USD",
+        "decisionEligibility": "AUTO_DETERMINISTIC",
+        "evidenceBinding": "VALID",
+        "evidenceExcerpt": "Taxes & surcharges                           $6.42",
+        "installmentCount": null,
+        "installmentIndex": null,
+        "key": "LINE:1",
+        "label": "Taxes & surcharges",
+        "matchesCommitment": "NO",
+        "relatesToCommitmentKey": null
+      }
+    ],
+    "planName": "Premium Plus",
+    "providerName": "BRIGHTLINE WIRELESS",
+    "servicePeriodEndIso": null,
+    "servicePeriodStartIso": null,
+    "statementDateIso": null,
+    "statementMonth": null,
+    "totalAmountCents": 9142
+  },
+  "latencyMs": 4236,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "isBillOrStatement": true,
+    "itemized": true,
+    "lineItems": [
+      {
+        "amountCents": 8500,
+        "category": "BASE_PLAN",
+        "confidence": "high",
+        "currency": "USD",
+        "evidence": [
+          {
+            "excerpt": "Premium Plus unlimited plan (1 line)        $85.00",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "installmentCount": null,
+        "installmentIndex": null,
+        "normalizedLabel": "Premium Plus unlimited plan (1 line)",
+        "originalLabel": "Premium Plus unlimited plan (1 line)",
+        "relatesToCommitmentKey": null
+      },
+      {
+        "amountCents": 642,
+        "category": "TAX",
+        "confidence": "high",
+        "currency": "USD",
+        "evidence": [
+          {
+            "excerpt": "Taxes & surcharges                           $6.42",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "installmentCount": null,
+        "installmentIndex": null,
+        "normalizedLabel": "Taxes & surcharges",
+        "originalLabel": "Taxes & surcharges",
+        "relatesToCommitmentKey": null
+      }
+    ],
+    "planName": "Premium Plus",
+    "providerName": "BRIGHTLINE WIRELESS",
+    "servicePeriodEndIso": null,
+    "servicePeriodStartIso": null,
+    "statementDateIso": null,
+    "statementMonthIso": null,
+    "totalAmountCents": 9142,
+    "unknowns": [
+      "Statement date and service period are not provided.",
+      "No monthly device promo credit line is listed."
+    ]
+  },
+  "usage": {
+    "inputTokens": 946,
+    "outputTokens": 277
+  }
+}

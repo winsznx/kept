@@ -1,0 +1,50 @@
+{
+  "fixtureId": "C-region-tx",
+  "recordedAt": "2026-09-22T15:41:48.062Z",
+  "built": [],
+  "latencyMs": 4483,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Nimbus 9 Pro",
+    "providerName": "Northwind Mobile",
+    "sourceClassification": "CONTRACT_OR_ORDER",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Northwind Mobile order confirmation (United States), placed June 1, 2026.",
+          "page": null,
+          "sectionHint": null
+        },
+        {
+          "excerpt": "Sold by: Northwind Mobile.",
+          "page": null,
+          "sectionHint": null
+        },
+        {
+          "excerpt": "Device: Nimbus 9 Pro.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productIdentifier": "Nimbus 9 Pro",
+      "region": "United States",
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2026-06-01",
+    "transactionDateText": "June 1, 2026",
+    "unknowns": [
+      "No explicit concrete commercial commitments (promotional credits, prices, durations, deadlines, required plans, or trade-in amounts) are stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1335,
+    "outputTokens": 215
+  }
+}

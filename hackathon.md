@@ -1,3 +1,32 @@
+# Kept
+
+Kept records the deal you were promised at signup, checks every later bill against it, opens a source-backed case when a credit goes missing, and won't call it fixed until a later bill proves it.
+
+- **Live app:** https://gregarious-snail-975.convex.site
+- **Public demo:** https://gregarious-snail-975.convex.site/demo
+- **Inspectable production run:** https://gregarious-snail-975.convex.site/proof/run/live-loop-2026-09-22
+- **Video:** coming with the submission
+- **Public repo:** https://github.com/winsznx/kept
+
+**Measured headline proof** (`evidence/campaign-report.json`, synthetic corpus, 52 live model calls):
+- Evidence fidelity: 68 / 68 deterministic decisions carry a literal source excerpt containing the value.
+- Drift discrimination: 8 / 8 material page changes detected; 8 / 8 benign rewrites ignored (first scoring 6 / 8, fixed in code and disclosed).
+- Resolution integrity: 0 of 5 provider claims marked verified without a later bill; the live production case went claimed, then waiting, then verified only after bill 23 reconciled.
+
+**One complete user loop:** Record, Watch, Detect, Resolve, Verify, run live on production (`evidence/live-roundtrip.md`).
+
+**Sponsor roles**
+- Convex: canonical state, auth, immutable captures, storage, scheduled pipeline, signed webhook route, reactive UI, static hosting, three components.
+- Firecrawl: T0 and Tn captures of public offer and terms pages.
+- OpenAI: strict Structured Outputs extraction of commitments, bill lines and reply claims, plus case drafting (`gpt-5.6-terra`, `gpt-5.6-sol`).
+- AgentMail: per-user inbox, user-approved case sends, replies in the same thread through signed webhooks.
+
+**Control and refusal:** a fully rewritten offer page with the same terms gives "no material change"; a marketplace purchase checked against a retailer-direct policy gives "can't establish"; 10 / 10 ambiguity fixtures abstain correctly.
+
+**Independent verification:** `npm run verify:evidence` passes 11 / 11 invariants (`evidence/verification.md`).
+
+---
+
 # Hackathon log
 
 - **Project:** Kept

@@ -19,7 +19,7 @@ export const extractPromise = internalAction({
   handler: async (_ctx, a) => {
     const text = canonicalizeSourceText(a.text);
     const res = await callStructured({ schema: CommitmentExtraction, schemaName: "commitment_extraction", system: COMMITMENT_EXTRACTOR, input: commitmentUserPrompt(text, { providerName: a.providerHint, url: a.url }), role: "EXTRACT", effort: "medium" });
-    return { modelId: res.modelId, latencyMs: res.latencyMs, raw: res.parsed, built: buildCommitments(res.parsed, text, a.sourceClass) };
+    return { modelId: res.modelId, latencyMs: res.latencyMs, usage: res.usage, raw: res.parsed, built: buildCommitments(res.parsed, text, a.sourceClass) };
   },
 });
 
@@ -28,7 +28,7 @@ export const extractBill = internalAction({
   handler: async (_ctx, a) => {
     const text = canonicalizeSourceText(a.text);
     const res = await callStructured({ schema: BillObservation, schemaName: "bill_observation", system: BILL_EXTRACTOR, input: billUserPrompt(text, a.commitments), role: "EXTRACT", effort: "medium" });
-    return { modelId: res.modelId, latencyMs: res.latencyMs, raw: res.parsed, built: buildStatement(res.parsed, text, a.scheduleKey) };
+    return { modelId: res.modelId, latencyMs: res.latencyMs, usage: res.usage, raw: res.parsed, built: buildStatement(res.parsed, text, a.scheduleKey) };
   },
 });
 

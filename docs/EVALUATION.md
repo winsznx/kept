@@ -39,3 +39,7 @@ Kept can reconstruct supported transaction-time commercial commitments from hete
 - `npm run verify:evidence` recomputes deterministic results from committed fixtures and exits nonzero on any failed invariant.
 - Each result records mechanism version and model IDs.
 - Failed metrics are fixed or disclosed, never silently re-thresholded.
+
+## Change log
+
+- 2026-09-22: Ran campaigns A, B, C live against `gpt-5.6-terra` (52 calls) on a reduced synthetic corpus (22 / 16 pairs / 10) to conserve API credit; D and H run deterministically. The first scoring exposed three mechanism bugs (plan-name normalization, a standalone duration restated inside the credit schedule, and an unattributed credit for the promised amount). They were fixed in deterministic code with unit tests, and the same cached outputs were re-scored. Both results are published (`evidence/campaign-report.first-run.json`, `evidence/campaign-report.json`); the re-scored numbers are tuned to this corpus.

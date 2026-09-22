@@ -1,0 +1,101 @@
+{
+  "fixtureId": "C-varies",
+  "recordedAt": "2026-09-22T15:40:58.973Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Credit amount will be calculated after trade-in inspection."
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Your device promotion credit amount will be calculated after your trade-in is inspected and will appear over 24 monthly bills.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 24,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Device promotion credit duration",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "INTEGER"
+    }
+  ],
+  "latencyMs": 8347,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Credit amount will be calculated after trade-in inspection."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Your device promotion credit amount will be calculated after your trade-in is inspected and will appear over 24 monthly bills.",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Device promotion credit duration",
+        "periodCount": 24,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 24
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": null,
+    "providerName": "Harbor Connect",
+    "sourceClassification": "CONTRACT_OR_ORDER",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Harbor Connect order placed April 2, 2026.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": "2026-04-02",
+    "transactionDateText": "April 2, 2026",
+    "unknowns": [
+      "The device promotion credit amount is not stated.",
+      "The device and trade-in details are not stated.",
+      "The region is not stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1339,
+    "outputTokens": 522
+  }
+}

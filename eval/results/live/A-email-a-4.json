@@ -1,0 +1,217 @@
+{
+  "fixtureId": "A-email-a-4",
+  "recordedAt": "2026-09-22T15:39:23.361Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 833,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Keep the Gigabit Home plan active to keep receiving it."
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "you'll get a $8.33 monthly bill credit for 36 months.",
+          "page": null,
+          "sectionHint": "Your promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 36,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Keep the Gigabit Home plan active to keep receiving it."
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "you'll get a $8.33 monthly bill credit for 36 months.",
+          "page": null,
+          "sectionHint": "Your promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 36,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Promotion duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Keep the Gigabit Home plan active to keep receiving it."
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Keep the Gigabit Home plan active to keep receiving it.",
+          "page": null,
+          "sectionHint": "Your promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Gigabit Home",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5706,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Keep the Gigabit Home plan active to keep receiving it."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "you'll get a $8.33 monthly bill credit for 36 months.",
+            "page": null,
+            "sectionHint": "Your promotion"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 36,
+        "value": {
+          "amountCents": 833,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Keep the Gigabit Home plan active to keep receiving it."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "you'll get a $8.33 monthly bill credit for 36 months.",
+            "page": null,
+            "sectionHint": "Your promotion"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Promotion duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 36
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Keep the Gigabit Home plan active to keep receiving it."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Keep the Gigabit Home plan active to keep receiving it.",
+            "page": null,
+            "sectionHint": "Your promotion"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Gigabit Home"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Orbit Fold 3; Gigabit Home",
+    "providerName": "Kestrel Telecom",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Your Kestrel Telecom order is confirmed",
+          "page": null,
+          "sectionHint": "Subject"
+        },
+        {
+          "excerpt": "Device: Orbit Fold 3\nPlan: Gigabit Home",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2026-08-12",
+    "transactionDateText": "August 12, 2026",
+    "unknowns": [
+      "The promotion's effective start date is not stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1378,
+    "outputTokens": 493
+  }
+}

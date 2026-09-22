@@ -1,0 +1,209 @@
+{
+  "fixtureId": "B-material-1-months",
+  "recordedAt": "2026-09-22T15:40:11.855Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 1875,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Pick Premium Plus"
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Pick Premium Plus and Brightline Wireless takes $18.75 off your bill every month. That monthly bill credit runs for 18 months.",
+          "page": null,
+          "sectionHint": "How the deal works"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 18,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Pick Premium Plus"
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "That monthly bill credit runs for 18 months.",
+          "page": null,
+          "sectionHint": "How the deal works"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 18,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Monthly bill credit duration",
+      "periodCount": 18,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Pick Premium Plus and Brightline Wireless takes $18.75 off your bill every month.",
+          "page": null,
+          "sectionHint": "How the deal works"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Premium Plus",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5388,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Pick Premium Plus"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Pick Premium Plus and Brightline Wireless takes $18.75 off your bill every month. That monthly bill credit runs for 18 months.",
+            "page": null,
+            "sectionHint": "How the deal works"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 18,
+        "value": {
+          "amountCents": 1875,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Pick Premium Plus"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "That monthly bill credit runs for 18 months.",
+            "page": null,
+            "sectionHint": "How the deal works"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Monthly bill credit duration",
+        "periodCount": 18,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 18
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Pick Premium Plus and Brightline Wireless takes $18.75 off your bill every month.",
+            "page": null,
+            "sectionHint": "How the deal works"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Premium Plus"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "PROVIDER_DIRECT_ONLY",
+      "evidence": [
+        {
+          "excerpt": "Only for purchases made directly from Brightline Wireless.",
+          "page": null,
+          "sectionHint": "The small print"
+        }
+      ],
+      "productScope": "Aurora X15",
+      "region": null
+    },
+    "productOrPlanName": "Aurora X15",
+    "providerName": "Brightline Wireless",
+    "sourceClassification": "FIRST_PARTY_PUBLIC_PAGE",
+    "transactionContext": {
+      "evidence": [],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": null,
+    "transactionDateText": null,
+    "unknowns": [
+      "No transaction-specific purchase date, region, or product identifier is stated.",
+      "No promotion end date is stated; the page only says \"Limited time.\""
+    ]
+  },
+  "usage": {
+    "inputTokens": 1372,
+    "outputTokens": 471
+  }
+}

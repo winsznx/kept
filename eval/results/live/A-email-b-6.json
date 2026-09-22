@@ -1,0 +1,212 @@
+{
+  "fixtureId": "A-email-b-6",
+  "recordedAt": "2026-09-22T15:39:38.402Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 2083,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Promo credit: $20.83/mo",
+          "page": null,
+          "sectionHint": "Offer summary"
+        },
+        {
+          "bindingValidated": true,
+          "excerpt": "- Credit duration: 24 months",
+          "page": null,
+          "sectionHint": "Offer summary"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Promo credit",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Credit duration: 24 months",
+          "page": null,
+          "sectionHint": "Offer summary"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 24,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Credit duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Eligible plan: Go Beyond or higher",
+          "page": null,
+          "sectionHint": "Offer summary"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Eligible plan",
+      "periodCount": null,
+      "textValue": "Go Beyond or higher",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5542,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- Promo credit: $20.83/mo",
+            "page": null,
+            "sectionHint": "Offer summary"
+          },
+          {
+            "excerpt": "- Credit duration: 24 months",
+            "page": null,
+            "sectionHint": "Offer summary"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Promo credit",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 2083,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- Credit duration: 24 months",
+            "page": null,
+            "sectionHint": "Offer summary"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Credit duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 24
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- Eligible plan: Go Beyond or higher",
+            "page": null,
+            "sectionHint": "Offer summary"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Eligible plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Go Beyond or higher"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Nimbus 9 Pro",
+    "providerName": "Lumen Bay Wireless",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Welcome to Lumen Bay Wireless! We've activated your line on May 17, 2026.",
+          "page": null,
+          "sectionHint": "Activation"
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": "2026-05-17",
+    "transactionDateText": "May 17, 2026",
+    "unknowns": [
+      "The source does not state the seller type, region, or product identifier.",
+      "The source does not state an offer end date."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1374,
+    "outputTokens": 457
+  }
+}

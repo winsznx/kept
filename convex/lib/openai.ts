@@ -37,7 +37,7 @@ export type InputPart =
   | { type: "input_file"; filename: string; file_data: string }
   | { type: "input_image"; image_url: string; detail: "auto" | "low" | "high" };
 
-export type StructuredResult<T> = { parsed: T; modelId: string; responseId: string | null; latencyMs: number };
+export type StructuredResult<T> = { parsed: T; modelId: string; responseId: string | null; latencyMs: number; usage: { inputTokens: number; outputTokens: number } };
 
 /**
  * One strict Structured Outputs call through the Responses API. Fails closed: any
@@ -73,7 +73,7 @@ export async function callStructured<S extends z.ZodType>(args: {
     if (parsed === null || parsed === undefined) throw new AiError("AI_SCHEMA_FAILED", "no parsed output");
     const check = args.schema.safeParse(parsed);
     if (!check.success) throw new AiError("AI_SCHEMA_FAILED", "schema validation failed");
-    return { parsed: check.data, modelId, responseId: response.id ?? null, latencyMs: Date.now() - started };
+    return { parsed: check.data, modelId, responseId: response.id ?? null, latencyMs: Date.now() - started, usage: { inputTokens: response.usage?.input_tokens ?? 0, outputTokens: response.usage?.output_tokens ?? 0 } };
   } catch (err) {
     if (err instanceof AiError) throw err;
     if (err instanceof OpenAI.RateLimitError) {

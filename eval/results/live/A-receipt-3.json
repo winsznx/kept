@@ -1,0 +1,255 @@
+{
+  "fixtureId": "A-receipt-3",
+  "recordedAt": "2026-09-22T15:39:23.991Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 30000,
+      "booleanValue": null,
+      "cadence": "ONE_TIME",
+      "conditions": [
+        "approved"
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Trade-in credit (approved): $300.00",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "TRADE_IN_AMOUNT",
+      "kind": "TRADE_IN_AMOUNT",
+      "label": "Trade-in credit (approved)",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": 2500,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Promotion: Device credit $25.00 x 24 monthly bill credits",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Device credit",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Promotion: Device credit $25.00 x 24 monthly bill credits",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 24,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Device credit duration",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Required rate plan: Everyday 5G",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required rate plan",
+      "periodCount": null,
+      "textValue": "Everyday 5G",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 13551,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "one_time",
+        "conditions": [
+          "approved"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Trade-in credit (approved): $300.00",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "TRADE_IN_AMOUNT",
+        "label": "Trade-in credit (approved)",
+        "periodCount": null,
+        "value": {
+          "amountCents": 30000,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Promotion: Device credit $25.00 x 24 monthly bill credits",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Device credit",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 2500,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Promotion: Device credit $25.00 x 24 monthly bill credits",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Device credit duration",
+        "periodCount": 24,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 24
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Required rate plan: Everyday 5G",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required rate plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Everyday 5G"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Pixelwave 8",
+    "providerName": "Solace Fiber",
+    "sourceClassification": "TRANSACTION_RECEIPT",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Sold by: Solace Fiber",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2025-06-30",
+    "transactionDateText": "June 30, 2025",
+    "unknowns": []
+  },
+  "usage": {
+    "inputTokens": 1379,
+    "outputTokens": 510
+  }
+}

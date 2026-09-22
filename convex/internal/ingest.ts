@@ -592,7 +592,7 @@ export const reconcileItem = internalMutation({
       );
       const startMonth = anchor.status === "ANCHORED" ? anchor.startMonth : null;
       const schedule = generateMonthlyCreditSchedule({ amountCents: sched.amountCents, currency: sched.currency ?? "USD", periodCount: sched.periodCount, startMonth });
-      const observed: ObservedStatement[] = bundles.map((b) => toObservedStatement(b.statement._id, { statementMonth: b.statement.statementMonth, itemized: b.statement.itemized, lines: b.lines }, startMonth));
+      const observed: ObservedStatement[] = bundles.map((b) => toObservedStatement(b.statement._id, { statementMonth: b.statement.statementMonth, itemized: b.statement.itemized, lines: b.lines }, startMonth, sched.amountCents));
       const r = reconcileCreditSchedule(schedule, observed);
       outcome = conflict || anchor.status === "CONFLICT" ? "SOURCE_CONFLICT" : bundles.length === 0 ? "INSUFFICIENT_EVIDENCE" : r.overallOutcome;
       recId = await ctx.db.insert("reconciliations", {

@@ -1,0 +1,202 @@
+{
+  "fixtureId": "B-material-2-plan",
+  "recordedAt": "2026-09-22T15:40:27.164Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 1000,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "$10.00 monthly bill credit for 36 months",
+          "page": null,
+          "sectionHint": "Offer details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 36,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "$10.00 monthly bill credit for 36 months",
+          "page": null,
+          "sectionHint": "Offer details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 36,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Bill credit duration",
+      "periodCount": 36,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Requires the Unlimited Ultra plan",
+          "page": null,
+          "sectionHint": "Offer details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Unlimited Ultra",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 4989,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "$10.00 monthly bill credit for 36 months",
+            "page": null,
+            "sectionHint": "Offer details"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 36,
+        "value": {
+          "amountCents": 1000,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "$10.00 monthly bill credit for 36 months",
+            "page": null,
+            "sectionHint": "Offer details"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Bill credit duration",
+        "periodCount": 36,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 36
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Requires the Unlimited Ultra plan",
+            "page": null,
+            "sectionHint": "Offer details"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Unlimited Ultra"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "PROVIDER_DIRECT_ONLY",
+      "evidence": [
+        {
+          "excerpt": "Purchases made directly from Northwind Mobile.",
+          "page": null,
+          "sectionHint": "Fine print"
+        }
+      ],
+      "productScope": "Nimbus 9 Pro",
+      "region": null
+    },
+    "productOrPlanName": "Nimbus 9 Pro",
+    "providerName": "Northwind Mobile",
+    "sourceClassification": "FIRST_PARTY_PUBLIC_PAGE",
+    "transactionContext": {
+      "evidence": [],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": null,
+    "transactionDateText": null,
+    "unknowns": [
+      "No offer end date is stated.",
+      "No region is stated.",
+      "The phrase \"Credits start within 2 bill cycles\" does not specify a concrete start date."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1372,
+    "outputTokens": 430
+  }
+}

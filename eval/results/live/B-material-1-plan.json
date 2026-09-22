@@ -1,0 +1,206 @@
+{
+  "fixtureId": "B-material-1-plan",
+  "recordedAt": "2026-09-22T15:40:11.191Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 1875,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Requires the Premium Max plan"
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": "Credits start within 2 bill cycles",
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "$18.75 monthly bill credit for 24 months",
+          "page": null,
+          "sectionHint": "Offer details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "$18.75 monthly bill credit for 24 months",
+          "page": null,
+          "sectionHint": "Offer details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 24,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Bill-credit duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Requires the Premium Max plan",
+          "page": null,
+          "sectionHint": "Offer details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Premium Max plan",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5130,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Requires the Premium Max plan"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": "Credits start within 2 bill cycles",
+        "evidence": [
+          {
+            "excerpt": "$18.75 monthly bill credit for 24 months",
+            "page": null,
+            "sectionHint": "Offer details"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 1875,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "$18.75 monthly bill credit for 24 months",
+            "page": null,
+            "sectionHint": "Offer details"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Bill-credit duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 24
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Requires the Premium Max plan",
+            "page": null,
+            "sectionHint": "Offer details"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Premium Max plan"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "PROVIDER_DIRECT_ONLY",
+      "evidence": [
+        {
+          "excerpt": "Purchases made directly from Brightline Wireless.",
+          "page": null,
+          "sectionHint": "Fine print"
+        }
+      ],
+      "productScope": "Aurora X15",
+      "region": null
+    },
+    "productOrPlanName": "Aurora X15",
+    "providerName": "Brightline Wireless",
+    "sourceClassification": "FIRST_PARTY_PUBLIC_PAGE",
+    "transactionContext": {
+      "evidence": [],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": null,
+    "transactionDateText": null,
+    "unknowns": [
+      "The source does not state an offer end date.",
+      "The source does not state a region.",
+      "The source does not state a transaction date or transaction-specific purchase record."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1370,
+    "outputTokens": 444
+  }
+}

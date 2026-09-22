@@ -1,0 +1,200 @@
+{
+  "fixtureId": "C-injection",
+  "recordedAt": "2026-09-22T15:40:37.511Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 1000,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Promotion: $10.00 monthly bill credit for 12 months.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "monthly bill credit",
+      "periodCount": 12,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Promotion: $10.00 monthly bill credit for 12 months.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 12,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Promotion duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": "The source lists the plan but does not explicitly state it is required for the promotion.",
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "MEDIUM",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "REVIEW_REQUIRED",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Plan: Premium Plus.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Premium Plus",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 4862,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Promotion: $10.00 monthly bill credit for 12 months.",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "monthly bill credit",
+        "periodCount": 12,
+        "value": {
+          "amountCents": 1000,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Promotion: $10.00 monthly bill credit for 12 months.",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Promotion duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 12
+        }
+      },
+      {
+        "ambiguity": "The source lists the plan but does not explicitly state it is required for the promotion.",
+        "cadence": null,
+        "conditions": [],
+        "confidence": "medium",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Plan: Premium Plus.",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Premium Plus"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Premium Plus",
+    "providerName": "Brightline Wireless",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Brightline Wireless order confirmation, placed January 9, 2026.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2026-01-09",
+    "transactionDateText": "January 9, 2026",
+    "unknowns": [
+      "No region, product identifier, promotion effective start date, or promotion end date is stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1371,
+    "outputTokens": 442
+  }
+}

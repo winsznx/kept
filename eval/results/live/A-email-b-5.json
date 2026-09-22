@@ -1,0 +1,201 @@
+{
+  "fixtureId": "A-email-b-5",
+  "recordedAt": "2026-09-22T15:39:35.131Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 1500,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Promo credit: $15.00/mo\n- Credit duration: 12 months",
+          "page": null,
+          "sectionHint": "Offer summary"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Promo credit",
+      "periodCount": 12,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Credit duration: 12 months",
+          "page": null,
+          "sectionHint": "Offer summary"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 12,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Credit duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Eligible plan: Essentials Duo or higher",
+          "page": null,
+          "sectionHint": "Offer summary"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Eligible plan",
+      "periodCount": null,
+      "textValue": "Essentials Duo or higher",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 8998,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- Promo credit: $15.00/mo\n- Credit duration: 12 months",
+            "page": null,
+            "sectionHint": "Offer summary"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Promo credit",
+        "periodCount": 12,
+        "value": {
+          "amountCents": 1500,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- Credit duration: 12 months",
+            "page": null,
+            "sectionHint": "Offer summary"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Credit duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 12
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- Eligible plan: Essentials Duo or higher",
+            "page": null,
+            "sectionHint": "Offer summary"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Eligible plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Essentials Duo or higher"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Aurora X15",
+    "providerName": "Harbor Connect",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Welcome to Harbor Connect! We've activated your line on February 2, 2026.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productIdentifier": "Aurora X15",
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2026-02-02",
+    "transactionDateText": "February 2, 2026",
+    "unknowns": [
+      "The source does not state an end date for the promotional credits.",
+      "The source does not state whether the eligible plan condition was satisfied."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1371,
+    "outputTokens": 541
+  }
+}

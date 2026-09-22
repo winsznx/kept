@@ -1,0 +1,155 @@
+{
+  "fixtureId": "A-noisy-3",
+  "recordedAt": "2026-09-22T15:39:16.485Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 2500,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "applied to your bill while you stay on Everyday 5G"
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "24 monthly credits of $25.00 each, applied to your bill while you stay on Everyday 5G.",
+          "page": null,
+          "sectionHint": "PROMO DETAILS"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credits",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "while you stay on Everyday 5G"
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "applied to your bill while you stay on Everyday 5G.",
+          "page": null,
+          "sectionHint": "PROMO DETAILS"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Everyday 5G",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5880,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "applied to your bill while you stay on Everyday 5G"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "24 monthly credits of $25.00 each, applied to your bill while you stay on Everyday 5G.",
+            "page": null,
+            "sectionHint": "PROMO DETAILS"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credits",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 2500,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "while you stay on Everyday 5G"
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "applied to your bill while you stay on Everyday 5G.",
+            "page": null,
+            "sectionHint": "PROMO DETAILS"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Everyday 5G"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Pixelwave 8",
+    "providerName": "Solace Fiber",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Great news: your Pixelwave 8 is on the way!",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "productIdentifier": "Pixelwave 8",
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2025-06-30",
+    "transactionDateText": "June 30, 2025",
+    "unknowns": [
+      "The source does not state the promotion start date or a calendar end date."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1413,
+    "outputTokens": 455
+  }
+}

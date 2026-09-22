@@ -1,0 +1,147 @@
+{
+  "fixtureId": "B-benign-1-2",
+  "recordedAt": "2026-09-22T15:40:02.802Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Requires the Premium Plus plan",
+          "page": null,
+          "sectionHint": "Offer details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Premium Plus plan",
+      "valueType": "TEXT"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": 1875,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- $18.75 monthly bill credit for 24 months",
+          "page": null,
+          "sectionHint": "Offer details"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    }
+  ],
+  "latencyMs": 4116,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- Requires the Premium Plus plan",
+            "page": null,
+            "sectionHint": "Offer details"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Premium Plus plan"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- $18.75 monthly bill credit for 24 months",
+            "page": null,
+            "sectionHint": "Offer details"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 1875,
+          "currency": "USD",
+          "type": "money"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "PROVIDER_DIRECT_ONLY",
+      "evidence": [
+        {
+          "excerpt": "Limited time. Purchases made directly from Brightline Wireless.",
+          "page": null,
+          "sectionHint": "Fine print"
+        }
+      ],
+      "productScope": "Aurora X15",
+      "region": null
+    },
+    "productOrPlanName": "Aurora X15",
+    "providerName": "Brightline Wireless",
+    "sourceClassification": "FIRST_PARTY_PUBLIC_PAGE",
+    "transactionContext": {
+      "evidence": [],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": null,
+    "transactionDateText": null,
+    "unknowns": [
+      "The exact calendar date when credits begin is not stated; the source only says they start within 2 bill cycles."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1358,
+    "outputTokens": 337
+  }
+}

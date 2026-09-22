@@ -1,0 +1,96 @@
+{
+  "fixtureId": "C-up-to",
+  "recordedAt": "2026-09-22T15:40:44.218Z",
+  "built": [
+    {
+      "ambiguity": "The stated amount and duration are maximums; the actual credit and term depend on trade-in and plan.",
+      "amountCents": 2000,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "eligible devices",
+        "depending on your trade-in and plan"
+      ],
+      "confidence": "LOW",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "REVIEW_REQUIRED",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Save up to $20 a month in bill credits on eligible devices, for up to 24 months, depending on your trade-in and plan.",
+          "page": null,
+          "sectionHint": null
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_PRICE_MAX",
+      "kind": "PROMO_PRICE_MAX",
+      "label": "Maximum monthly bill-credit promotion amount",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    }
+  ],
+  "latencyMs": 4545,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": "The stated amount and duration are maximums; the actual credit and term depend on trade-in and plan.",
+        "cadence": "monthly",
+        "conditions": [
+          "eligible devices",
+          "depending on your trade-in and plan"
+        ],
+        "confidence": "low",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Save up to $20 a month in bill credits on eligible devices, for up to 24 months, depending on your trade-in and plan.",
+            "page": null,
+            "sectionHint": null
+          }
+        ],
+        "kind": "PROMO_PRICE_MAX",
+        "label": "Maximum monthly bill-credit promotion amount",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 2000,
+          "currency": "USD",
+          "type": "money"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": null,
+    "providerName": "Northwind Mobile",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": null,
+    "transactionDateText": null,
+    "unknowns": [
+      "The specific device, trade-in, plan, actual monthly credit amount, and actual number of credit months are not stated.",
+      "No transaction date, region, seller type, or product identifier is stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1341,
+    "outputTokens": 284
+  }
+}

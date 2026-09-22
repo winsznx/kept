@@ -1,0 +1,218 @@
+{
+  "fixtureId": "A-email-b-3",
+  "recordedAt": "2026-09-22T15:39:15.795Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 2500,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Eligible plan: Everyday 5G or higher",
+        "Credits appear starting on your second bill."
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": "starting on your second bill",
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Promo credit: $25.00/mo",
+          "page": null,
+          "sectionHint": "Offer summary"
+        },
+        {
+          "bindingValidated": true,
+          "excerpt": "- Credit duration: 24 months",
+          "page": null,
+          "sectionHint": "Offer summary"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Promo credit",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Credit duration: 24 months",
+          "page": null,
+          "sectionHint": "Offer summary"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 24,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Credit duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "- Eligible plan: Everyday 5G or higher",
+          "page": null,
+          "sectionHint": "Offer summary"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Eligible plan",
+      "periodCount": null,
+      "textValue": "Everyday 5G or higher",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 5482,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Eligible plan: Everyday 5G or higher",
+          "Credits appear starting on your second bill."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": "starting on your second bill",
+        "evidence": [
+          {
+            "excerpt": "- Promo credit: $25.00/mo",
+            "page": null,
+            "sectionHint": "Offer summary"
+          },
+          {
+            "excerpt": "- Credit duration: 24 months",
+            "page": null,
+            "sectionHint": "Offer summary"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Promo credit",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 2500,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- Credit duration: 24 months",
+            "page": null,
+            "sectionHint": "Offer summary"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Credit duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 24
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "- Eligible plan: Everyday 5G or higher",
+            "page": null,
+            "sectionHint": "Offer summary"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Eligible plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Everyday 5G or higher"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Pixelwave 8",
+    "providerName": "Solace Fiber",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Welcome to Solace Fiber! We've activated your line on June 30, 2025.",
+          "page": null,
+          "sectionHint": "Activation"
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": "2025-06-30",
+    "transactionDateText": "June 30, 2025",
+    "unknowns": [
+      "The source does not state the seller type, region, or product identifier.",
+      "The source does not state a specific calendar end date for the promotional credits."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1375,
+    "outputTokens": 487
+  }
+}

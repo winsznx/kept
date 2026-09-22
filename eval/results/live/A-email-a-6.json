@@ -1,0 +1,215 @@
+{
+  "fixtureId": "A-email-a-6",
+  "recordedAt": "2026-09-22T15:39:34.496Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": 2083,
+      "booleanValue": null,
+      "cadence": "MONTHLY",
+      "conditions": [
+        "Keep the Go Beyond plan active to keep receiving it."
+      ],
+      "confidence": "HIGH",
+      "currency": "USD",
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "you'll get a $20.83 monthly bill credit for 24 months.",
+          "page": null,
+          "sectionHint": "Promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "PROMO_CREDIT_SCHEDULE",
+      "kind": "PROMO_CREDIT_SCHEDULE",
+      "label": "Monthly bill credit",
+      "periodCount": 24,
+      "textValue": null,
+      "valueType": "MONEY"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "you'll get a $20.83 monthly bill credit for 24 months.",
+          "page": null,
+          "sectionHint": "Promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 24,
+      "key": "DURATION_MONTHS",
+      "kind": "DURATION_MONTHS",
+      "label": "Promotional credit duration",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    },
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "Keep the Go Beyond plan active to keep receiving it."
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": null,
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "Keep the Go Beyond plan active to keep receiving it.",
+          "page": null,
+          "sectionHint": "Promotion"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": null,
+      "key": "REQUIRED_PLAN",
+      "kind": "REQUIRED_PLAN",
+      "label": "Required plan",
+      "periodCount": null,
+      "textValue": "Go Beyond",
+      "valueType": "TEXT"
+    }
+  ],
+  "latencyMs": 6456,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": "monthly",
+        "conditions": [
+          "Keep the Go Beyond plan active to keep receiving it."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "you'll get a $20.83 monthly bill credit for 24 months.",
+            "page": null,
+            "sectionHint": "Promotion"
+          }
+        ],
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "label": "Monthly bill credit",
+        "periodCount": 24,
+        "value": {
+          "amountCents": 2083,
+          "currency": "USD",
+          "type": "money"
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "you'll get a $20.83 monthly bill credit for 24 months.",
+            "page": null,
+            "sectionHint": "Promotion"
+          }
+        ],
+        "kind": "DURATION_MONTHS",
+        "label": "Promotional credit duration",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "months",
+          "value": 24
+        }
+      },
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "Keep the Go Beyond plan active to keep receiving it."
+        ],
+        "confidence": "high",
+        "effectiveEndText": null,
+        "effectiveStartText": null,
+        "evidence": [
+          {
+            "excerpt": "Keep the Go Beyond plan active to keep receiving it.",
+            "page": null,
+            "sectionHint": "Promotion"
+          }
+        ],
+        "kind": "REQUIRED_PLAN",
+        "label": "Required plan",
+        "periodCount": null,
+        "value": {
+          "type": "text",
+          "value": "Go Beyond"
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "NOT_STATED",
+      "evidence": [],
+      "productScope": null,
+      "region": null
+    },
+    "productOrPlanName": "Nimbus 9 Pro",
+    "providerName": "Lumen Bay Wireless",
+    "sourceClassification": "TRANSACTION_EMAIL",
+    "transactionContext": {
+      "evidence": [
+        {
+          "excerpt": "Subject: Your Lumen Bay Wireless order is confirmed",
+          "page": null,
+          "sectionHint": "Subject"
+        },
+        {
+          "excerpt": "Device: Nimbus 9 Pro\nPlan: Go Beyond",
+          "page": null,
+          "sectionHint": "Order details"
+        }
+      ],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "PROVIDER_DIRECT"
+    },
+    "transactionDateIso": "2026-05-17",
+    "transactionDateText": "May 17, 2026",
+    "unknowns": [
+      "Promotion start date is not stated.",
+      "Region is not stated.",
+      "Product identifier is not stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1376,
+    "outputTokens": 483
+  }
+}

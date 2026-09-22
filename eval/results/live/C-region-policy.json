@@ -1,0 +1,106 @@
+{
+  "fixtureId": "C-region-policy",
+  "recordedAt": "2026-09-22T15:41:54.724Z",
+  "built": [
+    {
+      "ambiguity": null,
+      "amountCents": null,
+      "booleanValue": null,
+      "cadence": null,
+      "conditions": [
+        "For purchases made in Canada directly from Northwind Mobile Canada",
+        "Canadian customers only"
+      ],
+      "confidence": "HIGH",
+      "currency": null,
+      "dateValue": null,
+      "decisionEligibility": "AUTO_DETERMINISTIC",
+      "effectiveEndAt": null,
+      "effectiveStartAt": null,
+      "effectiveStartText": "purchase",
+      "evidence": [
+        {
+          "bindingValidated": true,
+          "excerpt": "For purchases made in Canada directly from Northwind Mobile Canada, devices can be returned within 15 days of purchase.",
+          "page": null,
+          "sectionHint": "15-day returns"
+        }
+      ],
+      "evidenceBinding": "VALID",
+      "integerValue": 15,
+      "key": "RETURN_DEADLINE",
+      "kind": "RETURN_DEADLINE",
+      "label": "Device return period",
+      "periodCount": null,
+      "textValue": null,
+      "valueType": "INTEGER"
+    }
+  ],
+  "latencyMs": 4490,
+  "modelId": "gpt-5.6-terra",
+  "raw": {
+    "commitments": [
+      {
+        "ambiguity": null,
+        "cadence": null,
+        "conditions": [
+          "For purchases made in Canada directly from Northwind Mobile Canada",
+          "Canadian customers only"
+        ],
+        "confidence": "high",
+        "effectiveEndText": "within 15 days of purchase",
+        "effectiveStartText": "purchase",
+        "evidence": [
+          {
+            "excerpt": "For purchases made in Canada directly from Northwind Mobile Canada, devices can be returned within 15 days of purchase.",
+            "page": null,
+            "sectionHint": "15-day returns"
+          }
+        ],
+        "kind": "RETURN_DEADLINE",
+        "label": "Device return period",
+        "periodCount": null,
+        "value": {
+          "type": "integer",
+          "unit": "days",
+          "value": 15
+        }
+      }
+    ],
+    "policyScope": {
+      "appliesToSeller": "PROVIDER_DIRECT_ONLY",
+      "evidence": [
+        {
+          "excerpt": "For purchases made in Canada directly from Northwind Mobile Canada, devices can be returned within 15 days of purchase.",
+          "page": null,
+          "sectionHint": "15-day returns"
+        },
+        {
+          "excerpt": "This policy applies to Canadian customers only.",
+          "page": null,
+          "sectionHint": "15-day returns"
+        }
+      ],
+      "productScope": "devices",
+      "region": "Canada"
+    },
+    "productOrPlanName": null,
+    "providerName": "Northwind Mobile Canada",
+    "sourceClassification": "FIRST_PARTY_PUBLIC_PAGE",
+    "transactionContext": {
+      "evidence": [],
+      "productIdentifier": null,
+      "region": null,
+      "sellerType": "UNKNOWN"
+    },
+    "transactionDateIso": null,
+    "transactionDateText": null,
+    "unknowns": [
+      "No transaction-specific purchase date, product identifier, or order details are stated."
+    ]
+  },
+  "usage": {
+    "inputTokens": 1345,
+    "outputTokens": 303
+  }
+}
