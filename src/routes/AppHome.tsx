@@ -57,23 +57,54 @@ export default function AppHome() {
           </div>
         ) : (
           <>
+            {items!.length > 0 ? (
             <div className="stat-tiles">
               <Stat icon="record" label="Protected plans" value={String(items!.length)} foot="Recorded promises" />
               <Stat icon="detect" label="Needs attention" value={String(attention)} foot="Material difference or review" tone={attention ? "is-bad" : undefined} />
               <Stat icon="email" label="Open cases" value={String(openCases)} foot="Waiting on the provider" />
               <Stat icon="watch" label="Observed missing" value={money(missing)} foot={`Promised remaining ${money(remaining)}`} />
             </div>
+            ) : null}
 
             {items!.length === 0 ? (
-              <section className="empty">
-                <span className="icon-tile is-soft">
-                  <Icon name="record" size={22} />
-                </span>
-                <h2 className="section-title">Protect your first plan</h2>
-                <p>Add the confirmation email, receipt, or offer page you got when you signed up. Kept turns the promises into a timeline you can check later.</p>
-                <Link to="/app/protect" className="btn btn-primary">
-                  <Icon name="plus" size={15} /> Start
-                </Link>
+              <section className="panel stack-lg">
+                <div className="stack" style={{ gap: 8, maxWidth: 620 }}>
+                  <span className="eyebrow">
+                    <Icon name="record" size={15} /> First run
+                  </span>
+                  <h2 style={{ fontSize: 26 }}>Protect your first plan</h2>
+                  <p className="muted">
+                    Add the confirmation email, receipt, or offer page you got when you signed up. Kept records what was promised, then checks every later bill against it and tells you the moment
+                    delivery drifts.
+                  </p>
+                </div>
+                <div className="grid-2">
+                  {(
+                    [
+                      ["email", "Forward it", "Send the signup email to your Kept inbox, if your account has one."],
+                      ["upload", "Upload or paste", "A PDF, an image, or the text of the email. Same pipeline, no inbox needed."],
+                      ["globe", "Paste the offer page", "Kept captures the public page and keeps that snapshot for later comparison."],
+                    ] as const
+                  ).map(([icon, title, body]) => (
+                    <div key={title} className="card row" style={{ alignItems: "flex-start", gap: 14, flexWrap: "nowrap" }}>
+                      <span className="icon-tile is-soft">
+                        <Icon name={icon} size={19} />
+                      </span>
+                      <div>
+                        <strong>{title}</strong>
+                        <p className="small muted">{body}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="row">
+                  <Link to="/app/protect" className="btn btn-primary btn-lg">
+                    <Icon name="plus" size={16} /> Protect a plan
+                  </Link>
+                  <Link to="/demo" className="btn btn-lg">
+                    <Icon name="play" size={16} /> See a finished example first
+                  </Link>
+                </div>
               </section>
             ) : (
               <ul className="item-list">

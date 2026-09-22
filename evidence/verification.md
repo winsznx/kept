@@ -3,9 +3,9 @@
 Written by `npm run verify:evidence` (`scripts/verify-evidence.ts`). It re-derives each invariant from the committed corpus, the cached live model outputs, and the pure decision libraries, without the UI or the campaign runner's scoring.
 
 - Result: **PASS**
-- Commit at verification: 4927fc8
+- Commit at verification: 3a3948c
 - campaign-report.json sha256: `03d2e89453928dae7119a6550164f5610079ab2917b2002b26c4904a4a77c09b`
-- Verified at: 2026-09-22T17:20:39.661Z
+- Verified at: 2026-09-22T17:34:05.770Z
 
 | Invariant | Result | Detail |
 |---|---|---|

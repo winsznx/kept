@@ -22,13 +22,16 @@ export const me = query({
     const ws = await findUserWorkspace(ctx, userId);
     // Inbox provisioning can fail on the demo account's AgentMail plan limit. Say so
     // plainly rather than leaving the address "being set up" forever.
+    // Driven by the telemetry row the provisioning action writes, so the UI flips as soon
+    // as provisioning fails. A time-based check would never re-run: queries are reactive
+    // to data, not to the clock.
     let inboxStatus: "NONE" | "READY" | "UNAVAILABLE" = ws?.agentmailInboxAddress ? "READY" : "NONE";
-    if (ws && !ws.agentmailInboxId && Date.now() - ws.createdAt > 20_000) {
-      const failed = await ctx.db
+    if (ws && !ws.agentmailInboxId) {
+      const calls = await ctx.db
         .query("externalCalls")
         .withIndex("by_provider_createdAt", (q) => q.eq("provider", "AGENTMAIL").gt("createdAt", ws.createdAt - 1000))
-        .take(50);
-      if (failed.some((c) => c.workspaceId === ws._id && c.operation === "inboxes.create" && c.status === "ERROR")) inboxStatus = "UNAVAILABLE";
+        .take(100);
+      if (calls.some((c) => c.workspaceId === ws._id && c.operation === "inboxes.create" && c.status === "ERROR")) inboxStatus = "UNAVAILABLE";
     }
     return {
       workspaceId: ws?._id ?? null,
