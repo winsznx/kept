@@ -42,6 +42,7 @@ import type * as lib_reconcile from "../lib/reconcile.js";
 import type * as lib_schedule from "../lib/schedule.js";
 import type * as lib_stateMachines from "../lib/stateMachines.js";
 import type * as lib_urlSafety from "../lib/urlSafety.js";
+import type * as proof from "../proof.js";
 import type * as protectedItems from "../protectedItems.js";
 import type * as sources from "../sources.js";
 import type * as staticHosting from "../staticHosting.js";
@@ -89,6 +90,7 @@ declare const fullApi: ApiFromModules<{
   "lib/schedule": typeof lib_schedule;
   "lib/stateMachines": typeof lib_stateMachines;
   "lib/urlSafety": typeof lib_urlSafety;
+  proof: typeof proof;
   protectedItems: typeof protectedItems;
   sources: typeof sources;
   staticHosting: typeof staticHosting;

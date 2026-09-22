@@ -6,7 +6,7 @@ Kept records the deal you were promised at signup, turns it into a schedule of w
 
 > You were promised 24 monthly device credits. Bill 22 has none. Forward the signup once and Kept preserves the original offer, checks every bill, opens a source-backed case when delivery drifts, and waits for the next bill before calling it fixed.
 
-- Live app: not deployed yet
+- Live app: https://gregarious-snail-975.convex.site (public demo at [/demo](https://gregarious-snail-975.convex.site/demo))
 - Demo video: not recorded yet
 
 ## How it works

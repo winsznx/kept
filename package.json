@@ -14,8 +14,9 @@
     "eval:fixtures": "tsx scripts/run-evals.ts --mode fixtures",
     "eval:live": "tsx scripts/run-evals.ts --mode live",
     "verify:evidence": "tsx scripts/verify-evidence.ts",
-    "smoke:prod": "playwright test tests/e2e/production.spec.ts",
-    "deploy": "npx convex deploy -y && npx @convex-dev/static-hosting upload --build --prod"
+    "smoke:prod": "node scripts/smoke-demo.mjs https://gregarious-snail-975.convex.site && node scripts/smoke-auth.mjs https://gregarious-snail-975.convex.site",
+    "deploy": "npx convex deploy -y && npx @convex-dev/static-hosting upload --build --prod",
+    "smoke:local": "node scripts/smoke-demo.mjs && node scripts/smoke-auth.mjs"
   },
   "dependencies": {
     "@agentmail/convex": "^0.1.0",
