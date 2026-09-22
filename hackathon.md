@@ -41,7 +41,7 @@ Kept records the deal you were promised at signup, checks every later bill again
 - **Auth:** Convex Auth
 - **AI models:** gpt-5.6-terra (classification and extraction), gpt-5.6-sol (case drafting), via the OpenAI Responses API with strict Structured Outputs (`convex/lib/openai.ts`)
 - **Started:** 2026-09-21T22:54:35Z
-- **Last updated:** 2026-09-22T16:10:00Z
+- **Last updated:** 2026-09-22T17:10:00Z
 
 ## Log
 
@@ -62,4 +62,7 @@ Ran the full loop live on production and recorded it as an inspectable run at `/
 
 ### 2026-09-22 - ae7cc57
 Ran the evaluation campaigns and published the results (`evidence/campaign-report.md`). Extraction, page-change and ambiguity campaigns ran live on a small synthetic corpus with cached outputs; the month-22 and claimed-fix campaigns run deterministically. The first scoring flagged two benign page rewrites as material and missed one ambiguous credit; the causes were fixed in deterministic code with tests and both scorings are published. An independent verifier re-derives the invariants from the corpus, the cached outputs and the decision code and passes (`scripts/verify-evidence.ts`, `evidence/verification.md`). Also recorded a live Firecrawl T0/Tn capture of a public carrier deals page on production, where the model's offers were bound to the page text and ambiguous ones held for review (`/proof`). Added the threat model and rewrote the README around the evidence.
+
+### 2026-09-22 - d8071c1
+Applied the Kept brand and rebuilt the frontend on the owner's reference design system, deployed to production. The public site now has a sticky header with a mobile menu, a centred hero with evidence panels, a clickable Record-to-Verify loop, feature sections, FAQ and footer; the signed-in app moved into a rail layout with breadcrumbs, stat tiles, item rows and a phone bottom nav (`src/styles/`, `src/components/Layouts.tsx`, `src/routes/`). Brand logo, mark, favicons, social image and line icons come from the Kept brand kit (`public/brand/`). Production smoke runs pass at phone width with no horizontal scroll. The build spec and brand sources now live in a git-ignored `internal/` folder.
 
