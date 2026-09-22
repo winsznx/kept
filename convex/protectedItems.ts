@@ -55,6 +55,8 @@ export const create = mutation({
       summary: null,
       scheduleStartMonth: null,
       routingToken,
+      transactionContextJson: null,
+      transactionContextCaptureId: null,
       latestReconciliationId: null,
       resolutionState: "NONE",
       createdAt: now,

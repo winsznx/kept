@@ -126,6 +126,9 @@ export default defineSchema({
     scheduleStartMonth: v.union(v.string(), v.null()),
     /** Short token users can put in a forwarded subject line to route mail to this item. */
     routingToken: v.string(),
+    /** Seller/region context extracted (with bound evidence) from the transaction record. */
+    transactionContextJson: v.union(v.string(), v.null()),
+    transactionContextCaptureId: v.union(v.id("sourceCaptures"), v.null()),
     latestReconciliationId: v.union(v.id("reconciliations"), v.null()),
     resolutionState: resolutionState,
     createdAt: v.number(),
