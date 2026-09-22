@@ -167,7 +167,7 @@ export function AppShell() {
               </span>
               <div style={{ minWidth: 0 }}>
                 <strong>{email || "Your account"}</strong>
-                <span>{me?.inboxStatus === "READY" ? "Kept inbox ready" : "Setting up inbox…"}</span>
+                <span>{me?.inboxStatus === "READY" ? "Kept inbox ready" : me?.inboxStatus === "UNAVAILABLE" ? "Upload or paste evidence" : "Setting up inbox…"}</span>
               </div>
             </div>
             <nav className="app-nav" aria-label="Main">

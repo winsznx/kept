@@ -12,7 +12,7 @@ export const me = query({
       workspaceId: v.union(v.id("workspaces"), v.null()),
       email: v.union(v.string(), v.null()),
       inboxAddress: v.union(v.string(), v.null()),
-      inboxStatus: v.union(v.literal("NONE"), v.literal("READY")),
+      inboxStatus: v.union(v.literal("NONE"), v.literal("READY"), v.literal("UNAVAILABLE")),
     }),
   ),
   handler: async (ctx) => {
@@ -20,11 +20,21 @@ export const me = query({
     if (userId === null) return null;
     const user = await ctx.db.get(userId);
     const ws = await findUserWorkspace(ctx, userId);
+    // Inbox provisioning can fail on the demo account's AgentMail plan limit. Say so
+    // plainly rather than leaving the address "being set up" forever.
+    let inboxStatus: "NONE" | "READY" | "UNAVAILABLE" = ws?.agentmailInboxAddress ? "READY" : "NONE";
+    if (ws && !ws.agentmailInboxId && Date.now() - ws.createdAt > 20_000) {
+      const failed = await ctx.db
+        .query("externalCalls")
+        .withIndex("by_provider_createdAt", (q) => q.eq("provider", "AGENTMAIL").gt("createdAt", ws.createdAt - 1000))
+        .take(50);
+      if (failed.some((c) => c.workspaceId === ws._id && c.operation === "inboxes.create" && c.status === "ERROR")) inboxStatus = "UNAVAILABLE";
+    }
     return {
       workspaceId: ws?._id ?? null,
       email: user?.email ?? null,
       inboxAddress: ws?.agentmailInboxAddress ?? null,
-      inboxStatus: ws?.agentmailInboxAddress ? ("READY" as const) : ("NONE" as const),
+      inboxStatus,
     };
   },
 });

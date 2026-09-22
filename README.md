@@ -19,6 +19,13 @@ Kept records the deal you were promised when you signed up, checks every later b
 |---|---|
 | ![Kept landing](docs/screenshots/01-hero.png) | ![Verified fix](docs/screenshots/06-demo-verified.png) |
 
+## For judges: two ways in
+
+1. **No signup:** [/demo](https://gregarious-snail-975.convex.site/demo) runs the whole loop on synthetic data through the real pipeline, plus the control and refusal cases.
+2. **The actual product:** create an account at [/signup](https://gregarious-snail-975.convex.site/signup), click Protect a plan, then paste a signup email and a bill or two. The same extraction, binding and reconciliation run on your own data; a verified judge walkthrough of exactly this path is in `docs/screenshots/07-real-app-material-difference.png`.
+
+One honest limitation: the hackathon AgentMail plan allows three inboxes, so new accounts may not get their own forwarding address. The app says so plainly and upload/paste runs the identical pipeline. The live inbox round trip, send and reply is recorded at [/proof/run/live-loop-2026-09-22](https://gregarious-snail-975.convex.site/proof/run/live-loop-2026-09-22).
+
 ## The mechanism
 
 ```mermaid

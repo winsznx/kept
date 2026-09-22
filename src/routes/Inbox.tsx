@@ -42,8 +42,14 @@ export default function Inbox() {
         <div style={{ minWidth: 0, flex: 1 }}>
           <div className="label">Your forwarding address</div>
           <strong className="mono" style={{ fontSize: 15 }}>
-            {me?.inboxAddress ?? "Being set up…"}
+            {me?.inboxAddress ?? (me?.inboxStatus === "UNAVAILABLE" ? "Not available on this account" : "Being set up…")}
           </strong>
+          {me?.inboxStatus === "UNAVAILABLE" ? (
+            <p className="small muted" style={{ marginTop: 4 }}>
+              The hackathon AgentMail plan allows three inboxes and they’re all in use, so this account didn’t get one. Uploading or pasting evidence runs the identical pipeline, and a live inbox
+              round trip is recorded on the <Link to="/proof/run/live-loop-2026-09-22" style={{ textDecoration: "underline" }}>proof page</Link>.
+            </p>
+          ) : null}
         </div>
       </div>
       {GROUPS.map(([status, label]) => {

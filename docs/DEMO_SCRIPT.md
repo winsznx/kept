@@ -1,25 +1,39 @@
 # Demo video script (target 2:40, hard limit under 3:00)
 
-Record the live site: https://gregarious-snail-975.convex.site. Browser at 1440 wide, zoom 100%. Open `/demo` in a fresh private window a minute before recording so the demo session is seeded.
+Record the live site: https://gregarious-snail-975.convex.site, browser at 1440 wide, zoom 100%.
+
+**Most of the video is the real signed-in product, not the demo.** The demo appears only for the control and refusal beats, which need scripted fixtures. Say "demo" on screen when you are in it.
+
+## Before recording
+
+1. Sign in to the builder proof account (credentials in the local scratchpad, never in the repo). It already holds the completed real case: recorded promise, bills 20 to 23, the case sent through AgentMail, the provider reply, and the verified fix.
+2. Open these tabs in order: `/app` (proof account), `/app/items/<the Brightline item>`, `/app/cases/<its case>`, `/demo`, `/proof/run/live-loop-2026-09-22`.
+3. Open `/demo` once so the session seeds before you record.
+
+## Shot list
 
 | Time | Screen | Do | Say |
 |---|---|---|---|
-| 0:00 | `/` hero | Rest on the demo-example strip | "You were promised 24 monthly credits. The twenty-second disappeared. Kept is built for that moment." |
-| 0:10 | `/` hero | Point at the four state cards | "Kept records the promise at signup, checks every bill against it, and won't call it fixed until a later bill proves it." |
-| 0:20 | `/demo` | Show the lifecycle and the outcome card: 21 of 21 matched | "This is a demo on synthetic data, but every state is real Convex data from Kept's pipeline. Twenty-one bills, every credit matched." |
-| 0:35 | `/demo` | Open "Recorded promises and sources", show the excerpt | "Each promise keeps the exact words it came from. If the model can't quote the source, the term is rejected." |
-| 0:48 | `/demo` | Click "Bill 22 arrives" and wait for the red state | "Bill 22 lands. No promotional credit. Kept flags a material difference: expected $18.75, observed $0.00. Months 23 and 24 are not counted as missing." |
-| 1:05 | `/demo` | Scroll to Then vs Now | "Then versus now, with the difference highlighted." |
-| 1:13 | `/demo` | Click "Open a case", show the evidence packet and draft | "Kept freezes an evidence packet and drafts a short support email from it. Nothing is sent until I approve." |
-| 1:28 | `/demo` | Click "Approve and send", then "Support replies" | "Support replies: the credit will be restored. Kept stores that as the provider's claim and waits." |
-| 1:40 | `/demo` | Pause on the amber "provider says fixed, Kept hasn't verified it" banner | "A support reply isn't proof your next bill is correct." |
-| 1:47 | `/demo` | Click "Bill 23 arrives", show the green verified banner | "Bill 23 shows the credit again plus a back-credit. Only now does Kept mark it verified fixed: $37.50 restored." |
-| 1:58 | `/demo` control tab | Show "The page changed. The deal didn't." | "A rewritten offer page with the same terms is not an alert." |
-| 2:06 | `/demo` refusal tab | Show "Kept can't establish this yet" | "And when a policy may not apply to your purchase, Kept says so instead of guessing." |
-| 2:14 | `/proof/run/live-loop-2026-09-22` | Scroll the bills table and case timeline | "This isn't only a demo. Here's the same loop run live on production: a real forwarded email through AgentMail, OpenAI extraction bound to the source, a case sent and answered in the same thread, verified by bill 23." |
-| 2:30 | `/proof` | Show the at-a-glance panel | "Every number links to a committed artifact, and an independent verifier passes 11 of 11 checks." |
-| 2:38 | `/` | Logo and URL | "Kept. Record the promise. Catch the drift. Verify the fix." |
+| 0:00 | `/` hero | Rest on the four-state strip | "You were promised 24 monthly credits. Credit 22 disappeared." |
+| 0:09 | `/app` (real account) | Show the plan list and stat tiles | "This is my account. Kept recorded the offer when I signed up and has been checking every bill against it." |
+| 0:18 | item page | Point at the recorded promise and its quoted excerpt | "$18.75 a month for 24 months, with the exact words it came from. If the model can't quote the source, Kept rejects the term." |
+| 0:32 | item page | Scroll to the credit grid and Latest reconciliation | "Bills 20 and 21 matched. Bill 22 has no promotional credit line, so Kept shows a material difference: expected $18.75, observed $0.00. Months 23 and 24 are not counted as missing." |
+| 0:50 | item page → Then vs Now | Open Then vs Now | "Then versus now, side by side." |
+| 1:00 | case page | Show the evidence packet and the draft | "Kept froze an evidence packet and drafted this support email from it. Every amount and date was checked against the packet, and nothing sent until I approved it." |
+| 1:15 | case page | Scroll to Correspondence and the provider claim | "The reply came back through the same thread: they say the credit will be applied. Kept stores that as their claim." |
+| 1:26 | case page | Pause on the amber banner, then the green one | "A support reply is not proof your next bill is correct. Only bill 23, showing the credit again plus a back-credit, moved this to verified fixed: $37.50 restored." |
+| 1:42 | `/demo` control tab | Show "The page changed. The deal didn't." | "In the public demo you can also see the control: a rewritten offer page with the same terms is not an alert." |
+| 1:54 | `/demo` refusal tab | Show "Kept can't establish this yet" | "And a policy that may not cover your purchase is refused, not applied." |
+| 2:05 | `/proof/run/live-loop-2026-09-22` | Scroll bills table and case timeline | "Every run is inspectable. This is that same loop, persisted: the bills, the case timeline, the sponsor calls, with hashes instead of private content." |
+| 2:22 | `/proof` | Show the at-a-glance panel | "Each number links to a committed artifact, and an independent verifier passes 11 of 11 invariants." |
+| 2:34 | `/` | Logo and URL | "Kept. Record the promise. Catch the drift. Verify the fix." |
 
-Notes
-- Keep narration off architecture until the proof section.
-- Say "demo" and "replay" where the screen says it. The live claims belong only to the proof run.
+## If you prefer a zero-login cut
+
+Use `/demo` for the 0:09 to 1:42 beats: click Bill 22 arrives, Open a case, Approve and send, Support replies, Bill 23 arrives. It is the same pipeline on synthetic data, and the page labels the send and reply as replays. Keep the `/proof/run` beat either way, since that is the live evidence.
+
+## Don't
+
+- No code, schema or architecture walkthrough.
+- Don't name all four sponsors in a list; their roles show through the product.
+- Don't call demo data live, and don't call a replayed send a real send.

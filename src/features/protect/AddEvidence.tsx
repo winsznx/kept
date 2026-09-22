@@ -69,9 +69,14 @@ export function AddEvidence({ itemId, routingToken }: { itemId: Id<"protectedIte
           <p style={{ margin: 0 }}>
             Forward to <strong className="mono">{me.inboxAddress}</strong> with <strong className="mono">KEPT-{routingToken}</strong> in the subject so it lands on this item.
           </p>
+        ) : me?.inboxStatus === "UNAVAILABLE" ? (
+          <p className="muted" style={{ margin: 0 }}>
+            No Kept inbox for this account: the hackathon AgentMail plan allows only three inboxes and they’re all in use. Upload or paste evidence below, which runs the identical pipeline. A live
+            inbox round trip is recorded on the <a href="/proof/run/live-loop-2026-09-22" style={{ textDecoration: "underline" }}>proof page</a>.
+          </p>
         ) : (
           <p className="muted" style={{ margin: 0 }}>
-            Your Kept inbox isn’t ready yet. You can upload or paste instead.
+            Your Kept inbox is being set up. You can upload or paste in the meantime.
           </p>
         )}
       </div>

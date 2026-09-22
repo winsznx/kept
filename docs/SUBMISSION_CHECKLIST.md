@@ -40,6 +40,7 @@ Checked from actual state on 2026-09-22. Anything not yet true is marked open wi
 - [x] No autonomous replies.
 - [x] Ablation documented.
 - [ ] Attachment download path is implemented but not exercised live (documented limitation).
+- [x] Free-plan inbox cap (3) documented in-product and in the README; upload/paste path verified for new accounts.
 
 ## Product
 - [x] First screen shows the mechanism: 24 credits, month 22 missing, claim, verified.
@@ -77,6 +78,7 @@ Checked from actual state on 2026-09-22. Anything not yet true is marked open wi
 - [x] Deep-route reload works.
 - [x] Auth works in production.
 - [x] Demo works anonymously.
+- [x] Judge walkthrough verified on production: signup, protect, paste signup email, paste two bills, material difference detected, case button available, no page errors.
 - [x] Keys server-side only.
 - [x] No blocking console errors on 7 routes × 3 widths.
 
