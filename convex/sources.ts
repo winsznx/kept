@@ -8,6 +8,8 @@ import { validatePublicUrl } from "./lib/urlSafety";
 const MAX_TEXT = 100_000;
 const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
 const ACCEPTED_MIME = new Set(["application/pdf", "image/png", "image/jpeg", "image/webp", "text/plain", "text/html"]);
+const JOB_WINDOW_MS = 60 * 60 * 1000;
+const JOB_LIMIT = 40;
 const intent = v.union(v.literal("AUTO"), v.literal("PROMISE"), v.literal("BILL"));
 
 async function startJob(
@@ -19,6 +21,8 @@ async function startJob(
   jobIntent: "AUTO" | "PROMISE" | "BILL",
 ): Promise<Id<"jobs">> {
   const now = Date.now();
+  const recent = await ctx.db.query("jobs").withIndex("by_workspace_createdAt", (q) => q.eq("workspaceId", workspaceId).gt("createdAt", now - JOB_WINDOW_MS)).take(JOB_LIMIT);
+  if (recent.length >= JOB_LIMIT) throw domainError("RATE_LIMITED", "You've added a lot of evidence in the last hour. Try again later.");
   const jobId = await ctx.db.insert("jobs", { workspaceId, protectedItemId: itemId, caseId: null, type, status: "QUEUED", step: "QUEUED", progress: 0, failureCode: null, safeMessage: null, createdAt: now, updatedAt: now });
   await ctx.scheduler.runAfter(0, internal.internal.sourceProcessing.run, { jobId, input, intent: jobIntent, caseId: null, assignmentId: null });
   await ctx.db.insert("productEvents", { workspaceId, name: "source_capture_started", createdAt: now });
@@ -41,9 +45,10 @@ export const addUpload = mutation({
     const { ws } = await requireProtectedItem(ctx, a.itemId);
     const meta = await ctx.db.system.get("_storage", a.storageId);
     if (!meta) throw domainError("NOT_FOUND", "Upload not found.");
-    const claimed = await ctx.db.query("documents").withIndex("by_workspace_createdAt", (q) => q.eq("workspaceId", ws._id)).order("desc").take(200);
-    if (claimed.some((d) => d.storageId === a.storageId)) throw domainError("INVALID_INPUT", "This upload was already added.");
-    const mime = meta.contentType ?? "";
+    // A storage id can back exactly one document, across all workspaces, so a leaked id can't be claimed twice.
+    const claimed = await ctx.db.query("documents").withIndex("by_storageId", (q) => q.eq("storageId", a.storageId)).first();
+    if (claimed) throw domainError("INVALID_INPUT", "This upload was already added.");
+    const mime = (meta.contentType ?? "").split(";")[0].trim().toLowerCase();
     if (!ACCEPTED_MIME.has(mime)) {
       await ctx.storage.delete(a.storageId);
       throw domainError("UNSUPPORTED_FILE", "Upload a PDF, PNG, JPEG, WebP, plain text, or HTML file.");

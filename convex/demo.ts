@@ -17,13 +17,15 @@ import { sha256Hex } from "./lib/hashing";
 const SCENARIO = "brightline-24mo-v1";
 const TTL_MS = 3 * 60 * 60 * 1000;
 const MAX_ACTIVE_SESSIONS = 300;
+/** Global creation throttle so scripted session minting can't crowd out real visitors. */
+const MAX_NEW_PER_MINUTE = 20;
 const REPLY_EXCERPT = "The missed $18.75 credit will be applied and your credits will continue on your next bill.";
 
 async function sessionFor(ctx: QueryCtx | MutationCtx, sessionKey: string): Promise<{ session: Doc<"demoSessions">; ws: Doc<"workspaces"> } | null> {
   if (!/^[A-Za-z0-9_-]{24,64}$/.test(sessionKey)) throw new ConvexError({ code: "INVALID_INPUT", message: "Bad demo session." });
   const hash = await sha256Hex(`demo:${sessionKey}`);
   const session = await ctx.db.query("demoSessions").withIndex("by_key", (q) => q.eq("sessionKeyHash", hash)).unique();
-  if (!session || session.status !== "ACTIVE") return null;
+  if (!session || session.status !== "ACTIVE" || session.expiresAt <= Date.now()) return null;
   const ws = await ctx.db.get(session.workspaceId);
   if (!ws || ws.kind !== "DEMO") return null;
   return { session, ws };
@@ -57,6 +59,8 @@ export const start = mutation({
   handler: async (ctx, { sessionKey }) => {
     if (await sessionFor(ctx, sessionKey)) return null;
     const now = Date.now();
+    const recent = await ctx.db.query("demoSessions").withIndex("by_expiresAt", (q) => q.gt("expiresAt", now + TTL_MS - 60_000)).take(MAX_NEW_PER_MINUTE);
+    if (recent.length >= MAX_NEW_PER_MINUTE) throw new ConvexError({ code: "DEMO_LIMIT_REACHED", message: "The demo is busy. Try again in a minute." });
     const active = await ctx.db.query("demoSessions").withIndex("by_expiresAt", (q) => q.gt("expiresAt", now)).take(MAX_ACTIVE_SESSIONS);
     if (active.length >= MAX_ACTIVE_SESSIONS) throw new ConvexError({ code: "DEMO_LIMIT_REACHED", message: "The demo is busy. Try again in a few minutes." });
     const hash = await sha256Hex(`demo:${sessionKey}`);

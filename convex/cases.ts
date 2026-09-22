@@ -211,10 +211,16 @@ export const getSendContext = internalQuery({
     const kase = await ctx.db.get(caseId);
     if (!kase) return null;
     const ws = await ctx.db.get(kase.workspaceId);
+    // Reply in-thread only when the last inbound message came from the approved
+    // recipient's domain and nothing bounced; otherwise send fresh to exactly the
+    // approved address, so the user always approves who receives the mail.
     let replyToMessageId: string | null = null;
-    if (kase.agentmailThreadId) {
+    if (kase.agentmailThreadId && kase.recipientEmail) {
+      const events = await ctx.db.query("caseEvents").withIndex("by_case_createdAt", (q) => q.eq("caseId", caseId)).take(200);
+      const bounced = events.some((e) => e.type === "BOUNCED");
       const last = await ctx.db.query("inboundAssignments").withIndex("by_threadId", (q) => q.eq("agentmailThreadId", kase.agentmailThreadId!)).order("desc").first();
-      replyToMessageId = last?.agentmailMessageId ?? kase.agentmailOutboundId;
+      const recipientDomain = kase.recipientEmail.split("@")[1]?.toLowerCase() ?? null;
+      if (!bounced && last && last.workspaceId === kase.workspaceId && last.fromDomain !== null && last.fromDomain === recipientDomain) replyToMessageId = last.agentmailMessageId;
     }
     return { kase, inboxId: ws?.agentmailInboxId ?? null, replyToMessageId };
   },

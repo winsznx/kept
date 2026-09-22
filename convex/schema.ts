@@ -156,7 +156,8 @@ export default defineSchema({
   })
     .index("by_item_createdAt", ["protectedItemId", "createdAt"])
     .index("by_workspace_createdAt", ["workspaceId", "createdAt"])
-    .index("by_agentmailMessageId", ["agentmailMessageId"]),
+    .index("by_agentmailMessageId", ["agentmailMessageId"])
+    .index("by_storageId", ["storageId"]),
 
   sourceCaptures: defineTable({
     workspaceId: v.id("workspaces"),

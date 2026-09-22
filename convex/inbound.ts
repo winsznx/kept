@@ -193,6 +193,7 @@ export const assignMessage = mutation({
     const row = await ctx.db.get(assignmentId);
     if (!row || row.workspaceId !== ws._id) throw domainError("NOT_FOUND", "Message not found.");
     if (row.caseId) throw domainError("INVALID_STATE_TRANSITION", "Case replies stay on their case.");
+    if (row.assignmentStatus !== "NEEDS_ASSIGNMENT") throw domainError("INVALID_STATE_TRANSITION", "This message is already handled.");
     const now = Date.now();
     if (itemId === null) {
       await ctx.db.patch(assignmentId, { assignmentStatus: "IGNORED", updatedAt: now });
