@@ -28,6 +28,28 @@ Attach: `internal/kept-brand-kit-v1/social/kept-launch-1920x1080.png` or a clip 
 
 The part I'm proudest of: on the live production run the model labelled a one-time back-credit as a recurring credit. Kept noticed the schedule no longer lined up and refused to verify. A deterministic rule fixed it, and the same stored bills were re-checked with no new model calls. Failing closed is the feature.
 
+## Submission form: markdown description (paste as-is)
+
+**Kept records the deal you were promised at signup, checks every later bill against it, and won't call a problem fixed until a later bill proves it.**
+
+A 24-month phone promotion pays out over two years of bills. When credit 22 quietly stops, you have to dig up the original confirmation, the offer page as it looked back then, and a stack of bills, then re-explain all of it to support. And "it's been fixed" in an email is not the same as the credit actually returning.
+
+Kept closes that loop: **Record → Watch → Detect → Resolve → Verify.**
+
+- **Record.** Forward the signup email to your own Kept inbox, upload it, or paste the offer page. Every source is stored unchanged with a content hash, and every extracted term keeps the exact words it came from.
+- **Watch.** "$18.75 a month for 24 months" becomes 24 expected credits, each matched to its bill.
+- **Detect.** Plain code, not the model, compares amounts and dates. Credit 22 missing is a material difference; months 23 and 24 are never counted as missing.
+- **Resolve.** Kept freezes a hashed evidence packet and drafts a short support email from it. Every amount and date in the draft is checked against the packet, and nothing is sent until you approve it.
+- **Verify.** When support says it is fixed, Kept stores that as the provider's claim and waits. Only a later bill showing the credit produces "verified fixed".
+
+**Try it:** the public demo at /demo walks the whole loop, including a control (a rewritten offer page with the same terms produces no alert) and a refusal (a marketplace purchase checked against a retailer-direct policy stays "can't establish").
+
+**Inspect it:** /proof/run/live-loop-2026-09-22 is a sanitized record of the same loop run live on production, and `npm run verify:evidence` re-derives 11 invariants and passes 11/11.
+
+Measured on a synthetic campaign (52 live model calls, all rows published): 68/68 deterministic decisions quote the source text, 8/8 material page changes caught, 8/8 benign rewrites ignored, 10/10 ambiguous cases correctly held back, and 0 provider claims marked verified without a bill.
+
+Sponsors: Convex is the whole backend (state machines, auth, immutable captures, file storage, scheduling, signed webhook route, realtime, static hosting, three components). Firecrawl captures public offer pages as T0 and Tn snapshots. OpenAI does strict Structured Outputs extraction and case drafting. AgentMail provides the per-user inbox, the approved send, and the reply thread.
+
 ## Submission form
 
 - Project name: Kept
