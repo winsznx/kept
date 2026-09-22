@@ -11,7 +11,8 @@ Kept records the deal you were promised when you signed up, checks every later b
 - **Live app:** https://gregarious-snail-975.convex.site
 - **Public demo (no sign-up):** https://gregarious-snail-975.convex.site/demo
 - **Inspectable production run:** https://gregarious-snail-975.convex.site/proof/run/live-loop-2026-09-22
-- **Demo video:** coming with the submission
+- **Demo video (2:49):** https://youtu.be/OBAGwGMZ8Mc
+- **Launch post:** [X](https://x.com/winsznlabs/status/2102468698200027501) · [LinkedIn](https://lnkd.in/p/dDekwEF6)
 - **Build log:** [hackathon.md](hackathon.md)
 - **Architecture:** [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · **Submission state:** [docs/SUBMISSION_CHECKLIST.md](docs/SUBMISSION_CHECKLIST.md)
 

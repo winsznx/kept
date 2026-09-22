@@ -1,11 +1,11 @@
 # Submission checklist
 
-Checked from actual state on 2026-09-22. Anything not yet true is marked open with the owner action.
+Checked from actual state on 2026-09-22, re-verified after the final deploy. Anything not yet true is marked open with the owner action.
 
 ## Eligibility
 - [x] New app, first commit 2026-09-21, after the event start rule.
 - [x] Public GitHub repo: https://github.com/winsznx/kept
-- [ ] Participant registration completed by the owner.
+- [x] Participant registration completed by the owner.
 
 ## Convex
 - [x] Convex is the canonical backend (state machines, auth, storage, orchestration).
@@ -85,7 +85,9 @@ Checked from actual state on 2026-09-22. Anything not yet true is marked open wi
 ## Event
 - [x] `hackathon.md` maintained with the official skill format, judge block first.
 - [x] Live URL and demo link in README and `hackathon.md`.
-- [ ] Video recorded and public (owner) — script in `docs/DEMO_SCRIPT.md`.
-- [ ] Social post published with sponsor tags (owner) — text in `docs/LAUNCH.md`.
-- [ ] Submission form completed (owner) — answers in `docs/LAUNCH.md`.
-- [ ] Video and post URLs added to README and `hackathon.md` (agent, after the owner sends them).
+- [x] Video recorded and public: https://youtu.be/OBAGwGMZ8Mc — 2:49, under the 3:00 limit, 2560x1440, voiceover and burnt-in captions.
+- [x] Social post published with sponsor tags: [X](https://x.com/winsznlabs/status/2102468698200027501) and [LinkedIn](https://lnkd.in/p/dDekwEF6).
+- [x] Submission form completed on vibeapps.dev using the answers in `docs/LAUNCH.md`.
+- [x] Video and post URLs in `README.md` and `hackathon.md`.
+- [x] Open Graph and Twitter image URLs absolute with an explicit `og:url`, so the post renders a card (`index.html`).
+- [x] Production redeployed after the inbox and empty-dashboard fixes; live bundle serves them and `npm run smoke:prod` passes end to end.

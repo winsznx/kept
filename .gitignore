@@ -36,3 +36,6 @@ KEPT_COMPLETE_PRD_CLAUDE_V2.md
 
 # Private build material: PRD, brand kit sources (kept out of the public repo going forward)
 internal/
+*.mp4
+*.m4a
+*.srt

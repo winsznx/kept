@@ -5,7 +5,8 @@ Kept records the deal you were promised at signup, checks every later bill again
 - **Live app:** https://gregarious-snail-975.convex.site
 - **Public demo:** https://gregarious-snail-975.convex.site/demo
 - **Inspectable production run:** https://gregarious-snail-975.convex.site/proof/run/live-loop-2026-09-22
-- **Video:** coming with the submission
+- **Video (2:49):** https://youtu.be/OBAGwGMZ8Mc
+- **Launch post:** https://x.com/winsznlabs/status/2102468698200027501 · https://lnkd.in/p/dDekwEF6
 - **Public repo:** https://github.com/winsznx/kept
 
 **Measured headline proof** (`evidence/campaign-report.json`, synthetic corpus, 52 live model calls):
@@ -41,7 +42,7 @@ Kept records the deal you were promised at signup, checks every later bill again
 - **Auth:** Convex Auth
 - **AI models:** gpt-5.6-terra (classification and extraction), gpt-5.6-sol (case drafting), via the OpenAI Responses API with strict Structured Outputs (`convex/lib/openai.ts`)
 - **Started:** 2026-09-21T22:54:35Z
-- **Last updated:** 2026-09-22T17:40:00Z
+- **Last updated:** 2026-09-22T20:05:00Z
 
 ## Log
 
@@ -68,4 +69,16 @@ Applied the Kept brand and rebuilt the frontend on the owner's reference design 
 
 ### 2026-09-22 - working tree
 Final legibility pass on production. The first laptop screen now shows the whole demo story in a labelled demo-example strip: 24 expected credits, credit 22 missing, support says fixed held as a claim, and bill 23 verifying the fix. The hero, the how-it-works step card and the "a reply isn't a fix" ladder separate the provider's claim from the bill that proves the fix. `/proof` gained an at-a-glance panel linking each result to its committed artifact, and the run page summarizes bills, case timeline and sponsor calls above the raw record (`src/routes/Landing.tsx`, `src/routes/Proof.tsx`, `src/routes/ProofRun.tsx`). Production smoke and a seven-route, three-width regression pass with no overflow or page errors.
+
+### 2026-09-22 - 00c0b3f, 4927fc8
+Closed out the repo for judging. Added the architecture document, the submission checklist scored from actual state rather than intent, and eight product screenshots taken from the deployed site. Wrote the submission description and launch copy against the published evidence numbers so no claim in the writeup outruns `evidence/campaign-report.json` (`docs/ARCHITECTURE.md`, `docs/SUBMISSION_CHECKLIST.md`, `docs/LAUNCH.md`, `docs/screenshots/`).
+
+### 2026-09-22 - 2b621ff, 3a3948c
+Made the judge path work on the real product, not just the demo. The AgentMail free plan caps a workspace at three inboxes, so a new account can be provisioned without one. Rather than hide that, the app now states it: the rail, the Kept inbox page and the Add evidence screen all say the inbox is unavailable and point at the upload and paste routes, which run the identical pipeline. Walked the whole path on production as a fresh judge would: sign up, protect a plan, paste a signup email, paste two bills, reach a material difference on credit 22, reach the case button, no page errors. The README now names the two ways in and which one needs no account. Added the MIT license, with the brand assets excluded from it.
+
+### 2026-09-22 - 3f4419d, 7967d33
+Fixed two bugs a first-time account hit. The rail sat on "Setting up inbox..." forever because the status was derived from a `Date.now()` comparison inside a Convex query, and Convex queries are reactive to data, not to the clock, so the check never re-ran. It now reads the telemetry row the provisioning action writes, so the UI flips to the honest unavailable state the moment provisioning fails (`convex/workspaces.ts`). An empty dashboard also showed four zero stat tiles above an empty list; the tiles are now hidden until there is a plan, replaced by a first-run panel naming the three ways to add evidence and a link to the finished example (`src/routes/AppHome.tsx`). Rewrote the demo script as a click-by-click shot list built around the signed-in product rather than the demo page.
+
+### 2026-09-22 - working tree
+Recorded, cut and published the demo video, and shipped the metadata fixes found in the pre-submission review. The video runs 2:49 at 2560x1440 with a recorded voiceover and burnt-in captions. Open Graph and Twitter image URLs are now absolute with an explicit `og:url`, so the launch post renders a card instead of a bare link (`index.html`). The video and launch-post links are in the README and in this file. Redeployed the frontend and backend so production serves the inbox fix and the empty-dashboard fix.
 

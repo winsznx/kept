@@ -22,7 +22,9 @@ Live: https://gregarious-snail-975.convex.site
 Proof run: https://gregarious-snail-975.convex.site/proof/run/live-loop-2026-09-22
 Repo: https://github.com/winsznx/kept
 
-Attach: `internal/kept-brand-kit-v1/social/kept-launch-1920x1080.png` or a clip of the demo moving from bill 22 (red) to bill 23 (green).
+Attach: `internal/kept-brand-kit-v1/social/kept-launch-1920x1080.png` (git-ignored, local only, confirmed present) or a clip of the demo moving from bill 22 (red) to bill 23 (green).
+
+Posted: https://x.com/winsznlabs/status/2102468698200027501 and https://lnkd.in/p/dDekwEF6
 
 ## Reply (optional, same thread)
 
@@ -57,8 +59,8 @@ Sponsors: Convex is the whole backend (state machines, auth, immutable captures,
 - Live app: https://gregarious-snail-975.convex.site
 - Demo: https://gregarious-snail-975.convex.site/demo
 - Repo: https://github.com/winsznx/kept (build log in `hackathon.md`)
-- Video: (your upload link)
-- Social post: (your post link)
+- Video: https://youtu.be/OBAGwGMZ8Mc (2:49)
+- Social post: https://x.com/winsznlabs/status/2102468698200027501 · LinkedIn: https://lnkd.in/p/dDekwEF6
 - How it uses Convex: canonical state and state machines, Convex Auth, immutable source captures, file storage, scheduled pipeline steps, the signed AgentMail webhook route, reactive queries that move a case from claimed to verified without a reload, static hosting, and the Firecrawl, AgentMail and static-hosting components.
 - How it uses Firecrawl: captures public offer and terms pages as T0 and later Tn snapshots with content hashes, so Kept can tell a real change in terms from a reworded page.
 - How it uses OpenAI: `gpt-5.6-terra` with strict Structured Outputs extracts commitments, bill line items and support-reply claims; `gpt-5.6-sol` drafts the case email. Code checks every extracted value against the source text and decides all amounts and dates.
