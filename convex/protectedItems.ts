@@ -2,6 +2,7 @@ import { v } from "convex/values";
 import type { Doc } from "./_generated/dataModel";
 import { mutation, query } from "./_generated/server";
 import { domainError, requireProtectedItem, requireWorkspace } from "./lib/authz";
+import { deleteItemCascade } from "./lib/cascade";
 import { itemMachine } from "./lib/stateMachines";
 
 const ROUTING_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -149,6 +150,18 @@ export const archive = mutation({
     const { item } = await requireProtectedItem(ctx, itemId);
     itemMachine.assert(item.status, "ARCHIVED");
     await ctx.db.patch(itemId, { status: "ARCHIVED", updatedAt: Date.now() });
+    return null;
+  },
+});
+
+/** FR-024: delete an item and everything derived from it, including owned stored files. */
+export const remove = mutation({
+  args: { itemId: v.id("protectedItems") },
+  returns: v.null(),
+  handler: async (ctx, { itemId }) => {
+    const { item } = await requireProtectedItem(ctx, itemId);
+    const done = await deleteItemCascade(ctx, item._id);
+    if (!done) await ctx.db.patch(item._id, { status: "ARCHIVED", updatedAt: Date.now() });
     return null;
   },
 });

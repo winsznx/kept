@@ -10,12 +10,16 @@
 
 import type * as auth from "../auth.js";
 import type * as cases from "../cases.js";
+import type * as crons from "../crons.js";
+import type * as demo from "../demo.js";
 import type * as fixtures_canonical from "../fixtures/canonical.js";
+import type * as fixtures_fixtureParser from "../fixtures/fixtureParser.js";
 import type * as http from "../http.js";
 import type * as inbound from "../inbound.js";
 import type * as internal_agentmail from "../internal/agentmail.js";
 import type * as internal_ai from "../internal/ai.js";
 import type * as internal_caseSend from "../internal/caseSend.js";
+import type * as internal_demoSeed from "../internal/demoSeed.js";
 import type * as internal_evalActions from "../internal/evalActions.js";
 import type * as internal_harness from "../internal/harness.js";
 import type * as internal_inboundProcessing from "../internal/inboundProcessing.js";
@@ -26,6 +30,7 @@ import type * as lib_agentmail from "../lib/agentmail.js";
 import type * as lib_aiPrompts from "../lib/aiPrompts.js";
 import type * as lib_aiSchemas from "../lib/aiSchemas.js";
 import type * as lib_authz from "../lib/authz.js";
+import type * as lib_cascade from "../lib/cascade.js";
 import type * as lib_casePacket from "../lib/casePacket.js";
 import type * as lib_evidence from "../lib/evidence.js";
 import type * as lib_factCompare from "../lib/factCompare.js";
@@ -52,12 +57,16 @@ import type {
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
   cases: typeof cases;
+  crons: typeof crons;
+  demo: typeof demo;
   "fixtures/canonical": typeof fixtures_canonical;
+  "fixtures/fixtureParser": typeof fixtures_fixtureParser;
   http: typeof http;
   inbound: typeof inbound;
   "internal/agentmail": typeof internal_agentmail;
   "internal/ai": typeof internal_ai;
   "internal/caseSend": typeof internal_caseSend;
+  "internal/demoSeed": typeof internal_demoSeed;
   "internal/evalActions": typeof internal_evalActions;
   "internal/harness": typeof internal_harness;
   "internal/inboundProcessing": typeof internal_inboundProcessing;
@@ -68,6 +77,7 @@ declare const fullApi: ApiFromModules<{
   "lib/aiPrompts": typeof lib_aiPrompts;
   "lib/aiSchemas": typeof lib_aiSchemas;
   "lib/authz": typeof lib_authz;
+  "lib/cascade": typeof lib_cascade;
   "lib/casePacket": typeof lib_casePacket;
   "lib/evidence": typeof lib_evidence;
   "lib/factCompare": typeof lib_factCompare;

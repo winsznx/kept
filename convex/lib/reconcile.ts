@@ -83,7 +83,13 @@ export type CreditReconciliation = {
   totalScheduledCents: number;
   observedReceivedCents: number;
   observedMissingCents: number;
-  /** Promised value not yet observed as received: total scheduled minus observed received. */
+  /** One-time back-credits mapped to this promotion, capped at the observed missing value. */
+  restoredByAdjustmentCents: number;
+  /** Missing value still outstanding after observed back-credits. */
+  outstandingMissingCents: number;
+  /** Periods whose difference is covered by a later observed back-credit. */
+  coveredPeriods: number[];
+  /** Promised value not yet observed as received: total scheduled minus observed received (incl. back-credits). */
   remainingScheduledCents: number;
   notYetDueCents: number;
   latestObservedPeriod: number | null;
@@ -212,8 +218,27 @@ export function reconcileCreditSchedule(
     if (p.outcome === "NOT_DUE") notYetDueCents += p.expectedCents ?? 0;
   }
 
+  const adjustments = statements
+    .filter((s) => s.periodIndex !== null && s.periodIndex >= 1)
+    .flatMap((s) => (s.adjustmentLines ?? []).map((l) => ({ ...l, periodIndex: s.periodIndex as number })))
+    .filter((l) => l.matchesCommitment === "YES" && l.amountCents < 0 && normalizeCurrency(l.currency) === currency);
+  let adjustmentPool = adjustments.reduce((a, l) => a + -l.amountCents, 0);
+  const coveredPeriods: number[] = [];
+  let restoredByAdjustmentCents = 0;
+  for (const p of periods) {
+    if (p.outcome !== "MATERIAL_DIFFERENCE" || p.periodIndex === null) continue;
+    const gap = Math.max(0, (p.expectedCents ?? 0) - (p.observedCents ?? 0));
+    const laterPool = adjustments.some((l) => l.periodIndex > (p.periodIndex as number));
+    if (!laterPool || adjustmentPool < gap || gap === 0) continue;
+    adjustmentPool -= gap;
+    restoredByAdjustmentCents += gap;
+    coveredPeriods.push(p.periodIndex);
+  }
+  const outstandingMissingCents = observedMissingCents - restoredByAdjustmentCents;
+  const uncoveredMaterial = periods.filter((p) => p.outcome === "MATERIAL_DIFFERENCE" && !coveredPeriods.includes(p.periodIndex ?? -1)).length;
+
   let overallOutcome: OverallOutcome;
-  if (counts.MATERIAL_DIFFERENCE > 0) overallOutcome = "MATERIAL_DIFFERENCE";
+  if (uncoveredMaterial > 0) overallOutcome = "MATERIAL_DIFFERENCE";
   else if (counts.SOURCE_CONFLICT > 0) overallOutcome = "SOURCE_CONFLICT";
   else if (counts.REVIEW_REQUIRED > 0) overallOutcome = "REVIEW_REQUIRED";
   else if (counts.MATCH > 0) overallOutcome = "MATCH";
@@ -228,7 +253,10 @@ export function reconcileCreditSchedule(
     totalScheduledCents,
     observedReceivedCents,
     observedMissingCents,
-    remainingScheduledCents: totalScheduledCents - observedReceivedCents,
+    restoredByAdjustmentCents,
+    outstandingMissingCents,
+    coveredPeriods,
+    remainingScheduledCents: totalScheduledCents - observedReceivedCents - restoredByAdjustmentCents,
     notYetDueCents,
     latestObservedPeriod,
     counts,

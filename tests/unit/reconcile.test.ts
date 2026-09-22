@@ -188,3 +188,23 @@ describe("resolution verification (Campaign H)", () => {
     expect(v.verifiedRestoredCents).toBe(1875 + 1875);
   });
 });
+
+describe("back-credits after a claimed fix", () => {
+  it("a later mapped back-credit covers the missing period: outcome MATCH, outstanding 0, remaining excludes it", () => {
+    const later = bill(23, 1875, { adjustmentLines: [{ lineId: "adj", amountCents: -1875, currency: "USD", matchesCommitment: "YES" }] });
+    const r = reconcileCreditSchedule(schedule, [...months1to21, bill(22, null), later]);
+    expect(r.periods[21].outcome).toBe("MATERIAL_DIFFERENCE");
+    expect(r.coveredPeriods).toEqual([22]);
+    expect(r.observedMissingCents).toBe(1875);
+    expect(r.outstandingMissingCents).toBe(0);
+    expect(r.overallOutcome).toBe("MATCH");
+    expect(r.remainingScheduledCents).toBe(1875);
+  });
+
+  it("an unmapped or too-small adjustment covers nothing", () => {
+    const small = bill(23, 1875, { adjustmentLines: [{ lineId: "adj", amountCents: -500, currency: "USD", matchesCommitment: "YES" }] });
+    expect(reconcileCreditSchedule(schedule, [...months1to21, bill(22, null), small]).overallOutcome).toBe("MATERIAL_DIFFERENCE");
+    const unmapped = bill(23, 1875, { adjustmentLines: [{ lineId: "adj", amountCents: -1875, currency: "USD", matchesCommitment: "AMBIGUOUS" }] });
+    expect(reconcileCreditSchedule(schedule, [...months1to21, bill(22, null), unmapped]).outstandingMissingCents).toBe(1875);
+  });
+});

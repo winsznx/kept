@@ -622,10 +622,16 @@ export default defineSchema({
     workspaceId: v.id("workspaces"),
     status: v.union(v.literal("ACTIVE"), v.literal("EXPIRED")),
     scenarioVersion: v.string(),
+    mainItemId: v.id("protectedItems"),
+    controlItemId: v.id("protectedItems"),
+    refusalItemId: v.id("protectedItems"),
+    step: v.union(v.literal("SEEDING"), v.literal("ON_TRACK"), v.literal("DRIFT"), v.literal("CASE_DRAFT"), v.literal("WAITING_REPLY"), v.literal("PROVIDER_CLAIMS_FIXED"), v.literal("VERIFIED")),
+    busy: v.boolean(),
     expiresAt: v.number(),
     createdAt: v.number(),
   })
     .index("by_key", ["sessionKeyHash"])
+    .index("by_workspace", ["workspaceId"])
     .index("by_expiresAt", ["expiresAt"]),
 
   productEvents: defineTable({

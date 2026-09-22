@@ -601,7 +601,7 @@ export const reconcileItem = internalMutation({
         triggerType: trigger,
         status: "COMPLETE",
         overallOutcome: outcome,
-        observedDifferenceCents: r.observedMissingCents,
+        observedDifferenceCents: r.outstandingMissingCents,
         remainingScheduledValueCents: r.remainingScheduledCents,
         observedReceivedCents: r.observedReceivedCents,
         notYetDueCents: r.notYetDueCents,
@@ -640,7 +640,7 @@ export const reconcileItem = internalMutation({
           amountDeltaCents: p.deltaCents,
           reasonCode: p.reasonCode,
           explanation: explain(p.reasonCode, p.periodIndex, bundle?.statement.statementMonth ?? null),
-          material: p.outcome === "MATERIAL_DIFFERENCE",
+          material: p.outcome === "MATERIAL_DIFFERENCE" && !r.coveredPeriods.includes(p.periodIndex ?? -1),
           createdAt: now,
         });
       }

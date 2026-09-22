@@ -42,44 +42,67 @@ export const create = mutation({
   returns: v.id("cases"),
   handler: async (ctx, { itemId }) => {
     const { item } = await requireProtectedItem(ctx, itemId);
-    const existing = await ctx.db.query("cases").withIndex("by_item_createdAt", (q) => q.eq("protectedItemId", itemId)).order("desc").first();
-    if (existing && existing.status !== "CLOSED" && existing.status !== "RESOLVED") return existing._id;
-    if (item.status !== "MATERIAL_DIFFERENCE") throw domainError("INVALID_STATE_TRANSITION", "A case can be opened when Kept finds a material difference.");
-    const packet = await buildPacket(ctx, item);
-    if (!packet) throw domainError("NO_SUPPORTED_COMMITMENT", "Kept doesn't have a source-backed difference to build a case from.");
-    const now = Date.now();
-    const draft = templateDraft(packet);
-    const caseId = await ctx.db.insert("cases", {
-      workspaceId: item.workspaceId,
-      protectedItemId: itemId,
-      status: "DRAFT",
-      issueType: "MISSING_PROMO_CREDIT",
-      recipientEmail: null,
-      subject: draft.subject,
-      draftText: draft.body,
-      draftSource: "TEMPLATE",
-      agentmailThreadId: null,
-      agentmailOutboundId: null,
-      sendIdempotencyKey: null,
-      approvedAt: null,
-      latestPacketVersion: 1,
-      disputedPeriods: [packet.expected.periodIndex],
-      resolutionState: "NONE",
-      resolutionSummary: null,
-      createdAt: now,
-      updatedAt: now,
-    });
-    const payloadJson = JSON.stringify(packet);
-    await ctx.db.insert("caseEvidencePackets", { workspaceId: item.workspaceId, caseId, version: 1, payloadJson, payloadSha256: await sha256Hex(payloadJson), createdAt: now });
-    const kase = (await ctx.db.get(caseId))!;
-    await addEvent(ctx, kase, "CREATED", `Case opened for credit ${packet.expected.periodIndex} of ${packet.recorded.periodCount}.`);
-    itemMachine.assert(item.status, "CASE_OPEN");
-    await ctx.db.patch(itemId, { status: "CASE_OPEN", updatedAt: now });
-    await ctx.db.insert("productEvents", { workspaceId: item.workspaceId, name: "case_created", createdAt: now });
-    await ctx.scheduler.runAfter(0, internal.internal.ai.draftCase, { caseId });
-    return caseId;
+    return await createCaseFor(ctx, item, { modelDraft: true });
   },
 });
+
+/** Opens a case from the item's latest material finding, freezing evidence packet v1. Idempotent per open case. */
+export async function createCaseFor(ctx: MutationCtx, item: Doc<"protectedItems">, opts: { modelDraft: boolean }): Promise<Id<"cases">> {
+  const itemId = item._id;
+  const existing = await ctx.db.query("cases").withIndex("by_item_createdAt", (q) => q.eq("protectedItemId", itemId)).order("desc").first();
+  if (existing && existing.status !== "CLOSED" && existing.status !== "RESOLVED") return existing._id;
+  if (item.status !== "MATERIAL_DIFFERENCE") throw domainError("INVALID_STATE_TRANSITION", "A case can be opened when Kept finds a material difference.");
+  const packet = await buildPacket(ctx, item);
+  if (!packet) throw domainError("NO_SUPPORTED_COMMITMENT", "Kept doesn't have a source-backed difference to build a case from.");
+  const now = Date.now();
+  const draft = templateDraft(packet);
+  const caseId = await ctx.db.insert("cases", {
+    workspaceId: item.workspaceId,
+    protectedItemId: itemId,
+    status: "DRAFT",
+    issueType: "MISSING_PROMO_CREDIT",
+    recipientEmail: null,
+    subject: draft.subject,
+    draftText: draft.body,
+    draftSource: "TEMPLATE",
+    agentmailThreadId: null,
+    agentmailOutboundId: null,
+    sendIdempotencyKey: null,
+    approvedAt: null,
+    latestPacketVersion: 1,
+    disputedPeriods: [packet.expected.periodIndex],
+    resolutionState: "NONE",
+    resolutionSummary: null,
+    createdAt: now,
+    updatedAt: now,
+  });
+  const payloadJson = JSON.stringify(packet);
+  await ctx.db.insert("caseEvidencePackets", { workspaceId: item.workspaceId, caseId, version: 1, payloadJson, payloadSha256: await sha256Hex(payloadJson), createdAt: now });
+  const kase = (await ctx.db.get(caseId))!;
+  await addEvent(ctx, kase, "CREATED", `Case opened for credit ${packet.expected.periodIndex} of ${packet.recorded.periodCount}.`);
+  itemMachine.assert(item.status, "CASE_OPEN");
+  await ctx.db.patch(itemId, { status: "CASE_OPEN", updatedAt: now });
+  await ctx.db.insert("productEvents", { workspaceId: item.workspaceId, name: "case_created", createdAt: now });
+  if (opts.modelDraft) await ctx.scheduler.runAfter(0, internal.internal.ai.draftCase, { caseId });
+  return caseId;
+}
+
+/**
+ * Public-demo stand-in for a send. Demo cases are never emailed (FR-022): this walks the
+ * same approval transition and records a clearly labelled replay event instead.
+ */
+export async function demoReplaySend(ctx: MutationCtx, kase: Doc<"cases">): Promise<void> {
+  const ws = await ctx.db.get(kase.workspaceId);
+  if (!ws || ws.kind !== "DEMO") throw domainError("FORBIDDEN", "Demo only.");
+  if (kase.status === "DRAFT") await transition(ctx, kase, "READY_TO_SEND");
+  if (kase.status !== "READY_TO_SEND") return;
+  const now = Date.now();
+  await ctx.db.patch(kase._id, { recipientEmail: "support@brightline-wireless.example", approvedAt: now, agentmailThreadId: `demo-thread-${kase._id}`, agentmailOutboundId: `demo-msg-${kase._id}` });
+  await transition(ctx, kase, "SENDING", { userApproved: true });
+  await addEvent(ctx, kase, "APPROVED", "You approved the message for sending.");
+  await transition(ctx, kase, "WAITING_FOR_REPLY");
+  await addEvent(ctx, kase, "SENT", "REPLAY: demo cases are not emailed. In your account this is sent from your Kept inbox through AgentMail.", { dedupeKey: `sent:demo-${kase._id}` });
+}
 
 /** Freezes the facts behind the latest material finding into a packet. Returns null if there is none. */
 export async function buildPacket(ctx: MutationCtx, item: Doc<"protectedItems">): Promise<EvidencePacket | null> {
