@@ -1,6 +1,7 @@
 import type { FunctionReturnType } from "convex/server";
 import type { ReactNode } from "react";
 import type { api } from "../../../convex/_generated/api";
+import { Icon } from "../../components/Icon";
 import { StatusBadge } from "../../components/StatusBadge";
 import { dateTime, money, monthLabel } from "../../lib/format";
 
@@ -19,8 +20,8 @@ export function EvidencePacket({ data }: { data: CaseViewData }) {
   const c = p.recorded.currency;
   return (
     <section className="card stack" aria-labelledby="packet-title">
-      <h2 id="packet-title" style={{ margin: 0 }}>
-        Evidence packet <span className="muted small">v{p.version}</span>
+      <h2 id="packet-title" className="section-title">
+        <Icon name="evidence" size={18} /> Evidence packet <span className="muted small">v{p.version}</span>
       </h2>
       <p style={{ margin: 0 }}>{p.issueSummary}</p>
       <div className="grid-2">
@@ -66,18 +67,27 @@ export function ResolutionBanner({ data }: { data: CaseViewData }) {
   if (s === "VERIFIED_FIXED")
     return (
       <div className="alert tone-ok" role="status">
+        <Icon name="verify" size={18} />
+        <span>
         <strong>Kept verified the fix.</strong> A later bill shows the recorded credit. Verified restored value: {money(verified.reduce((a, v) => a + v.verifiedRestoredCents, 0))}.
+        </span>
       </div>
     );
   if (s === "STILL_MISMATCHED")
     return (
       <div className="alert tone-bad" role="status">
-        <strong>Still mismatched.</strong> The provider said it was fixed, but the next bill still doesn’t show the recorded credit.
+        <Icon name="detect" size={18} />
+        <span>
+          <strong>Still mismatched.</strong> The provider said it was fixed, but the next bill still doesn’t show the recorded credit.
+        </span>
       </div>
     );
   return (
     <div className="alert tone-warn" role="status">
-      <strong>The provider says it’s fixed. Kept hasn’t verified it.</strong> A support reply isn’t proof that your next bill is correct. Kept is waiting for the next bill.
+      <Icon name="watch" size={18} />
+      <span>
+        <strong>The provider says it’s fixed. Kept hasn’t verified it.</strong> A support reply isn’t proof that your next bill is correct. Kept is waiting for the next bill.
+      </span>
     </div>
   );
 }
@@ -85,8 +95,8 @@ export function ResolutionBanner({ data }: { data: CaseViewData }) {
 export function Correspondence({ data }: { data: CaseViewData }) {
   return (
     <section className="stack" aria-labelledby="thread-title">
-      <h2 id="thread-title" style={{ margin: 0 }}>
-        Correspondence
+      <h2 id="thread-title" className="section-title">
+        <Icon name="email" size={18} /> Correspondence
       </h2>
       {data.replies.length === 0 ? <p className="muted">No replies yet.</p> : null}
       {data.replies.map((r) => (

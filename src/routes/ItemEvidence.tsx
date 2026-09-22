@@ -1,8 +1,9 @@
 import { useConvex, useQuery } from "convex/react";
 import { useState } from "react";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import { api } from "../../convex/_generated/api";
 import type { Id } from "../../convex/_generated/dataModel";
+import { TopBar } from "../components/Layouts";
 import { PageComparisons, SourceList, ThenVsNow } from "../features/items/ItemViews";
 
 export default function ItemEvidence() {
@@ -11,12 +12,16 @@ export default function ItemEvidence() {
   const view = useQuery(api.items.getMine, { itemId: id });
   const convex = useConvex();
   const [text, setText] = useState<{ id: string; text: string; truncated: boolean } | null>(null);
-  if (view === undefined) return <p role="status">Loading…</p>;
+  if (view === undefined)
+    return (
+      <div className="loading-block" role="status">
+        <span className="spinner" /> Loading…
+      </div>
+    );
   return (
-    <div className="stack" style={{ gap: 20 }}>
-      <Link to={`/app/items/${id}`} className="small">
-        ← Back to item
-      </Link>
+    <>
+      <TopBar crumbs={[{ label: "My plans", to: "/app" }, { label: view.item.providerName ?? "Plan", to: `/app/items/${id}` }, { label: "Then vs Now" }]} />
+      <div className="app-content">
       <ThenVsNow view={view} />
       <PageComparisons view={view} />
       <SourceList
@@ -34,6 +39,7 @@ export default function ItemEvidence() {
           {text.truncated ? <p className="muted small">Showing the first 30,000 characters.</p> : null}
         </section>
       ) : null}
-    </div>
+      </div>
+    </>
   );
 }

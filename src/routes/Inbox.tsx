@@ -2,6 +2,8 @@ import { useMutation, useQuery } from "convex/react";
 import { Link } from "react-router";
 import { api } from "../../convex/_generated/api";
 import type { Id } from "../../convex/_generated/dataModel";
+import { Icon } from "../components/Icon";
+import { TopBar } from "../components/Layouts";
 import { StatusBadge } from "../components/StatusBadge";
 import { dateTime } from "../lib/format";
 
@@ -17,25 +19,39 @@ export default function Inbox() {
   const rows = useQuery(api.inbound.listMine, me?.workspaceId ? {} : "skip");
   const items = useQuery(api.protectedItems.listMine, me?.workspaceId ? {} : "skip");
   const assign = useMutation(api.inbound.assignMessage);
-  if (me === undefined || (me?.workspaceId && rows === undefined)) return <p role="status">Loading…</p>;
+  if (me === undefined || (me?.workspaceId && rows === undefined))
+    return (
+      <div className="loading-block" role="status">
+        <span className="spinner" /> Loading…
+      </div>
+    );
   return (
-    <div className="stack" style={{ gap: 20 }}>
-      <h1>Kept inbox</h1>
-      <p>
-        {me?.inboxAddress ? (
-          <>
-            Forward signup emails and bills to <strong className="mono">{me.inboxAddress}</strong>. Replies to your cases land here too.
-          </>
-        ) : (
-          "Your Kept inbox is being set up."
-        )}
-      </p>
+    <>
+    <TopBar crumbs={[{ label: "Kept", to: "/app" }, { label: "Inbox" }]} />
+    <div className="app-content">
+      <div className="page-title">
+        <div>
+          <h1>Kept inbox</h1>
+          <p>Signup emails, bills and support replies that reached your Kept address. Kept never attaches mail to a plan unless it’s sure.</p>
+        </div>
+      </div>
+      <div className="card card-muted row" style={{ gap: 14 }}>
+        <span className="icon-tile">
+          <Icon name="email" size={20} />
+        </span>
+        <div style={{ minWidth: 0, flex: 1 }}>
+          <div className="label">Your forwarding address</div>
+          <strong className="mono" style={{ fontSize: 15 }}>
+            {me?.inboxAddress ?? "Being set up…"}
+          </strong>
+        </div>
+      </div>
       {GROUPS.map(([status, label]) => {
         const list = (rows ?? []).filter((r) => r.assignmentStatus === status);
         if (list.length === 0) return null;
         return (
           <section key={status} className="stack">
-            <h2 style={{ margin: 0 }}>{label}</h2>
+            <h2 className="section-title">{label}</h2>
             {list.map((r) => (
               <article key={r._id} className="card stack" style={{ gap: 4 }}>
                 <div className="row" style={{ justifyContent: "space-between" }}>
@@ -68,7 +84,16 @@ export default function Inbox() {
           </section>
         );
       })}
-      {rows && rows.length === 0 ? <p className="muted">No messages yet.</p> : null}
+      {rows && rows.length === 0 ? (
+        <section className="empty">
+          <span className="icon-tile is-soft">
+            <Icon name="inbox" size={22} />
+          </span>
+          <strong>No messages yet</strong>
+          <p>Forward a signup confirmation or bill to your Kept address. It shows up here within a few seconds.</p>
+        </section>
+      ) : null}
     </div>
+    </>
   );
 }

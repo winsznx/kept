@@ -2,12 +2,16 @@ import { Lifecycle } from "../components/Lifecycle";
 
 export default function HowItWorks() {
   return (
-    <article className="stack" style={{ maxWidth: 720 }}>
-      <h1>How Kept works</h1>
-      <p>
-        Kept creates a dated promise record when you buy, then reconciles what happens later against that original evidence.
-      </p>
-      <Lifecycle />
+    <article className="container page">
+      <div className="page-head">
+        <span className="eyebrow">How it works</span>
+        <h1>How Kept works</h1>
+        <p>Kept creates a dated promise record when you buy, then reconciles what happens later against that original evidence.</p>
+      </div>
+      <div style={{ marginBottom: 36 }}>
+        <Lifecycle />
+      </div>
+      <div className="prose">
       <h2>Record</h2>
       <p>
         You forward the signup confirmation to your Kept address, upload it, or paste the public offer URL. Kept stores the source unchanged,
@@ -35,6 +39,7 @@ export default function HowItWorks() {
         Kept compares evidence. It doesn’t decide legal questions, doesn’t log into carrier accounts, and doesn’t send anything without your
         click. When a policy page may not apply to your purchase, Kept says so instead of guessing.
       </p>
+      </div>
     </article>
   );
 }

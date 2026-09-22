@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "convex/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { api } from "../../convex/_generated/api";
+import { Icon } from "../components/Icon";
 import { Lifecycle, type LifecycleStep } from "../components/Lifecycle";
 import { CaseEvents, CaseHeader, Correspondence, EvidencePacket, ResolutionBanner } from "../features/cases/CaseView";
 import { Applicability, LatestFindings, OutcomeSummary, PageComparisons, Promises, ScheduleGrid, SourceList, ThenVsNow } from "../features/items/ItemViews";
@@ -46,20 +47,44 @@ export default function Demo() {
     if (state === null) start({ sessionKey: key }).catch(() => setError("The demo couldn’t start. Reload to try again."));
   }, [state, start, key]);
 
-  if (error) return <p role="alert">{error}</p>;
-  if (!state || state.step === "SEEDING") return <p role="status">Setting up the demo: recording the signup, then checking 21 bills…</p>;
+  if (error)
+    return (
+      <div className="container page">
+        <p role="alert" className="alert tone-bad">
+          {error}
+        </p>
+      </div>
+    );
+  if (!state || state.step === "SEEDING")
+    return (
+      <div className="container page">
+        <div className="loading-block" role="status">
+          <span className="spinner" /> Setting up your demo: recording the signup, then checking 21 bills…
+        </div>
+      </div>
+    );
 
   const next = NEXT[state.step];
   const active: LifecycleStep = next?.lifecycle ?? "Verify";
 
   return (
-    <div className="stack" style={{ gap: 24 }}>
+    <div className="container page stack-lg">
+      <div className="page-head" style={{ marginBottom: 0 }}>
+        <span className="eyebrow">
+          <Icon name="play" size={15} /> Live demo
+        </span>
+        <h1>Watch one promise from signup to verified fix.</h1>
+        <p>A 24-month device promotion, running on Kept’s real pipeline. Step through it yourself.</p>
+      </div>
       <div className="alert tone-info small">
+        <Icon name="flask" size={18} />
+        <span>
         <strong>Public demo with synthetic data.</strong> “Brightline Wireless” is fictional. Every state below is real Convex data computed by Kept’s pipeline. The sources are parsed by a deterministic
-        fixture parser instead of AI, and the email send and reply are <strong>replays</strong>: demo cases are never emailed. Live sponsor runs are on the <Link to="/proof">proof page</Link>.
+        fixture parser instead of AI, and the email send and reply are <strong>replays</strong>: demo cases are never emailed. Live sponsor runs are on the <Link to="/proof" style={{ fontWeight: 600, textDecoration: "underline" }}>proof page</Link>.
+        </span>
       </div>
 
-      <div className="row" role="tablist" aria-label="Demo scenarios">
+      <div className="tabs" role="tablist" aria-label="Demo scenarios">
         {(
           [
             ["main", "The missing credit"],
@@ -67,7 +92,7 @@ export default function Demo() {
             ["refusal", "Refusal: wrong seller"],
           ] as const
         ).map(([k, label]) => (
-          <button key={k} role="tab" aria-selected={tab === k} className={`btn${tab === k ? " btn-primary" : ""}`} onClick={() => setTab(k)}>
+          <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)}>
             {label}
           </button>
         ))}
@@ -75,13 +100,15 @@ export default function Demo() {
 
       {tab === "main" ? (
         <>
-          <Lifecycle active={active} />
-          <section className="card card-muted stack" aria-live="polite">
+          <Lifecycle active={active} complete={!next} />
+          <section className="panel stack" aria-live="polite">
             <p style={{ margin: 0 }}>{next ? next.explain : "Kept saw the credit come back on bill 23, plus a back-credit for bill 22. The case is resolved, and the fix is verified."}</p>
             <div className="row">
               {next ? (
                 <button type="button" className="btn btn-primary" disabled={state.busy} onClick={() => advance({ sessionKey: key, step: next.step }).catch(() => setError("That step failed. Reload the demo."))}>
+                  {state.busy ? <span className="spinner" /> : null}
                   {state.busy ? "Processing…" : next.label}
+                  {state.busy ? null : <Icon name="arrowRight" size={16} />}
                 </button>
               ) : (
                 <span className="badge tone-ok">VERIFIED FIXED</span>
@@ -98,7 +125,9 @@ export default function Demo() {
               <ResolutionBanner data={state.case} />
               <EvidencePacket data={state.case} />
               <section className="card stack">
-                <h2 style={{ margin: 0 }}>Draft email</h2>
+                <h2 className="section-title">
+                  <Icon name="email" size={18} /> Draft email
+                </h2>
                 <p className="small muted" style={{ margin: 0 }}>
                   Review before sending. Kept drafted this from the evidence above. Nothing is sent until you approve it.
                 </p>
@@ -113,8 +142,10 @@ export default function Demo() {
               <CaseEvents data={state.case} />
             </section>
           ) : null}
-          <details>
-            <summary>Recorded promises and sources</summary>
+          <details className="card">
+            <summary>
+              <Icon name="evidence" size={16} /> Recorded promises and sources
+            </summary>
             <div className="stack" style={{ marginTop: 12 }}>
               <Promises view={state.main} />
               <SourceList view={state.main} />
@@ -124,8 +155,8 @@ export default function Demo() {
       ) : null}
 
       {tab === "control" ? (
-        <div className="stack">
-          <p>
+        <div className="stack-lg">
+          <p className="muted">
             Kept captured the offer page when you signed up, and again later. The marketing copy and layout were completely rewritten. Kept compares the commercial terms it extracted, not the raw
             text.
           </p>
@@ -135,8 +166,8 @@ export default function Demo() {
       ) : null}
 
       {tab === "refusal" ? (
-        <div className="stack">
-          <p>A phone bought from a third-party marketplace seller, checked against the provider’s 30-day return policy for its own sales.</p>
+        <div className="stack-lg">
+          <p className="muted">A phone bought from a third-party marketplace seller, checked against the provider’s 30-day return policy for its own sales.</p>
           <Applicability view={state.refusal} />
           <Promises view={state.refusal} />
           <SourceList view={state.refusal} />

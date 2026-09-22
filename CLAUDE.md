@@ -1,6 +1,6 @@
 # Kept: build rules for agents
 
-`docs/PRD.md` is the product and execution source of truth. Read it before changing application code. When a current official sponsor doc contradicts the PRD on an SDK/API detail, the doc wins and the choice goes in `docs/DECISIONS.md`. On product behavior, safety, evidence standards, and state semantics, the PRD wins.
+`internal/PRD.md` (git-ignored, local only) is the product and execution source of truth. Read it before changing application code. When a current official sponsor doc contradicts the PRD on an SDK/API detail, the doc wins and the choice goes in `docs/DECISIONS.md`. On product behavior, safety, evidence standards, and state semantics, the PRD wins.
 
 ## Product invariants
 

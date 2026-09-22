@@ -1,6 +1,7 @@
 import type { FunctionReturnType } from "convex/server";
 import { useState } from "react";
 import type { api } from "../../../convex/_generated/api";
+import { Icon } from "../../components/Icon";
 import { StatusBadge } from "../../components/StatusBadge";
 import { dateOnly, dateTime, money, monthLabel } from "../../lib/format";
 
@@ -172,8 +173,8 @@ export function ScheduleGrid({ view }: { view: ItemView }) {
   const word = (s: string, p: number | null) => (covered.has(p) ? "back-credited" : s === "OBSERVED_MATCH" ? "credit seen" : s === "OBSERVED_DIFFERENCE" ? "missing" : s === "UNKNOWN" ? "needs review" : "not billed yet");
   return (
     <section className="stack" aria-labelledby="sched-title">
-      <h3 id="sched-title" style={{ margin: 0 }}>
-        Expected credits
+      <h3 id="sched-title" className="section-title">
+        <Icon name="calendar" size={18} /> Expected credits
       </h3>
       <div className="periods" role="list">
         {events.map((e) => (
@@ -183,9 +184,12 @@ export function ScheduleGrid({ view }: { view: ItemView }) {
           </div>
         ))}
       </div>
-      <p className="muted small" style={{ margin: 0 }}>
-        Green: credit seen as recorded. Red with !: bill shows no or a different credit. Amber: back-credited later or needs review. Grey: not billed yet, never counted as missing.
-      </p>
+      <div className="legend">
+        <span><i className="tone-ok" style={{ border: "1px solid rgba(22,163,74,.3)" }} /> Credit seen as recorded</span>
+        <span><i className="tone-bad" style={{ border: "1px solid rgba(220,38,38,.3)" }} /> Missing or different</span>
+        <span><i className="tone-warn" style={{ border: "1px solid rgba(183,121,31,.3)" }} /> Back-credited or needs review</span>
+        <span><i className="tone-neutral" style={{ border: "1px solid var(--border)" }} /> Not billed yet, never counted missing</span>
+      </div>
     </section>
   );
 }
@@ -197,8 +201,8 @@ export function LatestFindings({ view }: { view: ItemView }) {
   if (rows.length === 0) return null;
   return (
     <section className="stack" aria-labelledby="rec-title">
-      <h3 id="rec-title" style={{ margin: 0 }}>
-        Latest reconciliation
+      <h3 id="rec-title" className="section-title">
+        <Icon name="watch" size={18} /> Latest reconciliation
       </h3>
       <table className="responsive">
         <thead>
@@ -243,8 +247,8 @@ export function ThenVsNow({ view }: { view: ItemView }) {
   const planChanged = plan && latest?.planName ? latest.planName.toLowerCase() !== (plan.textValue ?? "").toLowerCase() : false;
   return (
     <section className="stack" aria-labelledby="tvn-title">
-      <h2 id="tvn-title" style={{ margin: 0 }}>
-        Then vs Now
+      <h2 id="tvn-title" className="section-title">
+        <Icon name="evidence" size={18} /> Then vs Now
       </h2>
       <table className="responsive">
         <thead>
@@ -292,8 +296,8 @@ export function PageComparisons({ view }: { view: ItemView }) {
   const cap = new Map(view.captures.map((c) => [c._id, c]));
   return (
     <section className="stack" aria-labelledby="page-title">
-      <h3 id="page-title" style={{ margin: 0 }}>
-        Offer page: first capture vs latest capture
+      <h3 id="page-title" className="section-title">
+        <Icon name="globe" size={18} /> Offer page: first capture vs latest capture
       </h3>
       {view.pageComparisons.slice(0, 3).map((p) => (
         <article key={p._id} className="card stack" style={{ gap: 8 }}>
@@ -361,8 +365,8 @@ export function SourceList({ view, loadText }: { view: ItemView; loadText?: (id:
   const [open, setOpen] = useState<string | null>(null);
   return (
     <section className="stack" aria-labelledby="src-title">
-      <h3 id="src-title" style={{ margin: 0 }}>
-        Sources ({view.captures.length})
+      <h3 id="src-title" className="section-title">
+        <Icon name="record" size={18} /> Sources ({view.captures.length})
       </h3>
       <p className="muted small" style={{ margin: 0 }}>
         Every capture is stored unchanged. A refreshed page is a new capture, never an edit.

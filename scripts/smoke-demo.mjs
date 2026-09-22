@@ -6,7 +6,7 @@ const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
 page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
 await page.goto(base + "/");
-await page.getByRole("link", { name: "Try the demo" }).click();
+await page.getByRole("link", { name: /Try the live demo/ }).first().click();
 const steps = ["Bill 22 arrives", "Open a case", "Approve and send", "Support replies", "Bill 23 arrives"];
 for (const s of steps) {
   const b = page.getByRole("button", { name: s });

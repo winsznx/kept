@@ -1,5 +1,7 @@
 # Kept
 
+![Kept](public/brand/readme-banner.png)
+
 **Record the promise. Catch the drift. Verify the fix.**
 
 Kept records the deal you were promised when you signed up, checks every later bill against it, opens a source-backed case when a credit goes missing, and won't call it fixed until a later bill proves it.

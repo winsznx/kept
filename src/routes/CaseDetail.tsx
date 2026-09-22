@@ -1,8 +1,10 @@
 import { useMutation, useQuery } from "convex/react";
 import { useState, type FormEvent } from "react";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import { api } from "../../convex/_generated/api";
 import type { Id } from "../../convex/_generated/dataModel";
+import { Icon } from "../components/Icon";
+import { TopBar } from "../components/Layouts";
 import { CaseEvents, CaseHeader, Correspondence, EvidencePacket, ResolutionBanner } from "../features/cases/CaseView";
 
 const EDITABLE = new Set(["DRAFT", "READY_TO_SEND", "NEEDS_USER_ACTION", "REPLY_RECEIVED"]);
@@ -17,7 +19,12 @@ export default function CaseDetail() {
   const [msg, setMsg] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
-  if (data === undefined) return <p role="status">Loading…</p>;
+  if (data === undefined)
+    return (
+      <div className="loading-block" role="status">
+        <span className="spinner" /> Loading…
+      </div>
+    );
   const c = data.case;
 
   async function onSave(e: FormEvent<HTMLFormElement>) {
@@ -36,12 +43,9 @@ export default function CaseDetail() {
   }
 
   return (
-    <div className="stack" style={{ gap: 20 }}>
-      {data.item ? (
-        <Link to={`/app/items/${data.item._id}`} className="small">
-          ← Back to item
-        </Link>
-      ) : null}
+    <>
+      <TopBar crumbs={[{ label: "My plans", to: "/app" }, ...(data.item ? [{ label: data.item.providerName ?? "Plan", to: `/app/items/${data.item._id}` }] : []), { label: "Case" }]} />
+      <div className="app-content">
       <CaseHeader data={data} />
       <ResolutionBanner data={data} />
       <EvidencePacket data={data} />
@@ -85,7 +89,7 @@ export default function CaseDetail() {
                     .finally(() => setPending(false));
                 }}
               >
-                Approve and send
+                <Icon name="send" size={15} /> Approve and send
               </button>
             </div>
           ) : null}
@@ -100,7 +104,9 @@ export default function CaseDetail() {
 
       <Correspondence data={data} />
       <section className="stack">
-        <h2 style={{ margin: 0 }}>Case timeline</h2>
+        <h2 className="section-title">
+          <Icon name="watch" size={18} /> Case timeline
+        </h2>
         <CaseEvents data={data} />
       </section>
       {c.status !== "CLOSED" && c.status !== "SENDING" ? (
@@ -110,6 +116,7 @@ export default function CaseDetail() {
           </button>
         </div>
       ) : null}
-    </div>
+      </div>
+    </>
   );
 }

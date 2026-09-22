@@ -1,8 +1,12 @@
 export default function Privacy() {
   return (
-    <article className="stack" style={{ maxWidth: 720 }}>
-      <h1>Privacy</h1>
-      <p>Kept is a hackathon prototype. This page describes what it actually does with your data.</p>
+    <article className="container page">
+      <div className="page-head">
+        <span className="eyebrow">Privacy</span>
+        <h1>Privacy</h1>
+        <p>Kept is a hackathon prototype. This page describes what it actually does with your data.</p>
+      </div>
+      <div className="prose">
       <h2>What Kept stores</h2>
       <p>
         Evidence you upload or forward to your Kept address (emails, attachments, bills), public pages you ask Kept to capture, the terms
@@ -25,6 +29,7 @@ export default function Privacy() {
         You can delete a protected item, which removes its sources, files, extracted terms, observations, and cases from Kept. Copies already
         held by the services above follow their own retention policies, which Kept can’t override.
       </p>
+      </div>
     </article>
   );
 }
