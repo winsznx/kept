@@ -73,12 +73,15 @@ export const onMessageReceived = internalMutation({
 
     const now = Date.now();
     const receivedAt = m.timestamp ? Date.parse(m.timestamp) || now : now;
-    const bodyText = (m.extracted_text ?? m.text ?? "").slice(0, MAX_INLINE_TEXT);
     const kase = await ctx.db
       .query("cases")
       .withIndex("by_thread", (q) => q.eq("agentmailThreadId", m.thread_id!))
       .unique();
     const caseForWs = kase && kase.workspaceId === ws._id ? kase : null;
+    // Forwarded evidence lives in what AgentMail treats as quoted history, so only case
+    // replies use the quote-stripped extracted_text; everything else keeps the full text.
+    const extracted = m.extracted_text?.trim() ? m.extracted_text : null;
+    const bodyText = ((caseForWs ? (extracted ?? m.text) : (m.text ?? extracted)) ?? "").slice(0, MAX_INLINE_TEXT);
     const tokenItem = caseForWs ? null : await resolveItemByToken(ctx, ws._id, `${m.subject ?? ""}\n${bodyText.slice(0, 2000)}`);
     const protectedItemId = caseForWs?.protectedItemId ?? tokenItem?._id ?? null;
 

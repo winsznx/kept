@@ -393,7 +393,7 @@ export const getPacketForDraft = internalQuery({
     const kase = await ctx.db.get(caseId);
     if (!kase) return null;
     const packet = await ctx.db.query("caseEvidencePackets").withIndex("by_case_version", (q) => q.eq("caseId", caseId).eq("version", kase.latestPacketVersion)).unique();
-    return packet ? { status: kase.status, payloadJson: packet.payloadJson } : null;
+    return packet ? { status: kase.status, workspaceId: kase.workspaceId, payloadJson: packet.payloadJson } : null;
   },
 });
 

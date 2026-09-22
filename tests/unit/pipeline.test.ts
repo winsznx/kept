@@ -99,19 +99,34 @@ describe("bill building and anchoring", () => {
   it("derives the start month from installment labels and ignores one-time back-credit indices", () => {
     const anchor = deriveScheduleStart(
       [
-        { statementMonth: "2025-04", lines: [{ category: "PROMO_CREDIT", matchesCommitment: "YES", installmentIndex: 5 }] },
-        { statementMonth: "2026-10", lines: [{ category: "PROMO_CREDIT", matchesCommitment: "YES", installmentIndex: 23 }, { category: "ONE_TIME_CREDIT", matchesCommitment: "YES", installmentIndex: 22 }] },
+        { statementMonth: "2025-04", lines: [{ category: "PROMO_CREDIT", label: "Device Promo Credit", matchesCommitment: "YES", installmentIndex: 5 }] },
+        { statementMonth: "2026-10", lines: [{ category: "PROMO_CREDIT", label: "Device Promo Credit (23 of 24)", matchesCommitment: "YES", installmentIndex: 23 }, { category: "ONE_TIME_CREDIT", label: "adjustment", matchesCommitment: "YES", installmentIndex: 22 }] },
       ],
       null,
     );
     expect(anchor).toEqual({ status: "ANCHORED", startMonth: { year: 2024, month: 12 }, source: "INSTALLMENT_LABELS" });
   });
 
+  it("a back-credit the model mislabelled as a promo credit is treated as one-time (live run regression)", () => {
+    // #given the exact line categories observed from gpt-5.6-terra on the live bill 23
+    const lines = [
+      { key: "a", label: "Device Promo Credit (23 of 24)", category: "PROMO_CREDIT", amountCents: -1875, currency: "USD", installmentIndex: 23, installmentCount: 24, relatesToCommitmentKey: "K", matchesCommitment: "YES" as const, confidence: "HIGH" as const, evidenceExcerpt: null, evidenceBinding: "VALID" as const, decisionEligibility: "AUTO_DETERMINISTIC" as const },
+      { key: "b", label: "Promo credit adjustment - missed credit (22 of 24)", category: "PROMO_CREDIT", amountCents: -1875, currency: "USD", installmentIndex: 22, installmentCount: 24, relatesToCommitmentKey: "K", matchesCommitment: "YES" as const, confidence: "HIGH" as const, evidenceExcerpt: null, evidenceBinding: "VALID" as const, decisionEligibility: "AUTO_DETERMINISTIC" as const },
+    ];
+    // #when
+    const anchor = deriveScheduleStart([{ statementMonth: "2026-10", lines }], null);
+    const obs = toObservedStatement("s23", { statementMonth: "2026-10", itemized: true, lines }, { year: 2024, month: 12 });
+    // #then
+    expect(anchor).toMatchObject({ status: "ANCHORED", startMonth: { year: 2024, month: 12 } });
+    expect(obs.creditLines).toHaveLength(1);
+    expect(obs.adjustmentLines).toHaveLength(1);
+  });
+
   it("inconsistent installment labels are a conflict", () => {
     const anchor = deriveScheduleStart(
       [
-        { statementMonth: "2025-04", lines: [{ category: "PROMO_CREDIT", matchesCommitment: "YES", installmentIndex: 5 }] },
-        { statementMonth: "2025-05", lines: [{ category: "PROMO_CREDIT", matchesCommitment: "YES", installmentIndex: 9 }] },
+        { statementMonth: "2025-04", lines: [{ category: "PROMO_CREDIT", label: "Device Promo Credit", matchesCommitment: "YES", installmentIndex: 5 }] },
+        { statementMonth: "2025-05", lines: [{ category: "PROMO_CREDIT", label: "Device Promo Credit", matchesCommitment: "YES", installmentIndex: 9 }] },
       ],
       null,
     );

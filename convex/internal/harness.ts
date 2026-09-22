@@ -92,3 +92,51 @@ export const captures = internalQuery({
       meta: c.firecrawlMetadataJson,
     })),
 });
+
+/** Internal only: the inbox id for a workspace, for live round-trip scripts. Never exposed to clients. */
+export const workspaceInbox = internalQuery({
+  args: { workspaceId: v.id("workspaces") },
+  handler: async (ctx, { workspaceId }) => (await ctx.db.get(workspaceId))?.agentmailInboxId ?? null,
+});
+
+export const inboundForWorkspace = internalQuery({
+  args: { workspaceId: v.id("workspaces") },
+  handler: async (ctx, { workspaceId }) =>
+    (await ctx.db.query("inboundAssignments").withIndex("by_workspace_receivedAt", (q) => q.eq("workspaceId", workspaceId)).order("desc").take(20)).map((r) => ({
+      id: r._id,
+      subject: r.subject,
+      fromDomain: r.fromDomain,
+      classification: r.classification,
+      assignmentStatus: r.assignmentStatus,
+      processingStatus: r.processingStatus,
+      caseId: r.caseId,
+      receivedAt: r.receivedAt,
+    })),
+});
+
+export const itemSummary = internalQuery({
+  args: { itemId: v.id("protectedItems") },
+  handler: async (ctx, { itemId }) => {
+    const item = await ctx.db.get(itemId);
+    if (!item) return null;
+    const commitments = await ctx.db.query("commitments").withIndex("by_item_kind", (q) => q.eq("protectedItemId", itemId)).take(50);
+    const rec = item.latestReconciliationId ? await ctx.db.get(item.latestReconciliationId) : null;
+    return {
+      routingToken: item.routingToken,
+      status: item.status,
+      resolutionState: item.resolutionState,
+      commitments: commitments.map((c) => `${c.kind} ${c.amountCents ?? c.integerValue ?? c.textValue} x${c.periodCount} ${c.evidenceBinding} ${c.decisionEligibility} ${c.modelId}`),
+      reconciliation: rec ? { outcome: rec.overallOutcome, missing: rec.observedDifferenceCents, remaining: rec.remainingScheduledValueCents, latest: rec.latestObservedPeriod } : null,
+    };
+  },
+});
+
+export const latestStatementLines = internalQuery({
+  args: { itemId: v.id("protectedItems") },
+  handler: async (ctx, { itemId }) => {
+    const sts = await ctx.db.query("statements").withIndex("by_item_createdAt", (q) => q.eq("protectedItemId", itemId)).order("desc").take(1);
+    if (!sts[0]) return null;
+    const obs = await ctx.db.query("observations").withIndex("by_statement", (q) => q.eq("statementId", sts[0]._id)).take(50);
+    return { month: sts[0].statementMonth, lines: obs.map((o) => `${o.category} | ${o.label} | ${o.amountCents} | idx=${o.integerValue} | ${o.matchesCommitment} | ${o.evidenceBinding}`) };
+  },
+});

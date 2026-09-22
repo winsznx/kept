@@ -220,6 +220,19 @@ export function buildStatement(bill: BillObservation, sourceText: string, schedu
   };
 }
 
+const ONE_TIME_LABEL = /\b(adjust(ment|ed)?|missed|back[- ]?credit|retro(active)?|one[- ]time|courtesy|goodwill|re-?applied)\b/i;
+
+/**
+ * Deterministic line-identity rule applied on top of model categories: a credit whose
+ * printed label says it is an adjustment/back-credit is one-time, even if the model
+ * called it a recurring promo credit. Only its schedule role changes; amount,
+ * evidence and binding are untouched.
+ */
+export function effectiveCategory(line: Pick<BuiltLine, "category" | "label">): string {
+  if ((line.category === "PROMO_CREDIT" || line.category === "OTHER") && ONE_TIME_LABEL.test(line.label)) return "ONE_TIME_CREDIT";
+  return line.category;
+}
+
 export type AnchorResult =
   | { status: "ANCHORED"; startMonth: YearMonth; source: "INSTALLMENT_LABELS" | "RECORDED_START" }
   | { status: "CONFLICT"; reason: string }
@@ -231,7 +244,7 @@ export type AnchorResult =
  * the result is CONFLICT and reconciliation abstains.
  */
 export function deriveScheduleStart(
-  statements: readonly { statementMonth: string | null; lines: readonly Pick<BuiltLine, "matchesCommitment" | "installmentIndex" | "category">[] }[],
+  statements: readonly { statementMonth: string | null; lines: readonly Pick<BuiltLine, "matchesCommitment" | "installmentIndex" | "category" | "label">[] }[],
   recordedStart: string | null,
 ): AnchorResult {
   const implied = new Set<string>();
@@ -239,7 +252,7 @@ export function deriveScheduleStart(
     const ym = parseYearMonth(s.statementMonth);
     if (!ym) continue;
     for (const l of s.lines) {
-      if (l.category === "PROMO_CREDIT" && l.matchesCommitment === "YES" && l.installmentIndex !== null && l.installmentIndex >= 1) {
+      if (effectiveCategory(l) === "PROMO_CREDIT" && l.matchesCommitment === "YES" && l.installmentIndex !== null && l.installmentIndex >= 1) {
         const start = addMonths(ym, -(l.installmentIndex - 1));
         implied.add(`${start.year}-${String(start.month).padStart(2, "0")}`);
       }
@@ -260,8 +273,8 @@ export function toObservedStatement(
 ): ObservedStatement {
   const ym = parseYearMonth(s.statementMonth);
   const periodIndex = startMonth && ym ? ym.year * 12 + ym.month - (startMonth.year * 12 + startMonth.month) + 1 : null;
-  const recurring = s.lines.filter((l) => l.category === "PROMO_CREDIT");
-  const oneTime = s.lines.filter((l) => l.category === "ONE_TIME_CREDIT");
+  const recurring = s.lines.filter((l) => effectiveCategory(l) === "PROMO_CREDIT");
+  const oneTime = s.lines.filter((l) => effectiveCategory(l) === "ONE_TIME_CREDIT");
   return {
     statementKey,
     periodIndex,

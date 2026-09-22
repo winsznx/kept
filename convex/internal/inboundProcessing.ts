@@ -20,7 +20,7 @@ async function runPipelineFor(ctx: ActionCtx, assignmentId: Id<"inboundAssignmen
   if (!data?.row || !data.ws || !data.row.protectedItemId) return;
   const { row } = data;
   const docs = await ctx.runQuery(internal.internal.ingest.documentsForMessage, { agentmailMessageId: row.agentmailMessageId });
-  const intent = row.caseId ? "REPLY" : "AUTO";
+  const intent = row.caseId ? "REPLY" : row.classification === "SIGNUP_OR_ORDER" ? "PROMISE" : row.classification === "BILL_OR_STATEMENT" ? "BILL" : "AUTO";
   for (const doc of docs) {
     // Attachments carry the evidence when present; the email body is processed only if it's the only document or a case reply.
     if (!row.caseId && docs.length > 1 && doc.storageId === null) continue;

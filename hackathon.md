@@ -10,9 +10,9 @@
 - **Components:** @convex-dev/static-hosting, @firecrawl/firecrawl-convex, @agentmail/convex
 - **Convex features:** schema, tables, indexes, queries, mutations, actions, HTTP actions, scheduled functions, crons, file storage, realtime queries
 - **Auth:** Convex Auth
-- **AI models:** gpt-5.6-terra (extraction), gpt-5.6-sol (case drafting), configured in `convex/lib/openai.ts`; live calls not yet run
+- **AI models:** gpt-5.6-terra (classification and extraction), gpt-5.6-sol (case drafting), via the OpenAI Responses API with strict Structured Outputs (`convex/lib/openai.ts`)
 - **Started:** 2026-09-21T22:54:35Z
-- **Last updated:** 2026-09-22T09:20:00Z
+- **Last updated:** 2026-09-22T15:40:00Z
 
 ## Log
 
@@ -27,4 +27,7 @@ Shipped the public demo on the real pipeline. Each visitor gets an isolated, exp
 
 ### 2026-09-22 - working tree
 Deployed to production on Convex static hosting. The demo, Then vs Now, case, inbox, protect, item and proof screens are built. Browser smoke runs against the production URL pass: the full demo loop at phone width with no horizontal scroll, control and refusal tabs, demo state kept on deep reload, and sign-up, item creation, deep-route reload and sign-out (`scripts/smoke-demo.mjs`, `scripts/smoke-auth.mjs`, `src/routes/`).
+
+### 2026-09-22 - working tree
+Ran the full loop live on production and recorded it as an inspectable run at `/proof/run/live-loop-2026-09-22` (`evidence/live-roundtrip.md`). A synthetic signup email forwarded into a real per-user AgentMail inbox arrived through the signed webhook; OpenAI extracted the $18.75 x 24 credit, duration and required plan, and code bound each to the source text. Bills pasted in the app reconciled deterministically to a material difference on credit 22. A model-drafted case passed Kept's fact check, was approved in the UI and sent through AgentMail; the reply from a separate builder-controlled inbox landed in the same case thread, its claims were stored as claims, and the case waited to verify. Bill 23 first produced a source conflict, because the model labelled the back-credit as a recurring credit, so Kept abstained; a deterministic line-identity rule fixed it and the case page switched to verified fixed with no reload (`convex/lib/pipeline.ts`). Fixed two live-found bugs: forwarded mail bodies were taken from AgentMail's quote-stripped text and came through empty, and assigned mail was classified twice (`convex/inbound.ts`, `convex/internal/inboundProcessing.ts`). Signed webhooks are registered for dev and prod.
 

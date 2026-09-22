@@ -1,0 +1,407 @@
+{
+  "slug": "live-loop-2026-09-22",
+  "kind": "LIVE",
+  "commitSha": "7accaed",
+  "recordedAt": "2026-09-22T15:33:31.003Z",
+  "payloadSha256": "ca73caa977689876d97f90956c6c3767afca56b6639106c3254bc8c6b2aff61f",
+  "payload": {
+    "type": "LIVE_LOOP",
+    "deployment": "production",
+    "synthetic": "All documents are synthetic fixtures for the fictional provider Brightline Wireless. Mail travelled over real AgentMail inboxes controlled by the builder; addresses are withheld.",
+    "item": {
+      "status": "PROTECTED",
+      "resolutionState": "VERIFIED_FIXED",
+      "createdAt": 1790090186929
+    },
+    "captures": [
+      {
+        "sourceClass": "UNKNOWN_SOURCE",
+        "capturedAt": 1790090196802,
+        "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "origin": "AGENTMAIL_INBOUND"
+      },
+      {
+        "sourceClass": "TRANSACTION_EMAIL",
+        "capturedAt": 1790090574313,
+        "contentSha256": "6a688400a206e742161b4f6f977fe6f55312dfca5f37fd579cf2b64acda1a0ec",
+        "origin": "AGENTMAIL_INBOUND"
+      },
+      {
+        "sourceClass": "BILL_OR_STATEMENT",
+        "capturedAt": 1790090622691,
+        "contentSha256": "8a5541c5a60a9691976245aff29f3d023a734b7dd6491b0d4490b41ac147c486",
+        "origin": "PASTED_OR_UPLOADED"
+      },
+      {
+        "sourceClass": "BILL_OR_STATEMENT",
+        "capturedAt": 1790090634190,
+        "contentSha256": "376493ecff30f2db2fcb58e49c33eecf7366445ae43e43ccaaca5867f69ff3c9",
+        "origin": "PASTED_OR_UPLOADED"
+      },
+      {
+        "sourceClass": "BILL_OR_STATEMENT",
+        "capturedAt": 1790090645596,
+        "contentSha256": "1c2da6ff7ba294924b781913f1f6e83a96be1477a28faca6c169146c3ce4e85c",
+        "origin": "PASTED_OR_UPLOADED"
+      },
+      {
+        "sourceClass": "FIRST_PARTY_SUPPORT_REPLY",
+        "capturedAt": 1790090729012,
+        "contentSha256": "a7fb868e9c73d3b509f3a382e2277796a2fa672d27f2159b58315d09468293a8",
+        "origin": "AGENTMAIL_INBOUND"
+      },
+      {
+        "sourceClass": "BILL_OR_STATEMENT",
+        "capturedAt": 1790090807347,
+        "contentSha256": "c93e7824dc230eaed6610bb2d5ac7b0eb6c6064e9f6dcec8d3f031f585483ae5",
+        "origin": "PASTED_OR_UPLOADED"
+      }
+    ],
+    "commitments": [
+      {
+        "kind": "DURATION_MONTHS",
+        "amountCents": null,
+        "integerValue": 24,
+        "textValue": null,
+        "periodCount": null,
+        "evidenceBinding": "VALID",
+        "decisionEligibility": "AUTO_DETERMINISTIC",
+        "modelId": "gpt-5.6-terra",
+        "excerpt": "You'll receive a $18.75 monthly bill credit for 24 months, applied as \"Device Promo Credit\" on your bill.",
+        "excerptFoundInSource": true
+      },
+      {
+        "kind": "PROMO_CREDIT_SCHEDULE",
+        "amountCents": 1875,
+        "integerValue": null,
+        "textValue": null,
+        "periodCount": 24,
+        "evidenceBinding": "VALID",
+        "decisionEligibility": "AUTO_DETERMINISTIC",
+        "modelId": "gpt-5.6-terra",
+        "excerpt": "You'll receive a $18.75 monthly bill credit for 24 months, applied as \"Device Promo Credit\" on your bill.",
+        "excerptFoundInSource": true
+      },
+      {
+        "kind": "REQUIRED_PLAN",
+        "amountCents": null,
+        "integerValue": null,
+        "textValue": "Premium Plus",
+        "periodCount": null,
+        "evidenceBinding": "VALID",
+        "decisionEligibility": "AUTO_DETERMINISTIC",
+        "modelId": "gpt-5.6-terra",
+        "excerpt": "To keep receiving the credit, you must stay on the Premium Plus plan (or a higher plan) and keep the line active.",
+        "excerptFoundInSource": true
+      }
+    ],
+    "statements": [
+      {
+        "statementMonth": "2026-07",
+        "itemized": true,
+        "modelId": "gpt-5.6-terra",
+        "creditLines": [
+          {
+            "label": "Device Promo Credit (20 of 24)",
+            "amountCents": -1875,
+            "modelCategory": "PROMO_CREDIT",
+            "matchesCommitment": "YES",
+            "evidenceBinding": "VALID"
+          }
+        ]
+      },
+      {
+        "statementMonth": "2026-08",
+        "itemized": true,
+        "modelId": "gpt-5.6-terra",
+        "creditLines": [
+          {
+            "label": "Device Promo Credit (21 of 24)",
+            "amountCents": -1875,
+            "modelCategory": "PROMO_CREDIT",
+            "matchesCommitment": "YES",
+            "evidenceBinding": "VALID"
+          }
+        ]
+      },
+      {
+        "statementMonth": "2026-09",
+        "itemized": true,
+        "modelId": "gpt-5.6-terra",
+        "creditLines": []
+      },
+      {
+        "statementMonth": "2026-10",
+        "itemized": true,
+        "modelId": "gpt-5.6-terra",
+        "creditLines": [
+          {
+            "label": "Device Promo Credit (23 of 24)",
+            "amountCents": -1875,
+            "modelCategory": "PROMO_CREDIT",
+            "matchesCommitment": "YES",
+            "evidenceBinding": "VALID"
+          },
+          {
+            "label": "Promo credit adjustment - missed credit (22 of 24)",
+            "amountCents": -1875,
+            "modelCategory": "PROMO_CREDIT",
+            "matchesCommitment": "YES",
+            "evidenceBinding": "VALID"
+          }
+        ]
+      }
+    ],
+    "reconciliations": [
+      {
+        "at": 1790090591556,
+        "trigger": "SOURCE_INGESTED",
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "outstandingMissingCents": 0,
+        "remainingScheduledCents": 45000,
+        "latestObservedPeriod": null,
+        "failureCode": null,
+        "mechanismVersion": "kept-mech-1"
+      },
+      {
+        "at": 1790090632733,
+        "trigger": "SOURCE_INGESTED",
+        "outcome": "MATCH",
+        "outstandingMissingCents": 0,
+        "remainingScheduledCents": 43125,
+        "latestObservedPeriod": 20,
+        "failureCode": null,
+        "mechanismVersion": "kept-mech-1"
+      },
+      {
+        "at": 1790090641963,
+        "trigger": "SOURCE_INGESTED",
+        "outcome": "MATCH",
+        "outstandingMissingCents": 0,
+        "remainingScheduledCents": 41250,
+        "latestObservedPeriod": 21,
+        "failureCode": null,
+        "mechanismVersion": "kept-mech-1"
+      },
+      {
+        "at": 1790090654289,
+        "trigger": "SOURCE_INGESTED",
+        "outcome": "MATERIAL_DIFFERENCE",
+        "outstandingMissingCents": 1875,
+        "remainingScheduledCents": 41250,
+        "latestObservedPeriod": 22,
+        "failureCode": null,
+        "mechanismVersion": "kept-mech-1"
+      },
+      {
+        "at": 1790090733569,
+        "trigger": "SOURCE_INGESTED",
+        "outcome": "MATERIAL_DIFFERENCE",
+        "outstandingMissingCents": 1875,
+        "remainingScheduledCents": 41250,
+        "latestObservedPeriod": 22,
+        "failureCode": null,
+        "mechanismVersion": "kept-mech-1"
+      },
+      {
+        "at": 1790090820912,
+        "trigger": "SOURCE_INGESTED",
+        "outcome": "SOURCE_CONFLICT",
+        "outstandingMissingCents": 0,
+        "remainingScheduledCents": 45000,
+        "latestObservedPeriod": null,
+        "failureCode": "ANCHOR_CONFLICT",
+        "mechanismVersion": "kept-mech-1"
+      },
+      {
+        "at": 1790091066459,
+        "trigger": "MANUAL",
+        "outcome": "MATCH",
+        "outstandingMissingCents": 0,
+        "remainingScheduledCents": 37500,
+        "latestObservedPeriod": 23,
+        "failureCode": null,
+        "mechanismVersion": "kept-mech-1"
+      }
+    ],
+    "case": {
+      "status": "RESOLVED",
+      "resolutionState": "VERIFIED_FIXED",
+      "draftSource": "MODEL",
+      "approvedAt": 1790090700846,
+      "sentViaAgentMail": true,
+      "packetSha256": "a312575e96fcdbde9095488db094e93494b48b3fd9ef66e73cb63228e99cb8b1"
+    },
+    "caseEvents": [
+      {
+        "at": 1790090683881,
+        "type": "CREATED",
+        "summary": "Case opened for credit 22 of 24."
+      },
+      {
+        "at": 1790090699235,
+        "type": "DRAFTED",
+        "summary": "Drafted from the evidence packet. Every amount, number, and date was checked against the packet."
+      },
+      {
+        "at": 1790090700846,
+        "type": "APPROVED",
+        "summary": "You approved the message for sending."
+      },
+      {
+        "at": 1790090701341,
+        "type": "SENT",
+        "summary": "Sent from your Kept inbox. AgentMail accepted the message."
+      },
+      {
+        "at": 1790090733445,
+        "type": "REPLY_RECEIVED",
+        "summary": "A reply arrived in the case thread."
+      },
+      {
+        "at": 1790090733445,
+        "type": "PROVIDER_CLAIMS_FIXED",
+        "summary": "The provider says the credit was fixed. That's their claim; Kept hasn't seen it on a bill yet."
+      },
+      {
+        "at": 1790090733445,
+        "type": "WAITING_TO_VERIFY",
+        "summary": "Waiting for the next bill to confirm the credit is back."
+      },
+      {
+        "at": 1790090820912,
+        "type": "VERIFICATION_INSUFFICIENT",
+        "summary": "No later statement contains a comparable promotional credit line for a scheduled period. Still waiting to verify."
+      },
+      {
+        "at": 1790091066459,
+        "type": "VERIFIED_FIXED",
+        "summary": "A later qualifying statement shows the promised credit at the recorded amount."
+      },
+      {
+        "at": 1790091066459,
+        "type": "RESOLVED",
+        "summary": "Resolved: a later bill shows the recorded credit."
+      }
+    ],
+    "providerClaims": [
+      {
+        "type": "CREDIT_WILL_BE_RESTORED",
+        "excerpt": "The missed $18.75 credit will be applied",
+        "quoteFoundInReply": true,
+        "assessment": "NOT_ESTABLISHED"
+      },
+      {
+        "type": "CREDIT_WILL_BE_RESTORED",
+        "excerpt": "your credits will continue on your next bill.",
+        "quoteFoundInReply": true,
+        "assessment": "NOT_ESTABLISHED"
+      },
+      {
+        "type": "OTHER",
+        "excerpt": "re-enrolled the Switch & Save promotion.",
+        "quoteFoundInReply": true,
+        "assessment": "NOT_ESTABLISHED"
+      }
+    ],
+    "verifications": [
+      {
+        "at": 1790090733445,
+        "result": "WAITING_TO_VERIFY",
+        "verifiedRestoredCents": 0
+      },
+      {
+        "at": 1790090820912,
+        "result": "INSUFFICIENT_EVIDENCE",
+        "verifiedRestoredCents": 0
+      },
+      {
+        "at": 1790091066459,
+        "result": "VERIFIED_FIXED",
+        "verifiedRestoredCents": 3750
+      }
+    ],
+    "sponsorCalls": [
+      {
+        "at": 1790090820703,
+        "provider": "OPENAI",
+        "operation": "extract_bill",
+        "status": "OK",
+        "modelId": "gpt-5.6-terra",
+        "latencyMs": 13235
+      },
+      {
+        "at": 1790090733368,
+        "provider": "OPENAI",
+        "operation": "extract_reply",
+        "status": "OK",
+        "modelId": "gpt-5.6-terra",
+        "latencyMs": 4114
+      },
+      {
+        "at": 1790090701326,
+        "provider": "AGENTMAIL",
+        "operation": "messages.send",
+        "status": "OK",
+        "modelId": null,
+        "latencyMs": 412
+      },
+      {
+        "at": 1790090653947,
+        "provider": "OPENAI",
+        "operation": "extract_bill",
+        "status": "OK",
+        "modelId": "gpt-5.6-terra",
+        "latencyMs": 7974
+      },
+      {
+        "at": 1790090641410,
+        "provider": "OPENAI",
+        "operation": "extract_bill",
+        "status": "OK",
+        "modelId": "gpt-5.6-terra",
+        "latencyMs": 6979
+      },
+      {
+        "at": 1790090632363,
+        "provider": "OPENAI",
+        "operation": "extract_bill",
+        "status": "OK",
+        "modelId": "gpt-5.6-terra",
+        "latencyMs": 9247
+      },
+      {
+        "at": 1790090589538,
+        "provider": "OPENAI",
+        "operation": "extract_commitments",
+        "status": "OK",
+        "modelId": "gpt-5.6-terra",
+        "latencyMs": 12124
+      },
+      {
+        "at": 1790090577160,
+        "provider": "OPENAI",
+        "operation": "classify",
+        "status": "OK",
+        "modelId": "gpt-5.6-terra",
+        "latencyMs": 2653
+      },
+      {
+        "at": 1790090199454,
+        "provider": "OPENAI",
+        "operation": "classify",
+        "status": "OK",
+        "modelId": "gpt-5.6-terra",
+        "latencyMs": 2334
+      },
+      {
+        "at": 1790090138404,
+        "provider": "OPENAI",
+        "operation": "classify",
+        "status": "OK",
+        "modelId": "gpt-5.6-terra",
+        "latencyMs": 3256
+      }
+    ]
+  }
+}

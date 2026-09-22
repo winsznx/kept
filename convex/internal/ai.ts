@@ -36,7 +36,7 @@ export const draftCase = internalAction({
           input: `EVIDENCE PACKET (JSON):\n${JSON.stringify(packetForModel)}${lastProblems.length ? `\n\nYour previous draft was rejected for: ${lastProblems.join("; ")}. Use only packet facts.` : ""}`,
           role: "REASON",
         });
-        await ctx.runMutation(internal.telemetry.record, { workspaceId: null, provider: "OPENAI", operation: "draft_case", status: "OK", errorCode: null, latencyMs: res.latencyMs, attempt, modelId: res.modelId, schemaVersion: SCHEMA_VERSION, externalRef: null });
+        await ctx.runMutation(internal.telemetry.record, { workspaceId: row.workspaceId, provider: "OPENAI", operation: "draft_case", status: "OK", errorCode: null, latencyMs: res.latencyMs, attempt, modelId: res.modelId, schemaVersion: SCHEMA_VERSION, externalRef: null });
         const check = validateDraft(`${res.parsed.subject}\n${res.parsed.plainTextBody}`, packet);
         if (check.ok && res.parsed.plainTextBody.length <= 3000 && res.parsed.subject.length <= 160) {
           await ctx.runMutation(internal.cases.saveModelDraft, { caseId, subject: res.parsed.subject, body: res.parsed.plainTextBody, source: "MODEL", note: "Drafted from the evidence packet. Every amount, number, and date was checked against the packet." });
@@ -45,7 +45,7 @@ export const draftCase = internalAction({
         lastProblems = check.problems.slice(0, 5);
       } catch (err) {
         const code = err instanceof AiError ? err.code : "OPENAI_FAILED";
-        await ctx.runMutation(internal.telemetry.record, { workspaceId: null, provider: "OPENAI", operation: "draft_case", status: "ERROR", errorCode: code, latencyMs: 0, attempt, modelId: null, schemaVersion: SCHEMA_VERSION, externalRef: null });
+        await ctx.runMutation(internal.telemetry.record, { workspaceId: row.workspaceId, provider: "OPENAI", operation: "draft_case", status: "ERROR", errorCode: code, latencyMs: 0, attempt, modelId: null, schemaVersion: SCHEMA_VERSION, externalRef: null });
         break;
       }
     }
