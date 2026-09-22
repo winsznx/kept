@@ -13,6 +13,11 @@ Kept records the deal you were promised when you signed up, checks every later b
 - **Inspectable production run:** https://gregarious-snail-975.convex.site/proof/run/live-loop-2026-09-22
 - **Demo video:** coming with the submission
 - **Build log:** [hackathon.md](hackathon.md)
+- **Architecture:** [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · **Submission state:** [docs/SUBMISSION_CHECKLIST.md](docs/SUBMISSION_CHECKLIST.md)
+
+| The promise, then the drift | Verified only by a later bill |
+|---|---|
+| ![Kept landing](docs/screenshots/01-hero.png) | ![Verified fix](docs/screenshots/06-demo-verified.png) |
 
 ## The mechanism
 
