@@ -41,7 +41,7 @@ Kept records the deal you were promised at signup, checks every later bill again
 - **Auth:** Convex Auth
 - **AI models:** gpt-5.6-terra (classification and extraction), gpt-5.6-sol (case drafting), via the OpenAI Responses API with strict Structured Outputs (`convex/lib/openai.ts`)
 - **Started:** 2026-09-21T22:54:35Z
-- **Last updated:** 2026-09-22T17:10:00Z
+- **Last updated:** 2026-09-22T17:40:00Z
 
 ## Log
 
@@ -65,4 +65,7 @@ Ran the evaluation campaigns and published the results (`evidence/campaign-repor
 
 ### 2026-09-22 - d8071c1
 Applied the Kept brand and rebuilt the frontend on the owner's reference design system, deployed to production. The public site now has a sticky header with a mobile menu, a centred hero with evidence panels, a clickable Record-to-Verify loop, feature sections, FAQ and footer; the signed-in app moved into a rail layout with breadcrumbs, stat tiles, item rows and a phone bottom nav (`src/styles/`, `src/components/Layouts.tsx`, `src/routes/`). Brand logo, mark, favicons, social image and line icons come from the Kept brand kit (`public/brand/`). Production smoke runs pass at phone width with no horizontal scroll. The build spec and brand sources now live in a git-ignored `internal/` folder.
+
+### 2026-09-22 - working tree
+Final legibility pass on production. The first laptop screen now shows the whole demo story in a labelled demo-example strip: 24 expected credits, credit 22 missing, support says fixed held as a claim, and bill 23 verifying the fix. The hero, the how-it-works step card and the "a reply isn't a fix" ladder separate the provider's claim from the bill that proves the fix. `/proof` gained an at-a-glance panel linking each result to its committed artifact, and the run page summarizes bills, case timeline and sponsor calls above the raw record (`src/routes/Landing.tsx`, `src/routes/Proof.tsx`, `src/routes/ProofRun.tsx`). Production smoke and a seven-route, three-width regression pass with no overflow or page errors.
 

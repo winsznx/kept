@@ -37,7 +37,7 @@ function LoopArt({ step }: { step: number }) {
     </div>,
     <div className="panel-white" key="2">
       <div className="row-between">
-        <span className="label">Bill 22 · September</span>
+        <span className="label">Credit 22 of 24 · September bill</span>
         <span className="badge tone-bad">ISSUE DETECTED</span>
       </div>
       <div className="field-row">
@@ -46,9 +46,13 @@ function LoopArt({ step }: { step: number }) {
       </div>
       <div className="field-row">
         <span className="muted">On the bill</span>
-        <strong className="is-bad" style={{ color: "var(--error)" }}>
+        <strong className="is-bad" style={{ color: "var(--error)", fontSize: 28 }}>
           $0.00
         </strong>
+      </div>
+      <div className="field-row" style={{ borderTop: "1px solid var(--border)", paddingTop: 10 }}>
+        <span className="muted">Difference</span>
+        <strong style={{ color: "var(--error)" }}>−$18.75</strong>
       </div>
       <div className="small muted">No promotional credit line on this bill.</div>
     </div>,
@@ -69,13 +73,13 @@ function LoopArt({ step }: { step: number }) {
         <span className="success-circle">
           <Icon name="resolve" size={24} />
         </span>
-        <strong>Verified fixed</strong>
-        <p>Bill 23 shows the credit, plus a back-credit for 22.</p>
+        <strong style={{ color: "var(--success)", fontSize: 18 }}>Verified on a later bill</strong>
+        <p>Bill 23 shows the credit again, plus a back-credit for 22.</p>
       </div>
       <div className="inner-lines">
         <div>
-          <span className="muted">Provider said</span>
-          <strong>“It’s been restored”</strong>
+          <span className="muted">Support said “restored”</span>
+          <strong style={{ color: "var(--warning)" }}>claim only</strong>
         </div>
         <div>
           <span className="muted">Verified restored</span>
@@ -84,7 +88,17 @@ function LoopArt({ step }: { step: number }) {
       </div>
     </div>,
   ];
-  return <div className="step-art art art-cool">{cards[step]}</div>;
+  const changes = ["The promise is on record, word for word", "24 expected credits to check", "A difference with evidence on both sides", "A case you approve, nothing sent without you", "Resolution proven by a later bill"];
+  return (
+    <div className="step-art art art-cool" aria-live="polite">
+      <div className="step-change">
+        <span>
+          Step 0{step + 1} · {changes[step]}
+        </span>
+      </div>
+      {cards[step]}
+    </div>
+  );
 }
 
 export function Landing() {
@@ -106,6 +120,49 @@ export function Landing() {
           </Link>
         </div>
 
+        <div className="memory-strip" aria-label="Demo example">
+          <div className="memory-label">
+            Demo example
+            <b>One 24-month promotion</b>
+          </div>
+          <div className="memory-step">
+            <span className="icon-tile is-soft">
+              <Icon name="promise" size={17} />
+            </span>
+            <div>
+              <strong>24 expected credits</strong>
+              <small>$18.75 each, recorded at signup</small>
+            </div>
+          </div>
+          <div className="memory-step is-bad">
+            <span className="icon-tile is-bad" style={{ background: "#fff" }}>
+              <Icon name="detect" size={17} />
+            </span>
+            <div>
+              <strong>Credit 22 missing</strong>
+              <small>Expected $18.75 · bill shows $0.00</small>
+            </div>
+          </div>
+          <div className="memory-step is-warn">
+            <span className="icon-tile is-warn" style={{ background: "#fff" }}>
+              <Icon name="email" size={17} />
+            </span>
+            <div>
+              <strong>Support says fixed</strong>
+              <small>A claim. Kept waits.</small>
+            </div>
+          </div>
+          <div className="memory-step is-ok">
+            <span className="icon-tile is-ok" style={{ background: "#fff" }}>
+              <Icon name="verify" size={17} />
+            </span>
+            <div>
+              <strong>Bill 23 verified the fix</strong>
+              <small>Credit back, plus back-credit</small>
+            </div>
+          </div>
+        </div>
+
         <div className="hero-panels">
           <div className="art art-neutral hero-stack">
             <div className="hero-stack-caption">
@@ -116,30 +173,42 @@ export function Landing() {
                 <Icon name="promise" size={20} />
               </span>
               <div>
-                <strong>Promised</strong>
+                <strong>Promised at signup</strong>
                 <small>24 monthly device credits</small>
               </div>
               <span className="float-value">$18.75 / mo</span>
             </div>
-            <div className="float-card">
+            <div className="float-card" style={{ boxShadow: "0 0 0 1.5px rgba(239,68,68,.45), 0 8px 26px rgba(15,23,42,.1)" }}>
               <span className="icon-tile is-bad">
                 <Icon name="detect" size={20} />
               </span>
               <div>
-                <strong>Month 22 missing</strong>
-                <small>Expected credit not on the bill</small>
+                <strong>Credit 22 of 24 missing</strong>
+                <small>Expected $18.75 · observed $0.00</small>
               </div>
               <span className="float-value" style={{ color: "var(--error)" }}>
                 −$18.75
               </span>
             </div>
             <div className="float-card">
-              <span className="icon-tile is-ok">
+              <span className="icon-tile is-warn">
+                <Icon name="email" size={20} />
+              </span>
+              <div>
+                <strong>Support says it’s fixed</strong>
+                <small>Recorded as a claim, not a fix</small>
+              </div>
+              <span className="badge tone-warn" style={{ marginLeft: "auto" }}>
+                WAITING
+              </span>
+            </div>
+            <div className="float-card" style={{ boxShadow: "0 0 0 1.5px rgba(22,163,74,.45), 0 8px 26px rgba(15,23,42,.1)" }}>
+              <span className="icon-tile" style={{ background: "var(--success)", color: "#fff" }}>
                 <Icon name="verify" size={20} />
               </span>
               <div>
-                <strong>Verified fixed</strong>
-                <small>Seen on bill 23, not just in an email</small>
+                <strong>Verified on bill 23</strong>
+                <small>The later bill shows the credit again</small>
               </div>
               <span className="float-value" style={{ color: "var(--success)" }}>
                 +$37.50
@@ -157,7 +226,10 @@ export function Landing() {
                   <strong>Brightline Wireless</strong>
                   <span>Aurora X15 device promotion</span>
                 </div>
+              </div>
+              <div className="row" style={{ margin: "-4px 4px 14px" }}>
                 <span className="badge tone-bad">MATERIAL DIFFERENCE</span>
+                <span className="small muted">credit 22 of 24</span>
               </div>
               <div className="app-card-panel">
                 <div className="row-between small muted">
@@ -298,18 +370,35 @@ export function Landing() {
             <h3>A reply isn’t a fix</h3>
             <p>When support says it’s fixed, Kept records the claim and waits for the next bill.</p>
             <div className="why-inner">
-              <div className="stack" style={{ gap: 8 }}>
-                <span className="badge tone-warn" style={{ width: "fit-content" }}>
-                  PROVIDER SAYS FIXED
-                </span>
-                <span className="small muted">“The missed $18.75 credit will be applied.”</span>
-                <span className="badge tone-warn" style={{ width: "fit-content" }}>
-                  WAITING TO VERIFY
-                </span>
-                <span className="badge tone-ok" style={{ width: "fit-content" }}>
-                  VERIFIED FIXED · BILL 23
-                </span>
-              </div>
+              <ol className="proof-ladder">
+                <li className="is-warn">
+                  <span className="dot">
+                    <Icon name="email" size={15} />
+                  </span>
+                  <div>
+                    <strong>PROVIDER SAYS FIXED</strong>
+                    <small>“The missed $18.75 credit will be applied.” Stored as their claim.</small>
+                  </div>
+                </li>
+                <li className="is-warn">
+                  <span className="dot">
+                    <Icon name="watch" size={15} />
+                  </span>
+                  <div>
+                    <strong>WAITING TO VERIFY</strong>
+                    <small>No verified value counted yet. Kept watches the next bill.</small>
+                  </div>
+                </li>
+                <li className="is-ok">
+                  <span className="dot">
+                    <Icon name="resolve" size={15} />
+                  </span>
+                  <div>
+                    <strong>VERIFIED FIXED · BILL 23</strong>
+                    <small>The bill itself shows the credit. Only now is it fixed.</small>
+                  </div>
+                </li>
+              </ol>
             </div>
           </article>
           <article className="why-card">
